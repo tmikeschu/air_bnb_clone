@@ -7,6 +7,8 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'vcr'
+require "simplecov"
+SimpleCov.start "rails"
 
 VCR.configure do |config|
   config.cassette_library_dir = Rails.root.join("spec","fixtures","vcr_cassettes")
