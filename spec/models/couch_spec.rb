@@ -10,7 +10,7 @@ RSpec.describe Couch, type: :model do
   end
 
   context "relationships" do
-    it { should belong_to :user }
+    it { should belong_to(:host).class_name("User") }
   end
 
 end
