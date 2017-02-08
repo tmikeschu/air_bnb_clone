@@ -1,0 +1,23 @@
+%h1 Sign Up
+= form_for :user do |f|
+  = f.label :first_name
+  %br
+  = f.text_field :first_name
+  %br
+  = f.label :second_name
+  %br
+  = f.text_field :second_name
+  %br
+  = f.label :email
+  %br
+  = f.text_field :email
+  %br
+  = f.label :phone
+  %br
+  = f.telephone_field :phone
+  %br
+  = f.label :password
+  %br
+  = f.text_field :password
+  %br
+  = f.submit 'Create Account'
