@@ -15,5 +15,13 @@ RSpec.describe User, type: :model do
 
       expect(invalid_user).to be_invalid
     end
+
+    it "phone number must be unique" do
+      user = create(:user)
+      invalid_user = User.create(phone_number: user.phone_number)
+
+      expect(user).to be_valid
+      expect(invalid_user).to be_invalid
+    end
   end
 end
