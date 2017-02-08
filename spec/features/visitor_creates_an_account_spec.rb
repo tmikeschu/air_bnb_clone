@@ -21,7 +21,7 @@ describe User, type: :feature do
       # then I should be on my account page
       # expect(page).to eq user_path(1)
       # and I should not see a link to 'Create Account'
-      # expect(page).not_to have_content("Create Account")
+      expect(page).not_to have_content("Create Account")
       # and I should see my information
       expect(page).to have_content("First Name")
       expect(page).to have_content("Last Name")

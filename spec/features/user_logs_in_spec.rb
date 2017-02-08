@@ -27,7 +27,23 @@ describe User, type: :feature do
     end
 
     it "I can logout" do 
-      
+      user = create(:user)
+      # page.set_rack_session(current_user: user.id)
+      visit root_path
+      click_on "Log In"
+
+      fill_in "Email", with: user.email
+      fill_in "Password", with: user.password
+      click_on "Login"
+
+      expect(page).to have_content("Sign Out")
+      expect(page).not_to have_content("Log In")
+
+      click_on "Sign Out"
+
+      expect(page).to have_content("Log In")
+      expect(page).to have_content("Create Account")
+      expect(page).not_to have_content("Sign Out")
     end
   end
 end

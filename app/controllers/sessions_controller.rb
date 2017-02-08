@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    flass[:success] = "Successfully logged out!"
+    flash[:success] = "Successfully logged out!"
     redirect_to root_path
   end
 end
