@@ -1,0 +1,20 @@
+%article.reservations
+  %section.head
+    %article Reservation
+    %article Host
+    %article Location
+    %article From
+    %article To
+
+  - 10.times do
+    %section.row
+      %article
+        = rand(1000) + 1
+      %article
+        = Faker::HarryPotter.character
+      %article
+        = Faker::HarryPotter.location
+      %article
+        = Faker::Date.between(2.years.ago, Date.today + 1.year)
+      %article
+        = Faker::Date.between(2.years.ago, Date.today + 1.year)
