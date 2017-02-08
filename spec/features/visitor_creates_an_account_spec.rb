@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe Feature do 
+describe User, type: :feature do 
   describe "A visitor" do 
     it "can register as a user with correct field inputs" do 
       # when I visit the homepage
@@ -9,8 +9,8 @@ describe Feature do
       click_on "Create Account"
       expect(current_path).to eq(new_session_path)
       # and I fill out my information (see user model requirements) 
-      fill_in "First Name", with: "First Name"
-      fill_in "Second Name", with: "Second Name"
+      fill_in "First name", with: "First Name"
+      fill_in "Second name", with: "Second Name"
       fill_in "Email", with: "Email"
       fill_in "Phone", with: "Phone"
       fill_in "Password", with: "Password"
