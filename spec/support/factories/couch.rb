@@ -7,9 +7,9 @@ FactoryGirl.define do
               { city: "New Orleans",
                 state: "LA",
                 zipcode: "70112"},
-              { city: "Chicago",
-                state: "IL",
-                zipcode: "12345"}
+              { city: "Colorado",
+                state: "CO",
+                zipcode: "80123"}
               ]
 
     this_city = cities.sample
