@@ -5,9 +5,9 @@
     = form_tag(controller: :home, action: :show) do
 
       = text_field_tag "Destination", nil, placeholder: "Destination"
-      %section.dates
-        = date_field_tag "Check In"
-        = date_field_tag "Check Out"
+      %section.dates#datepicker
+        = text_field_tag "Check In", placeholder="Check In"
+        = text_field_tag "Check Out", placeholder="Check Out"
 
       = submit_tag "Find Pad"
 
