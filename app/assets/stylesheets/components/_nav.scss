@@ -19,7 +19,12 @@ nav {
       width: 100%;
       li {
         a {
+          padding: 15px;
           color: $gray;
+          &:hover {
+            text-decoration: none;
+            color: $accent;
+          }
         }
       }
     }
