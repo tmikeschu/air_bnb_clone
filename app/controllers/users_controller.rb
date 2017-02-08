@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       session[:current_user] = user.id
       redirect_to user_path(user)
     else
+      byebug
       flash[:danger] = "Please make sure all the fields are present"
       redirect_to new_user_path
     end
@@ -21,6 +22,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :phone_number)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number)
   end
 end
