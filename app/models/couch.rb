@@ -1,0 +1,2 @@
+class Couch < ApplicationRecord
+end
