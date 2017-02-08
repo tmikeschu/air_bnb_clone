@@ -32,7 +32,16 @@ describe User, type: :feature do
     it "cannot register as a user without correct field inputs" do 
       visit root_path
       click_on "Create Account" 
-      expect(current_path).to eq(new_session_path)
+      expect(current_path).to eq(new_user_path)
+
+      fill_in "First name", with: "First Name"
+      fill_in "Last name", with: "Last Name"
+      fill_in "Email", with: "Email"
+
+      click_on "Sign Up"
+      
+      expect(current_path).to eq(new_user_path)
+      expect(page).to have_content("you done fucked up")
     end
   end
 end
