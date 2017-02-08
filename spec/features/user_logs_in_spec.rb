@@ -8,8 +8,9 @@ describe User, type: :feature do
       visit root_path
       click_on "Log In"
 
-      fill_in "Email", with: user.Email
-      fill_in "Password", with: user.Password
+      fill_in "Email", with: user.email
+      fill_in "Password", with: user.password
+      click_on "Login"
 
       expect(current_path).to eq(user_path(user.id))
       expect(page).to have_content(user.first_name)
@@ -19,6 +20,14 @@ describe User, type: :feature do
       expect(page).not_to have_content("Log In")
       expect(page).not_to have_content("Create Account")
 
+    end
+
+    it "Sad Path" do 
+
+    end
+
+    it "I can logout" do 
+      
     end
   end
 end
