@@ -4,7 +4,7 @@ rvm:
 services:
   - postgresql
 env:
-  - TEST_DIRECTORY=spec/models
+  - TEST_DIRECTORY=/spec/models
   - TEST_DIRECTORY=spec/features
 before_script:
   - psql -c 'create database air_bnb_travis_ci_test;' -U postgres
