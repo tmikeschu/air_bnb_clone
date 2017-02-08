@@ -38,6 +38,9 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'faker'
 end
 
 group :development do
