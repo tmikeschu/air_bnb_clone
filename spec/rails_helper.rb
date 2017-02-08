@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'vcr'
 require "simplecov"
+require "rack_session_access/capybara"
 SimpleCov.start "rails"
 
 VCR.configure do |config|
