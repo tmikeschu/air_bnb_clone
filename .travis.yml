@@ -7,7 +7,7 @@ env:
   - TEST_DIRECTORY=spec/models
   - TEST_DIRECTORY=spec/features
 before_script:
-  - psql -c 'create database air_bnb_clone travis_ci_test;' -U postgres
+  - psql -c 'create database air_bnb_clone_test;' -U postgres
 script:
   - xvfb-run bundle exec rspec $TEST_DIRECTORY
 cache: bundler
