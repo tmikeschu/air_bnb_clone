@@ -23,12 +23,22 @@ describe User, type: :feature do
     end
 
     it "Sad Path" do 
+      user = create(:user)
+      visit root_path
+      click_on "Log In"
 
+      fill_in "Email", with: user.email
+      fill_in "Password", with: "wrongpassword"
+      click_on "Login"
+
+      expect(page).not_to have_content("Sign Out")
+      expect(page).to have_content("Log In")
+      expect(page).to have_content("Unsuccessful login attempt")
     end
 
     it "I can logout" do 
       user = create(:user)
-      # page.set_rack_session(current_user: user.id)
+      
       visit root_path
       click_on "Log In"
 

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:current_user] = user.id
       redirect_to user_path(user)
     else
-      flash[:danger] = "you done fucked up"
+      flash[:danger] = "Unsuccessful login attempt"
       redirect_to new_session_path
     end
   end

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       session[:current_user] = user.id
       redirect_to user_path(user)
     else
-      flash[:danger] = "you done fucked up"
+      flash[:danger] = "Please make sure all the fields are present"
       redirect_to new_user_path
     end
   end

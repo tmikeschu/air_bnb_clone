@@ -34,7 +34,7 @@ describe User, type: :feature do
       click_on "Sign Up"
       
       expect(current_path).to eq(new_user_path)
-      expect(page).to have_content("you done fucked up")
+      expect(page).to have_content("Please make sure all the fields are present")
     end
   end
 end
