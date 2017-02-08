@@ -20,6 +20,6 @@ FactoryGirl.define do
     city           this_city[:city]
     state          this_city[:state]
     zipcode        this_city[:zipcode]
-    user
+    host           { create(:user) }
   end
 end
