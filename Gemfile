@@ -50,6 +50,7 @@ group :development, :test do
   gem 'faker'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rake'
+  gem 'travis'
 end
 
 group :development do
