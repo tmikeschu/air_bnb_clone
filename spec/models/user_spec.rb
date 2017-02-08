@@ -24,4 +24,8 @@ RSpec.describe User, type: :model do
       expect(invalid_user).to be_invalid
     end
   end
+
+  context "relationships" do
+    it { should have_many :couches }
+  end
 end
