@@ -1,13 +1,14 @@
-%section.home
-  %h2 Where would you like to crash?
+.banner
+  %section.home
+    %h2 Where would you like to crash?
 
-  %article.home_reservation
-    = form_tag(controller: :home, action: :show) do
+    %article.home_reservation
+      = form_tag(controller: :home, action: :show) do
 
-      = text_field_tag "Destination", nil, placeholder: "Destination"
-      %section.dates#datepicker
-        = text_field_tag "Check In", placeholder="Check In"
-        = text_field_tag "Check Out", placeholder="Check Out"
+        = text_field_tag "Destination", nil, placeholder: "Destination"
+        %section.dates#datepicker
+          = text_field_tag "Check In", placeholder="Check In"
+          = text_field_tag "Check Out", placeholder="Check Out"
 
-      = submit_tag "Find Pad"
+        = submit_tag "Find Pad"
 
