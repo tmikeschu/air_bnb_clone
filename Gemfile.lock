@@ -46,8 +46,9 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
-    autoprefixer-rails (6.6.1)
+    autoprefixer-rails (6.7.2)
       execjs
+    bcrypt (3.1.11)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -102,12 +103,11 @@ GEM
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
     hashdiff (0.3.2)
-    hpricot (0.8.6)
-    html2haml (1.0.1)
+    html2haml (2.1.0)
       erubis (~> 2.7.0)
-      haml (>= 4.0.0.rc.1)
-      hpricot (~> 0.8.6)
-      ruby_parser (~> 3.1.1)
+      haml (~> 4.0)
+      nokogiri (>= 1.6.0)
+      ruby_parser (~> 3.5)
     i18n (0.8.0)
     jquery-rails (4.2.2)
       rails-dom-testing (>= 1, < 3)
@@ -187,7 +187,7 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    ruby_parser (3.1.3)
+    ruby_parser (3.8.4)
       sexp_processor (~> 4.1)
     safe_yaml (1.0.4)
     sass (3.4.23)
@@ -197,7 +197,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sexp_processor (4.7.0)
+    sexp_processor (4.8.0)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
     simplecov (0.13.0)
@@ -240,6 +240,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
+  bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.3.6)
   bootstrap_form
   byebug
