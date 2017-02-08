@@ -12,7 +12,7 @@ SimpleCov.start "rails"
 
 VCR.configure do |config|
   config.cassette_library_dir = Rails.root.join("spec","fixtures","vcr_cassettes")
-  congig.hook_into :webmock
+  config.hook_into :webmock
   # config.filter_sensitive_data("<SENSITIVE_DATA>") { ENV["SENSITIVE_DATA"] }
 end
 
@@ -23,6 +23,7 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
