@@ -12,6 +12,7 @@ describe User, type: :feature do
       fill_in "Email", with: "Email"
       fill_in "Phone number", with: "Phone"
       fill_in "Password", with: "Password"
+      fill_in "Password confirmation", with: "Password"
       
       click_on "Sign Up"
 
@@ -34,7 +35,7 @@ describe User, type: :feature do
       click_on "Sign Up"
       
       expect(current_path).to eq(new_user_path)
-      expect(page).to have_content("Please make sure all the fields are present")
+      expect(page).to have_content("Phone number can't be blank")
     end
   end
 end
