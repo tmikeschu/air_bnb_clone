@@ -16,6 +16,8 @@ describe User, type: :feature do
       
       click_on "Sign Up"
 
+      user = User.find_by(first_name: "First Name")
+      expect(current_path).to eq(user_path(user.id))
       expect(page).not_to have_content("Create Account")
       expect(page).to have_content("First Name")
       expect(page).to have_content("Last Name")

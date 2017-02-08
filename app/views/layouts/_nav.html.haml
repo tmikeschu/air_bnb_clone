@@ -3,7 +3,7 @@
     %h3 Pad Crash
   %section.nav_right
     %ul
-      - if session[:current_user]
+      - if current_user
         %li
           = link_to("Sign Out", "/logout" )
       - else

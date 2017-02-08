@@ -49,7 +49,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'rack_session_access'
 end
 
 group :development do
