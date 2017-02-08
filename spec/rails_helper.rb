@@ -12,7 +12,7 @@ SimpleCov.start "rails"
 
 VCR.configure do |config|
   config.cassette_library_dir = Rails.root.join("spec","fixtures","vcr_cassettes")
-  congig.hook_into :webmock
+  config.hook_into :webmock
   # config.filter_sensitive_data("<SENSITIVE_DATA>") { ENV["SENSITIVE_DATA"] }
 end
 
