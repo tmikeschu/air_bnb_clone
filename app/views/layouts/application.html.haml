@@ -7,6 +7,7 @@
     = stylesheet_link_tag    'application', media: 'all'
   %body
     = render partial: 'layouts/nav'
+    = render partial: 'layouts/flash'
     = yield
 
   = javascript_include_tag 'application'
