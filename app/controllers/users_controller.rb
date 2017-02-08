@@ -9,8 +9,7 @@ class UsersController < ApplicationController
       session[:current_user] = user.id
       redirect_to user_path(user)
     else
-      byebug
-      flash[:danger] = "Please make sure all the fields are present"
+      flash[:danger] = user.errors.full_messages.join(", ")
       redirect_to new_user_path
     end
   end
