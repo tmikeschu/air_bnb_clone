@@ -1,0 +1,32 @@
+nav {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 20px;
+  .nav_left {
+    flex: 2;
+    h3 {
+      color: $purple;
+    }
+  }
+  .nav_right {
+    flex: 1;
+    ul {
+      display: inline-flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      width: 100%;
+      li {
+        a {
+          padding: 15px;
+          color: $gray;
+          &:hover {
+            text-decoration: none;
+            color: $accent;
+          }
+        }
+      }
+    }
+  }
+}

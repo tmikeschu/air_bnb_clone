@@ -1,0 +1,13 @@
+%section.home
+  %h2 Where would you like to crash?
+
+  %article.home_reservation
+    = form_tag(controller: :home, action: :show) do
+
+      = text_field_tag "Destination", nil, placeholder: "Destination"
+      %section.dates
+        = date_field_tag "Check In"
+        = date_field_tag "Check Out"
+
+      = submit_tag "Find Pad"
+
