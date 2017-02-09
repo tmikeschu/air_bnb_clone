@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
   root to: "home#show"
-
   get "/search", to: "search/available_couches#index"
   resources :reservations, only: [:create]
 end
