@@ -1,7 +1,7 @@
 %h2 My Travel Reservations
 
 %section.head
-  %article Reservation
+  %article Reference Number
   %article Couch
   %article Status
   %article From
@@ -12,10 +12,10 @@
     %article
       = reservation.id
     %article
-      = reservation.nights.first.couch.name
+      = reservation.couch_name
     %article
       = reservation.status.capitalize
     %article
-      = reservation.nights.first.date
+      = reservation.check_in
     %article
-      = reservation.nights.last.date
+      = reservation.check_out
