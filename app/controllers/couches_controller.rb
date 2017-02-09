@@ -1,8 +1,7 @@
 class CouchesController < ApplicationController
 
   def new
-    @user = User.find(params[:user_id])
-    @couch = @user.couches.new
+    @couch = current_user.couches.new
   end
 
   def create
