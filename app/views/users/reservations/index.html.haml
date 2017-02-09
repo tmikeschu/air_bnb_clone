@@ -1,0 +1,21 @@
+%h2 My Travel Reservations
+
+%section.head
+  %article Reference Number
+  %article Couch
+  %article Status
+  %article From
+  %article To
+
+- @reservations.each do |reservation|
+  %section.row
+    %article
+      = reservation.id
+    %article
+      = reservation.couch_name
+    %article
+      = reservation.status.capitalize
+    %article
+      = reservation.check_in
+    %article
+      = reservation.check_out

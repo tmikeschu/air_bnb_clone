@@ -1,0 +1,11 @@
+%p
+  = "#{pluralize(@couches.count, "couch")} in #{@city} available starting on #{@check_in}"
+
+%section.couches
+  - @couches.each do |couch|
+    %article
+      %h2
+        = couch.name
+      %p
+        = couch.description
+      = button_to('Reserve', reservations_path(couch_id: couch.id, user_id: current_user.id, check_in: @check_in, check_out: @check_out))
