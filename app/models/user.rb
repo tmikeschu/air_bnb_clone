@@ -3,4 +3,5 @@ class User < ApplicationRecord
   validates :phone_number, :first_name, :last_name, :email, presence: :true
   has_secure_password
   has_many :couches
+  has_many :reservations
 end

@@ -11,6 +11,8 @@ RSpec.describe Couch, type: :model do
 
   context "relationships" do
     it { should belong_to(:host).class_name("User") }
+    it { should have_many(:nights) }
+    it { should have_many(:reservations).through(:nights) }
   end
 
 end

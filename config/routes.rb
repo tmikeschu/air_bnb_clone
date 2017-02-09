@@ -5,7 +5,14 @@ Rails.application.routes.draw do
     resources :couches
   end
   resources :couches, only: [:show]
+    scope module: :users do
+      resources :reservations, only: [:index]
+    end
+  end
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
   root to: "home#show"
+
+  get "/search", to: "search/available_couches#index"
+  resources :reservations, only: [:create]
 end
