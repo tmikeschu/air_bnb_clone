@@ -12,21 +12,24 @@ describe 'User' do
   end
 
   it 'can create a new couch' do
+    couch = create(:couch)
     visit user_path(user)
     click_on("Add a Couch")
 
-    expect(current_path).to eq(new_user_couch_path)
-    
+    expect(current_path).to eq(new_user_couch_path(user.id))
+
     within(".new_couch") do
-      fill_in "couch_name", with: "Big Bertha"
-      fill_in "couch_street_address", with: "123 Fake St"
-      fill_in "couch_city", with: "Toledo"
-      fill_in "couch_state", with: "TX"
-      fill_in "couch_zipcode", with: "99999"
+      fill_in "couch_name", with: "#{couch.name} XXL"
+      fill_in "couch_description", with: "#{couch.description}HUGE"
+      fill_in "couch_street_address", with: couch.street_address
+      fill_in "couch_city", with: couch.city
+      fill_in "couch_state", with: couch.state
+      fill_in "couch_zipcode", with: couch.zipcode
+      fill_in "couch_host", with: couch.host.id
       click_on "Add Couch"
     end
-
-    couch = Couch.find_by(name: "Big Bertha")
+byebug
+    couch = Couch.last
 
     expect(current_path).to eq(couch_path(couch))
     expect(page).to have_link("Add Availability")
