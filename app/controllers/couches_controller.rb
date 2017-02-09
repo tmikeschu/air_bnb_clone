@@ -11,7 +11,7 @@ class CouchesController < ApplicationController
       flash[:success] = "Couch Created!"
       redirect_to user_couch_path(current_user, couch)
     else
-      flash[:alert] = couch.error_messages.full
+      flash[:danger] = couch.errors.full_messages.join(", ")
       redirect_to new_user_couch_path(current_user, couch)
     end
   end
