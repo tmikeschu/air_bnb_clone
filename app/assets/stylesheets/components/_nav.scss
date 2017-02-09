@@ -7,7 +7,13 @@ nav {
   .nav_left {
     flex: 2;
     h3 {
-      color: $purple;
+      a {
+        color: $purple;
+        text-decoration: none;
+        &:hover, &:focus {
+          font-weight: bold;
+        }
+      }
     }
   }
   .nav_right {
@@ -21,7 +27,7 @@ nav {
         a {
           padding: 15px;
           color: $gray;
-          &:hover {
+          &:hover, &:focus {
             text-decoration: none;
             color: $accent;
           }
