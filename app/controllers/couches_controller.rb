@@ -20,6 +20,7 @@ class CouchesController < ApplicationController
                                     :street_address,
                                     :city,
                                     :state,
-                                    :zipcode)
+                                    :zipcode,
+                                    :user_id)
     end
 end
