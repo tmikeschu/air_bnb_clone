@@ -1,11 +1,11 @@
 class CouchesController < ApplicationController
+
   def new
     @user = User.find(params[:user_id])
     @couch = @user.couches.new
   end
 
   def create
-    byebug
     couch = Couch.create(couch_params)
     redirect_to couch_path(couch)
   end

@@ -15,7 +15,7 @@ describe 'User' do
     visit user_path(user)
     click_on("Add a Couch")
 
-    expect(current_path).to eq(new_couch_path)
+    expect(current_path).to eq(new_user_couch_path)
     
     within(".new_couch") do
       fill_in "couch_name", with: "Big Bertha"
