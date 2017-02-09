@@ -2,7 +2,7 @@
   %h2 Where would you like to crash?
 
   %article.home_reservation
-    = form_tag(controller: :home, action: :show) do
+    = form_tag(search_path, method: 'get') do
 
       = text_field_tag "Destination", nil, placeholder: "Destination"
       %section.dates#datepicker

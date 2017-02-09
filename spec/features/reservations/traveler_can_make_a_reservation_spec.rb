@@ -19,6 +19,7 @@ describe "Traveler" do
       city = couch.city
       date = Date.current
       couch.nights << create(:night, date: date)
+      couch.nights << create(:night, date: date.tomorrow)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(traveler)
 
       visit root_path
@@ -28,15 +29,17 @@ describe "Traveler" do
       fill_in "Check Out", with: date.tomorrow
       click_on "Find Pad"
 
-      expect(current_path).to eq("/#{city}/couches")
-      expect(page).to have_content "1 couch in #{city} available on #{date}"
+      expect(current_path).to eq(search_path)
+      expect(page).to have_content "1 couch in #{city} available starting on #{date}"
+      expect(page).to have_content couch.name
+      expect(page).to have_content couch.description
 
       click_on "Reserve"
 
-      expect(page).to have_content "#{couch.name} reserved on #{date}."
+      expect(page).to have_content "#{couch.name} reserved for #{date}."
       expect(page).to have_content "My Travel Reservations"
       expect(page).to have_content "Confirmed"
-      expect(page).to have_link "#{couch.name}", href: couch_path(couch)
+      expect(page).to have_content couch.name
     end
   end
 end
