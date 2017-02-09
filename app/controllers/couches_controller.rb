@@ -6,14 +6,18 @@ class CouchesController < ApplicationController
   end
 
   def create
-    byebug
-    user = User.find(params[:couch][:host].to_i)
-    couch = Couch.create!(couch_params, host: user)
-    redirect_to user_couch_path(couch)
+    couch = current_user.couches.new(couch_params)
+    if couch.save
+      flash[:success] = "Couch Created!"
+      redirect_to user_couch_path(current_user, couch)
+    else
+      flash[:alert] = couch.error_messages.full
+      redirect_to new_user_couch_path(current_user, couch)
+    end
   end
 
   def show
-    @couch = current_user.couches.find(params[:couch_id])
+    @couch = current_user.couches.find(params[:id])
   end
 
   private
@@ -24,7 +28,6 @@ class CouchesController < ApplicationController
                                     :city,
                                     :state,
                                     :zipcode,
-                                    :user_id,
                                     :host)
     end
 end

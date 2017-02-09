@@ -15,6 +15,7 @@ describe 'User' do
     couch = create(:couch)
     visit user_path(user)
     click_on("Add a Couch")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     expect(current_path).to eq(new_user_couch_path(user.id))
 
@@ -25,13 +26,12 @@ describe 'User' do
       fill_in "couch_city", with: couch.city
       fill_in "couch_state", with: couch.state
       fill_in "couch_zipcode", with: couch.zipcode
-      fill_in "couch_host", with: couch.host.id
       click_on "Add Couch"
     end
-byebug
+
     couch = Couch.last
 
-    expect(current_path).to eq(couch_path(couch))
+    expect(current_path).to eq(user_couch_path(user, couch))
     expect(page).to have_link("Add Availability")
   end
 
