@@ -10,7 +10,7 @@ nav {
       a {
         color: $purple;
         text-decoration: none;
-        &:hover {
+        &:hover, &:focus {
           font-weight: bold;
         }
       }
@@ -27,7 +27,7 @@ nav {
         a {
           padding: 15px;
           color: $gray;
-          &:hover {
+          &:hover, &:focus {
             text-decoration: none;
             color: $accent;
           }
