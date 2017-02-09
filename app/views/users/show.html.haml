@@ -3,3 +3,7 @@
   = @user.last_name
   = @user.email
   = @user.phone_number
+
+%section
+
+  = link_to('Add a Couch', new_user_couch_path(@user, @couch) )
