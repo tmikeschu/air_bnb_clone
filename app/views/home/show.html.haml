@@ -3,8 +3,8 @@
   %section.home
     %h2 Where would you like to crash?
 
-  %article.home_reservation
-    = form_tag(search_path, method: 'get') do
+    %article.home_reservation
+      = form_tag(search_path, method: 'get') do
 
         = text_field_tag "Destination", nil, placeholder: "Destination"
 
