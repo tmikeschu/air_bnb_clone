@@ -8,6 +8,7 @@ describe Reservation do
   describe "relationships" do
     it { is_expected.to belong_to(:traveler).class_name("User") }
     it { is_expected.to have_many(:nights) }
+    it { is_expected.to have_many(:couches).through(:nights) }
   end
 
   describe "#status" do
