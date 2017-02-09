@@ -17,7 +17,6 @@ RSpec.feature "Host", type: :feature do
     # and I select the dates I want to make available
     today = Date.today.strftime('%m/%d/%Y')
     tomorrow = Date.tomorrow.strftime('%m/%d/%Y')
-    save_and_open_page
     fill_in "First Night", with: today
     fill_in "Last Night", with: tomorrow
     # and I click 'Make Available'
