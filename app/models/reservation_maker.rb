@@ -1,7 +1,9 @@
 class ReservationMaker
-  def initialize(traveler, nights_params)
+  attr_reader :reservation
+
+  def initialize(traveler, nights)
     @reservation = Reservation.new(traveler)
-    @nights = NightFinder.find(nights_params)
+    @nights      = NightFinder.find(nights)
   end
 
   def self.create_reservation(traveler: , nights:)
@@ -19,6 +21,6 @@ class ReservationMaker
   end
 
   def save
-    @reservation.save
+    @reservation.save && @reservation
   end
 end
