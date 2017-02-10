@@ -16,7 +16,7 @@ describe "Traveler" do
     let!(:traveler) { create(:user) }
     let!(:couch_1)  { create(:couch) }
     let!(:couch_2)  { create(:couch, city: "Mike's Hometown") }
-    let!(:today)  { Date.today }
+    let!(:today)  { Date.current }
     let!(:tomorrow)  { Date.tomorrow }
     before do 
       visit root_path

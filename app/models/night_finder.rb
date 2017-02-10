@@ -10,6 +10,7 @@ class NightFinder
   end
 
   def find_nights
-    Night.where(couch_id: @couch_id).where(date: Date.parse(@check_in)..Date.parse(@check_out) - 1.day)
+    Night.all_for_couch(@couch_id)
+      .between_check_in_check_out(@check_in, @check_out)
   end
 end
