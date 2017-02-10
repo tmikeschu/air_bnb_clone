@@ -4,8 +4,13 @@ class ReservationsController < ApplicationController
        traveler: traveler_params.to_h,
        nights:   nights_params.to_h
     )
-    flash[:success] = "#{reservation.couch_name} reserved for #{reservation.check_in}."
-    redirect_to user_reservations_path(current_user)
+    if reservation.save
+      flash[:success] = "#{reservation.couch_name} reserved for #{reservation.check_in}."
+      redirect_to user_reservations_path(current_user)
+    else
+      flash[:danger] = reservation.errors.full_messages.join(", ")
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private

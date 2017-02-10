@@ -41,10 +41,4 @@ RSpec.describe ReservationMaker do
       expect(@maker.reservation.status).to eq "confirmed"
     end
   end
-
-  describe "#save" do
-    it "saves the reservation" do
-      expect{@maker.save}.to change{Reservation.count}.by(1)
-    end
-  end
 end

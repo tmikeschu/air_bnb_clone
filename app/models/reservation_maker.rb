@@ -17,10 +17,6 @@ class ReservationMaker
 
   def confirm
     @reservation.confirmed!
-    save
-  end
-
-  def save
-    @reservation.save && @reservation
+    @reservation
   end
 end
