@@ -1,6 +1,7 @@
 class Users::CouchesController < ApplicationController
 
   def new
+    @user = User.find(params[:user_id])
     @couch = Couch.new
   end
 
