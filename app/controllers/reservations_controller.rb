@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
   def create
     reservation = Reservation.new(reservation_params)
     reservation.confirmed!
-    nights = Night.where(couch_id: night_params["couch_id"]).where(date: Date.parse(params["check_in"])..Date.parse(params["check_out"]) - 1.day)
+    nights = Night.all_for_couch(night_params["couch_id"]).between_check_in_check_out(night_params["check_in"], night_params["check_out"])
     reservation.nights << nights
     reservation.save
     flash[:success] = "#{Couch.find(params["couch_id"]).name} reserved for #{params["check_in"]}."
