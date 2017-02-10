@@ -14,7 +14,7 @@ require "rails_helper"
 describe "Traveler" do
   describe "As a registered user" do
     let!(:traveler) { create(:user) }
-    let!(:couch_1)  { create(:couch) }
+    let!(:couch_1)  { create(:couch, city: "Another City") }
     let!(:couch_2)  { create(:couch, city: "Mike's Hometown") }
     let!(:today)  { Date.today }
     let!(:tomorrow)  { Date.tomorrow }
