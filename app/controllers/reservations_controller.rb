@@ -1,10 +1,9 @@
 class ReservationsController < ApplicationController
   def create
-    reservation = Reservation.new(reservation_params)
-    reservation.confirmed!
-    nights = Night.where(couch_id: night_params["couch_id"]).where(date: Date.parse(params["check_in"])..Date.parse(params["check_out"]) - 1.day)
-    reservation.nights << nights
-    reservation.save
+    ReservationMaker.create_reservation(
+       traveler: reservation_params.to_h,
+       nights: night_params.to_h
+    )
     flash[:success] = "#{Couch.find(params["couch_id"]).name} reserved for #{params["check_in"]}."
     redirect_to user_reservations_path(current_user)
   end
