@@ -7,7 +7,7 @@ class ReservationMaker
   end
 
   def self.create_reservation(traveler: , nights:)
-    ReservationMaker.new(traveler, nights).add_nights
+   new(traveler, nights).add_nights
   end
 
   def add_nights

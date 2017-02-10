@@ -6,7 +6,7 @@ class NightFinder
   end
 
   def self.find(night_params)
-    NightFinder.new(night_params).find_nights
+    new(night_params).find_nights
   end
 
   def find_nights
