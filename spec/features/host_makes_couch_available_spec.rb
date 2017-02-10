@@ -15,7 +15,7 @@ RSpec.feature "Host", type: :feature do
     click_on "Add Availability"
 
     # and I select the dates I want to make available
-    today = Date.today.strftime('%m/%d/%Y')
+    today = Date.current.strftime('%m/%d/%Y')
     tomorrow = Date.tomorrow.strftime('%m/%d/%Y')
     fill_in "First Night", with: today
     fill_in "Last Night", with: tomorrow
