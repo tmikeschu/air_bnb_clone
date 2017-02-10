@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users,     only: [:new, :create, :show] do
     resources :couches
   end
-  resources :couches, only: [:show]
+  resources :couches, only: [:show] do
     scope module: :users do
       resources :reservations, only: [:index]
     end
