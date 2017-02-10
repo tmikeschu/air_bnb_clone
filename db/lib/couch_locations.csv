@@ -1,0 +1,51 @@
+street_address,zipcode,city,state,image_url
+3350 Osceola St,80212,Denver,Colorado,https://68.media.tumblr.com/77765c94d826dfc9865526c26c59b4a9/tumblr_ok7nn3aLAl1tdcgqjo7_1280.jpg
+3020 Clayton St,80205,Denver,Colorado,https://68.media.tumblr.com/e1c2678c16a3a21ed5d3601b6ab5cef3/tumblr_ok7nn3aLAl1tdcgqjo1_1280.jpg
+1265 N Emerson St,80218,Denver,Colorado,https://68.media.tumblr.com/fbb582b0f26f82afdfd0bff73b3a69d6/tumblr_oie5ndRfOZ1rsezm9o1_1280.jpg
+2030 Arapahoe St,80205,Denver,Colorado,https://68.media.tumblr.com/a880ac1fc81bb66abceb72f9b8010861/tumblr_ol2nj8Q5aR1rsezm9o1_1280.jpg
+959 Eaton St,80214,Denver,Colorado,https://68.media.tumblr.com/ed8cb13eba6001b0221a3ae093a7babe/tumblr_oinvj3YIVT1rsezm9o1_1280.jpg
+192 Grand St,10013,New York,New York,https://68.media.tumblr.com/720017be5aba6dd81ee3e3a0d5058103/tumblr_oittm0N1Pg1rsezm9o1_1280.jpg
+34 W 12th St,10011,New York,New York,https://68.media.tumblr.com/0bded8db3cb6ff0e84c789de94d2b685/tumblr_oii5fhmtPY1rsezm9o1_1280.jpg
+35 E 32nd St,10016,New York,New York,https://68.media.tumblr.com/8590d6310ef786a24c8098a60caa5222/tumblr_ojo7unRHw91sovzrpo1_1280.jpg
+137 W 37th St,10018,New York,New York,https://68.media.tumblr.com/4371a8e45af5bd627b5bcf03c16e1e24/tumblr_oiwgs3J8041ug1y69o1_500.jpg
+208 E 20th St,10003,New York,New York,https://68.media.tumblr.com/d7ea592bf0c7a346f1344a45946a958d/tumblr_oiv3jdQ8W91s9plm3o1_1280.jpg
+2205 Sutter St,94115,San Francisco,California,https://68.media.tumblr.com/c0082820b0bcc2acb441260372c820e2/tumblr_oieoztrvWW1s8qh43o1_1280.jpg
+535 Minna St,94103,San Francisco,California,https://68.media.tumblr.com/a21b2767752a6f2c4b6516be955fef94/tumblr_oiwi44yMGK1ug1y69o1_500.jpg
+777 Florida St,94110,San Francisco,California,https://68.media.tumblr.com/748b6c3351594884097c81e9593a8a38/tumblr_okd0huXeat1rsezm9o1_1280.jpg
+1364 12th Ave,94122,San Francisco,California,https://68.media.tumblr.com/87ff6e2ab8a486d79bd9c39fb3805d55/tumblr_ohsxpz9Au21rsezm9o1_1280.jpg
+1534 32nd Ave,94122,San Francisco,California,https://68.media.tumblr.com/db2e9ee1a863498663bd70715299b135/tumblr_ohfvkmgGtP1rsezm9o1_1280.jpg
+2120 W Thomas St,60622,Chicago,Illinois,https://68.media.tumblr.com/2e69dab93739cf2d8f7a590f9a707175/tumblr_oicuamqsJp1uvfggwo1_1280.jpg
+1835 N Cleveland Ave,60614,Chicago,Illinois,https://68.media.tumblr.com/a8b48f35255572fe215c3dcab5aa06b3/tumblr_oipfe7BKMf1rsezm9o1_1280.jpg
+3650 W Shakespeare Ave,60647,Chicago,Illinois,https://68.media.tumblr.com/359922287cf829ca99034a935d1e0e38/tumblr_og6ozf9HrN1s8qh43o1_1280.jpg
+720 S Claremont Ave,60612,Chicago,Illinois,https://68.media.tumblr.com/d198a7ff0816be19b783c1155e1f9b23/tumblr_ojieu8wJQG1qktss8o1_1280.jpg
+1229 W Fullerton Ave,60614,Chicago,Illinois,https://68.media.tumblr.com/e805977d93e9cc592197ba82b7a5d94a/tumblr_ohqgyqQAtz1rsezm9o1_1280.jpg
+3418 Parker St,48214,Detroit,Michigan,https://68.media.tumblr.com/ccfeb0ebadb84f23778a328dbf27cc27/tumblr_ogt15sMeFO1ug1y69o1_1280.jpg
+5426 Crane St,48213,Detroit,Michigan,https://68.media.tumblr.com/d4f462a844e0eb7613026b7e51236208/tumblr_oifrk18vnA1rsezm9o1_1280.jpg
+2497 W Euclid St,48206,Detroit,Michigan,https://68.media.tumblr.com/cb77f4585e4e21ddf225683d381afdd2/tumblr_ohrs2jwKli1ses2sbo1_1280.jpg
+1041 Bellevue St,48207,Detroit,Michigan,https://68.media.tumblr.com/c2cb68ebb29dbddc50f3e92a067a9256/tumblr_ogvysoW5La1ug1y69o1_540.jpg
+845 Continental St,48215,Detroit,Michigan,https://68.media.tumblr.com/36452c8512faaa2aea909a72d95e34fe/tumblr_okucstTL7x1ss1awto1_1280.jpg
+3 Grove Isle Dr,33133,Miami,Florida,https://68.media.tumblr.com/f43fbd667369072628acebf6fa040ca6/tumblr_okxn4oiv2S1qfy137o1_1280.jpg
+947 SW 2nd St,33130,Miami,Florida,https://68.media.tumblr.com/7445c6a1bad57fd2dffcf69cf4fd443f/tumblr_okd46hu2iV1w3ajg6o1_1280.jpg
+2406 SW 23rd Terrace,33145,Miami,Florida,https://68.media.tumblr.com/475afa0c1c442dfc7850624c4d3ec9ed/tumblr_nsvumnVN1e1s1eou3o1_500.jpg
+3017 Blaine St,33133,Miami,Florida,https://68.media.tumblr.com/4ee80f4b5f773a674f536652d811b3a2/tumblr_nki9gbIGQL1s1eou3o1_500.jpg
+1370 NW 5th St,33125,Miami,Florida,https://68.media.tumblr.com/91a4e7680168246b3051de06dd26e46e/tumblr_o0temifpf21t5gdomo1_500.jpg
+2601 Canal St,70119,New Orleans,Louisiana,https://68.media.tumblr.com/ea83f6dca3e18942d11362838212dde7/tumblr_ni8gs6ZKdC1s8xxmno1_540.jpg
+1201 Dauphine St,70116,New Orleans,Louisiana,https://68.media.tumblr.com/tumblr_m7sw2zlSMG1r04l96o1_500.jpg
+1111 Bourbon St,70116,New Orleans,Louisiana,https://68.media.tumblr.com/ab8f13d80f8a11e4214f860a00ffe9c7/tumblr_noprd9cYdb1s1eou3o1_500.jpg
+1001 Burgundy St,70116,New Orleans,Louisiana,https://68.media.tumblr.com/a0615f14d03b33f9ebffd094843f1dee/tumblr_o0iif1jWse1s1je4go1_1280.jpg
+720 Toulouse St,70130,New Orleans,Louisiana,https://68.media.tumblr.com/tumblr_lxd189w6Ds1r6q848o1_500.png
+4136 Harrison St,64110,Kansas City,Missouri,https://68.media.tumblr.com/tumblr_lxwg9zTXN61qc6svdo1_1280.jpg
+4536 Fairmount Ave,64111,Kansas City,Missouri,https://68.media.tumblr.com/5edd6cc7ab95d2bcfbec8af75107c0b1/tumblr_mxsnw7wJ3n1skotu5o1_500.jpg
+632 W 58th Terrace,64113,Kansas City,Missouri,https://68.media.tumblr.com/f6ed7558ce549cb1b6c0b154075b1bb2/tumblr_oe9numVy3R1v5iwboo1_1280.jpg
+6839 Grand Ave,64113,Kansas City,Missouri,https://68.media.tumblr.com/ce972d7ae5b90963514f10dec4639735/tumblr_of9vk1GRLd1uwryr6o1_1280.jpg
+7701 Madison Ave,64114,Kansas City,Missouri,https://68.media.tumblr.com/ea6e30bf0848f9d1652c9720f192fa0c/tumblr_oj61w4W9tv1rsezm9o1_1280.jpg
+549 E Fifth St,02127,Boston,Massachusetts,https://68.media.tumblr.com/c4a595a066faed3d76b1e4d204aebb06/tumblr_oigyz93ZZ01rsezm9o1_1280.jpg
+51 Hutchings St,02121,Boston,Massachusetts,https://68.media.tumblr.com/787464f998b4fd6f0f17a0cb560c4440/tumblr_ogx24poBat1uymcmeo1_500.png
+169 Warren Ave,02116,Boston,Massachusetts,https://68.media.tumblr.com/defd550df717f00b7d3d7407d2ff1d49/tumblr_ogdgybCe6m1v5iwboo1_1280.jpg
+6 Millmont St,02119,Boston,Massachusetts,https://68.media.tumblr.com/e497691c3cb9d8620d53966a33ee9599/tumblr_oi8k3dSbed1t1cy7no1_500.jpg
+74 Wrentham St,02124,Boston,Massachusetts,https://68.media.tumblr.com/7f7c54fb1e14131ddc609a6b110271b6/tumblr_ojkk2xP3Aq1svgg3co1_1280.jpg
+8748 20th Ave NW,98117,Seattle,Washington,https://68.media.tumblr.com/1259aa825dc23294ba289326358bbb81/tumblr_oeb8aiSOHv1v5iwboo1_500.jpg
+1702 30th Ave W,98199,Seattle,Washington,https://68.media.tumblr.com/a41a6e8ceeb258d3997f87e06c0a5635/tumblr_okurejenEI1tsxqwyo1_500.jpg
+4819 NE 103rd St,98125,Seattle,Washington,https://68.media.tumblr.com/aa98225545ad2e355487d503cf0aff59/tumblr_oid4im3kvi1uymcmeo1_1280.jpg
+3426 NW Market St,98107,Seattle,Washington,https://68.media.tumblr.com/c2b09041dc79e621c548ff2a4e79a60e/tumblr_obng3f3Iwb1soxvjyo1_1280.jpg
+2000 NW Blue Ridge Dr,98177,Seattle,Washington,https://68.media.tumblr.com/4723df4135ae3ccf5e56c8abec815a39/tumblr_oko81sep0a1vlki0xo1_1280.png
