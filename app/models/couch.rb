@@ -7,6 +7,11 @@ class Couch < ApplicationRecord
   scope :in_city, -> (city) { where(city: city) }
 
   def self.search(params)
-    Couch.joins(:nights).in_city(params["Destination"]).merge(Night.between_check_in_check_out(params["Check In"], params["Check Out"])).distinct
+    Couch.joins(:nights)
+      .in_city(params["Destination"])
+      .merge(
+        Night.between_check_in_check_out(params["Check In"], params["Check Out"])
+      )
+      .distinct
   end
 end
