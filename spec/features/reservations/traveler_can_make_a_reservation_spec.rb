@@ -39,7 +39,7 @@ describe "Traveler" do
       expect(page).not_to have_content couch_2.name
     end
 
-    scenario "I can reserve an available couch" do
+    scenario "I can reserve an available couch from homepage search" do
       visit search_path("Destination": couch_1.city, "Check In": today, "Check Out": tomorrow)
       click_on "Reserve"
 
@@ -52,6 +52,29 @@ describe "Traveler" do
       expect(page).to have_content reservation.status.capitalize
       expect(page).to have_content reservation.check_in
       expect(page).to have_content reservation.check_out
+      expect(page).not_to have_content couch_2.name
+    end
+
+    scenario "I can reserve an available couch from couch listing" do       
+      # when I visit the page for a couch listing
+      byebug
+      visit couch_path(couch_1)
+      # and I select reservation dates
+      click_on today
+      # and I click 'Reserve'
+      click_on "Reserve"
+      # then I am taken to my traveler reservations page
+      # and I see a link to that listing.
+      reservation = traveler.reservations.first
+      expect(page).to have_content "#{couch_1.name} reserved for #{today}."
+      expect(page).to have_content "My Travel Reservations"
+      expect(page).to have_content "Confirmed"
+      expect(page).to have_content reservation.id
+      expect(page).to have_content reservation.couch_name
+      expect(page).to have_content reservation.status.capitalize
+      expect(page).to have_content reservation.check_in
+      expect(page).to have_content reservation.check_out
+      expect(page).to have_content 
       expect(page).not_to have_content couch_2.name
     end
   end
