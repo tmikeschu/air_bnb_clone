@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users,     only: [:new, :create, :show] do
     scope module: :users do
       resources :reservations, only: [:index]
+      resources :couch_photos, only: [:new, :create, :show]
     end
   end
   post "/login", to: "sessions#create"
