@@ -1,0 +1,15 @@
+= form_for [:user, @photo] do |f|
+  = f.label :title
+  = f.text_field :title
+
+  = f.label :caption
+  = f.text_field :caption
+
+  .btn
+    %span File
+    = f.file_field :image
+  .file-path-wrapper
+    %input.file-path.validate{:type => "text"}
+
+  = f.submit "Upload"
+
