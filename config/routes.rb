@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :sessions,  only: [:new]
   resources :users,     only: [:new, :create, :show] do
     scope module: :users do
+      resources :couches
+    end
+    scope module: :users do
       resources :reservations, only: [:index]
     end
   end
