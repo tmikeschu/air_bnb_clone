@@ -7,7 +7,6 @@ RSpec.describe NightFinder do
     couch.nights << create(:night, date: Date.tomorrow)
     couch.nights << create(:night, date: Date.tomorrow.tomorrow)
     @nights_params = { "check_in" => Date.current.to_s, "check_out" => Date.tomorrow.tomorrow.to_s, "couch_id" => couch.id }
-    @maker = NightFinder.new(@nights_params)
   end
 
   describe ".find" do
@@ -20,7 +19,7 @@ RSpec.describe NightFinder do
 
   describe "#find_nights" do
     it "returns the nights for a given date range and couch" do
-      result = NightFinder.new(@nights_params).find_nights
+      result = NightFinder.new.find_nights(@nights_params)
       expect(result).to be_an Night::ActiveRecord_Relation
       expect(result.count).to eq 2
     end
