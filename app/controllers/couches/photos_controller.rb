@@ -1,16 +1,15 @@
-class Users::CouchPhotosController < ApplicationController
+class Couches::PhotosController < ApplicationController
   def new
     @photo = CouchPhoto.new
   end
 
   def create
-    @photo = CouchPhoto.new(photo_params)
-    if @photo.save!
-      redirect_to user_couch_path(current_user, @photo)
-    end
-  end
 
-  def show
+    couch = Couch.find(params["couch_id"])
+    @photo = couch.photos.new(photo_params)
+    if @photo.save!
+      redirect_to user_couch_path(current_user, couch)
+    end
   end
 
   private

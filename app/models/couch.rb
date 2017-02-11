@@ -2,6 +2,7 @@ class Couch < ApplicationRecord
   validates_presence_of :name, :street_address, :city, :state, :zipcode
   belongs_to :host, class_name: "User", foreign_key: :user_id
   has_many :nights
+  has_many :photos, class_name: "CouchPhoto"
   has_many :reservations, through: :nights
 
   def self.search(params)

@@ -14,6 +14,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    "#{model.title}-#{Time.now.getutc.to_s}"
+    "#{model.title}-#{Date.current.to_s}".parameterize
   end
 end
