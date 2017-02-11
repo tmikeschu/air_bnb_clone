@@ -57,7 +57,6 @@ describe "Traveler" do
 
     scenario "I can reserve an available couch from couch listing" do       
       # when I visit the page for a couch listing
-      byebug
       visit couch_path(couch_1)
       # and I select reservation dates
       click_on today
