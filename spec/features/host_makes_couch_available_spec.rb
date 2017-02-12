@@ -24,6 +24,6 @@ RSpec.feature "Host", type: :feature do
     # then I should be back on the listing page
     expect(current_path).to eq(couch_path(couch))
     # and I should see that my couch is available on those dates.
-    expect(page).to_have content("Available: #{today}, #{tomorrow}")
+    expect(page).to have_content("Available: #{today}, #{tomorrow}")
   end
 end

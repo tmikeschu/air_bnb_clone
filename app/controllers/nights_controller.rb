@@ -5,19 +5,17 @@ class NightsController < ApplicationController
   end
 
   def create
-    # night = Night.new(night_params
     couch = Couch.find(params[:couch_id])
-    ActiveRecord::Base.transaction do
-    night_params.each do |night|
-      couch.nights.create!(date: night)
+    nights = ActiveRecord::Base.transaction do
+      night_params.each do |night|
+        couch.nights.create(date: night)
+      end
     end
-  end
-    byebug
-    if Night.last
+    if nights
       flash[:success] = "Made night(s) available!"
       redirect_to couch_path(couch)
     else
-      flash[:alert] = night.error.full_messages
+      flash[:alert] = nights.error.full_messages
       redirect_to new_night_path
     end
   end

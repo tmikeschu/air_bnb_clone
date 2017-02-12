@@ -3,7 +3,7 @@ FactoryGirl.define do
     cities = [{
                 city: "Chicago",
                 state: "IL",
-                zipcode: "12345"},
+                zipcode: "60601"},
               { city: "New Orleans",
                 state: "LA",
                 zipcode: "70112"},
