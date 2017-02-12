@@ -15,10 +15,10 @@ describe "Traveler" do
   describe "As a registered user" do
     let!(:traveler) { create(:user) }
     let!(:couch_1)  { create(:couch, city: "Another City") }
-    let!(:couch_2)  { create(:couch, city: "Mike's Hometown") }
+    let!(:couch_2)  { create(:couch, city: "Mike's Hometown", name: "CRAZY NAME") }
     let!(:today)  { Date.current }
     let!(:tomorrow)  { Date.tomorrow }
-    before do 
+    before do
       visit root_path
       couch_1.nights << create(:night, date: today)
       couch_1.nights << create(:night, date: tomorrow)
