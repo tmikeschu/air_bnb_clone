@@ -13,33 +13,46 @@ require "rails_helper"
 
 describe "Traveler" do
   describe "As a registered user" do
-    it "I can reserve a couch starting from the homepage" do
-      traveler = create(:user)
-      couch = create(:couch)
-      city = couch.city
-      date = Date.current
-      couch.nights << create(:night, date: date)
-      couch.nights << create(:night, date: date.tomorrow)
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(traveler)
-
+    let!(:traveler) { create(:user) }
+    let!(:couch_1)  { create(:couch, city: "Another City") }
+    let!(:couch_2)  { create(:couch, city: "Mike's Hometown", name: "CRAZY NAME") }
+    let!(:today)  { Date.current }
+    let!(:tomorrow)  { Date.tomorrow }
+    before do
       visit root_path
+      couch_1.nights << create(:night, date: today)
+      couch_1.nights << create(:night, date: tomorrow)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(traveler)
+    end
 
-      fill_in "Destination", with: city
-      fill_in "Check In", with: date
-      fill_in "Check Out", with: date.tomorrow
+    scenario "I can view available couches for a city and date range" do
+
+      fill_in "Destination", with: couch_1.city
+      fill_in "Check In", with: today
+      fill_in "Check Out", with: tomorrow
       click_on "Find Pad"
 
       expect(current_path).to eq(search_path)
-      expect(page).to have_content "1 couch in #{city} available starting on #{date}"
-      expect(page).to have_content couch.name
-      expect(page).to have_content couch.description
+      expect(page).to have_content "1 couch in #{couch_1.city} available starting on #{today}"
+      expect(page).to have_content couch_1.name
+      expect(page).to have_content couch_1.description
+      expect(page).not_to have_content couch_2.name
+    end
 
+    scenario "I can reserve an available couch" do
+      visit search_path("Destination": couch_1.city, "Check In": today, "Check Out": tomorrow)
       click_on "Reserve"
 
-      expect(page).to have_content "#{couch.name} reserved for #{date}."
+      reservation = traveler.reservations.first
+      expect(page).to have_content "#{couch_1.name} reserved for #{today}."
       expect(page).to have_content "My Travel Reservations"
       expect(page).to have_content "Confirmed"
-      expect(page).to have_content couch.name
+      expect(page).to have_content reservation.id
+      expect(page).to have_content reservation.couch_name
+      expect(page).to have_content reservation.status.capitalize
+      expect(page).to have_content reservation.check_in
+      expect(page).to have_content reservation.check_out
+      expect(page).not_to have_content couch_2.name
     end
   end
 end

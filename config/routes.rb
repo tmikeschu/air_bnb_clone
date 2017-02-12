@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :couches, only: [:show] do
     resources :nights, only: [:new, :create]
     scope module: :users do
+      resources :couches
+    end
+    scope module: :users do
       resources :reservations, only: [:index]
     end
   end

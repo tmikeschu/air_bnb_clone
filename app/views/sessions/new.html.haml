@@ -1,11 +1,9 @@
-%h1 Log In
-= form_for :session, :url => "/login" do |f|
-  = f.label :email
-  %br
-  = f.text_field :email
-  %br
-  = f.label :password
-  %br
-  = f.password_field :password
-  %br
-  = f.submit "Login"
+%section.account_form
+  %h1 Log Into Pad Crash
+  %article
+    = form_for :session, :url => "/login" do |f|
+      = f.text_field :email, placeholder: "Email"
+      %br
+      = f.password_field :password, placeholder: "Password"
+      %br
+      = f.submit "Login"

@@ -1,21 +1,25 @@
 class ReservationsController < ApplicationController
   def create
-    reservation = Reservation.new(reservation_params)
-    reservation.confirmed!
-    nights = Night.where(couch_id: night_params["couch_id"]).where(date: Date.parse(params["check_in"])..Date.parse(params["check_out"]) - 1.day)
-    reservation.nights << nights
-    reservation.save
-    flash[:success] = "#{Couch.find(params["couch_id"]).name} reserved for #{params["check_in"]}."
-    redirect_to user_reservations_path(current_user)
+    reservation = ReservationMaker.create_reservation(
+       traveler: traveler_params.to_h,
+       nights:   nights_params.to_h
+    )
+    if reservation.save
+      flash[:success] = "#{reservation.couch_name} reserved for #{reservation.check_in}."
+      redirect_to user_reservations_path(current_user)
+    else
+      flash[:danger] = reservation.errors.full_messages.join(", ")
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
 
-    def reservation_params
+    def traveler_params
       params.permit("user_id")
     end
 
-    def night_params
+    def nights_params
       params.permit("couch_id", "check_in", "check_out")
     end
 end
