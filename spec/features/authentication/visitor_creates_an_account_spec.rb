@@ -10,12 +10,12 @@ describe User, type: :feature do
       click_on "Create Account"
       expect(current_path).to eq(new_user_path)
 
-      fill_in "First name", with: "First Name"
-      fill_in "Last name", with: "Last Name"
+      fill_in "First Name", with: "First Name"
+      fill_in "Last Name", with: "Last Name"
       fill_in "Email", with: email
-      fill_in "Phone number", with: phone_number
+      fill_in "Phone Number", with: phone_number
       fill_in "Password", with: "Password"
-      fill_in "Password confirmation", with: "Password"
+      fill_in "Confirm Password", with: "Password"
 
       click_on "Sign Up"
 
