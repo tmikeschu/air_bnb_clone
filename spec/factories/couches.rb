@@ -14,7 +14,7 @@ FactoryGirl.define do
 
     this_city = cities.sample
 
-    name           { Faker::Lorem.word }
+    name           { Faker::GameOfThrones.character }
     description    { Faker::Hipster.sentence }
     street_address { Faker::Address.street_address }
     city           this_city[:city]
