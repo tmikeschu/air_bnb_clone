@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :night do
-    date { Faker::Date.between(2.weeks.ago, 2.weeks.from_now) }
+    date { Faker::Date.between(Date.today, 2.weeks.from_now) }
     reservation
     couch
   end

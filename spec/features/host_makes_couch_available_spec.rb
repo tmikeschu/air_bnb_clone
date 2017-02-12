@@ -27,4 +27,22 @@ RSpec.feature "Host", type: :feature do
     expect(page).to have_content(start_format)
     expect(page).to have_content(last_format)
   end
+
+  it "SAD path" do
+    host = couch.host
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(host)
+
+    visit user_couch_path(host, couch)
+
+    click_on "Add Availability"
+
+    yesterday = Date.yesterday.strftime('%m/%d/%Y')
+    next_month = Date.current.next_month.strftime('%m/%d/%Y')
+
+    fill_in "First Night", with: yesterday
+    fill_in "Last Night", with: next_month
+    click_on "Make Available"
+
+    expect(page).to have_content("Failed")
+  end
 end
