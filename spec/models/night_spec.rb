@@ -32,5 +32,14 @@ describe Night do
 
       expect(Night.between_check_in_check_out(today.to_s, check_out_day.to_s).count).to eq 4
     end
+
+    it "can accept date objects as check in and check out dates" do
+      today = Date.current
+      check_out_day = today + 5.days
+      3.times { |n| create(:night, date: today + n) }
+      4.times { |n| create(:night, date: today + 4.days + n) }
+
+      expect(Night.between_check_in_check_out(today, check_out_day).count).to eq 4
+    end
   end
 end
