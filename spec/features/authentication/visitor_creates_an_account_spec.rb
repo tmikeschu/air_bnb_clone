@@ -4,7 +4,7 @@ describe User, type: :feature do
   describe "A visitor" do
     it "can register as a user with correct field inputs" do
       email = "#{(0..1000).to_a.sample}@email.com"
-      phone_number = "#{(0..1000).to_a.sample(10)}"
+      phone_number = "#{(0..1000).to_a.sample(10).join[0..9]}"
 
       visit root_path
       click_on "Create Account"
