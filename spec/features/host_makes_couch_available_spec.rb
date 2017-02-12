@@ -43,7 +43,12 @@ RSpec.feature "Host", type: :feature do
     fill_in "Last Night", with: next_month
     click_on "Make Available"
 
+    last = next_month.split("/")
+    last_format = "#{last[2]}-#{last[0]}-#{last[1]}"
+
+
     expect(current_path).to eq(new_couch_night_path(couch))
     expect(page).to have_content("Dates can't be in the past")
+    expect(page).to_not have_content(last_format)
   end
 end

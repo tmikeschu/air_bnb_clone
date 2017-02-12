@@ -6,7 +6,6 @@ describe QueryPresenter do
     couch_2 = create(:couch)
     couch.nights << create(:night, date: Date.current)
     couch.nights << create(:night, date: Date.tomorrow)
-    couch.nights << create(:night, date: Date.yesterday)
     @search_params = {
       "Destination" => couch.city,
       "Check In"    => Date.yesterday.to_s,
