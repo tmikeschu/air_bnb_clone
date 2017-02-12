@@ -12,10 +12,10 @@ describe 'User' do
   end
 
   it 'can create a new couch' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     couch = create(:couch)
     visit user_path(user)
     click_on("Add a Couch")
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     expect(current_path).to eq(new_user_couch_path(user.id))
 
