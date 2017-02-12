@@ -12,15 +12,19 @@ RSpec.feature "Host", type: :feature do
     click_on "Add Availability"
 
     today = Date.current.strftime('%m/%d/%Y')
-    tomorrow = Date.tomorrow.strftime('%m/%d/%Y')
+    next_month = Date.current.next_month.strftime('%m/%d/%Y')
 
     fill_in "First Night", with: today
-    fill_in "Last Night", with: tomorrow
+    fill_in "Last Night", with: next_month
     click_on "Make Available"
 
     expect(current_path).to eq(user_couch_path(host, couch))
-    x = today.split("/")
-    y = "#{x[2]}-#{x[0]}-#{x[1]}"
-    expect(page).to have_content(y)
+    start = today.split("/")
+    start_format = "#{start[2]}-#{start[0]}-#{start[1]}"
+    last = next_month.split("/")
+    last_format = "#{last[2]}-#{last[0]}-#{last[1]}"
+
+    expect(page).to have_content(start_format)
+    expect(page).to have_content(last_format)
   end
 end
