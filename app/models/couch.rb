@@ -4,7 +4,7 @@ class Couch < ApplicationRecord
   has_many :nights
   has_many :reservations, through: :nights
 
-  scope :in_city, -> (city) { where(city: city) }
+  scope :in_city, -> (city) { where("lower(city) = ?", city.downcase) }
 
   def self.search(params)
     Couch.joins(:nights)
