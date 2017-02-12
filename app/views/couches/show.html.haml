@@ -1,0 +1,27 @@
+= @couch.name
+%br/
+= @couch.description
+%br/
+host name
+%br/
+couch picture(s)
+%br/
+= @couch.street_address
+%br/
+= @couch.city
+%br/
+= @couch.state
+%br/
+= @couch.zipcode
+%br/
+= form_tag(reservations_path, method: 'post') do
+  
+  %section.dates#datepicker 
+    = text_field_tag "Couch_Listing", placeholder="Available Dates"
+
+  = submit_tag "Create Reservation"
+
+%br
+%h1 Available Nights
+- @couch.nights.each do |night|
+  = night.date
