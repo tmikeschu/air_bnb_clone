@@ -17,12 +17,13 @@ RSpec.feature "Host", type: :feature do
     # and I select the dates I want to make available
     today = Date.current.strftime('%m/%d/%Y')
     tomorrow = Date.tomorrow.strftime('%m/%d/%Y')
+    # save_and_open_page
     fill_in "First Night", with: today
     fill_in "Last Night", with: tomorrow
     # and I click 'Make Available'
     click_on "Make Available"
     # then I should be back on the listing page
-    expect(current_path).to eq(couch_path(couch))
+    expect(current_path).to eq(user_couch_path(host, couch))
     # and I should see that my couch is available on those dates.
     expect(page).to have_content("Available: #{today}, #{tomorrow}")
   end

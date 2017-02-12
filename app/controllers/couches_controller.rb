@@ -17,6 +17,7 @@ class CouchesController < ApplicationController
 
   def show
     @couch = current_user.couches.find(params[:id])
+    redirect_to user_couch_path(@couch)
   end
 
   private

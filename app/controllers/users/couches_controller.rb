@@ -18,6 +18,7 @@ class Users::CouchesController < ApplicationController
 
   def show
     @couch = current_user.couches.find(params[:id])
+    @nights = @couch.nights
   end
 
   private
