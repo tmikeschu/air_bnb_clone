@@ -9,14 +9,16 @@ Rails.application.routes.draw do
       resources :reservations, only: [:index]
     end
   end
-  resources :couches, only: [:show] do
-    resources :nights, only: [:new, :create]
-  end
 
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
   root to: "home#show"
 
+  resources :couches, only: [:show] do
+      scope module: :couches do
+        resources :nights, only: [:new, :create]
+      end
+  end
   get "/search", to: "search/available_couches#index"
   resources :reservations, only: [:create]
 end
