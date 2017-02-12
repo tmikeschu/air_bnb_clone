@@ -7,4 +7,5 @@ class Night < ApplicationRecord
   scope :between_check_in_check_out, -> (check_in, check_out) {
     where(date: (Date.parse(check_in.to_s))..(Date.parse(check_out.to_s) - 1.day))
   }
+  scope :unreserved, -> { where(reservation: nil) }
 end
