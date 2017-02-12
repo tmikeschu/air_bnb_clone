@@ -6,7 +6,6 @@ class Couches::NightsController < ApplicationController
 
   def create
     couch = Couch.find(params[:couch_id])
-    # nights = ActiveRecord::Base.transaction do
     begin
       Night.transaction do
         night_params.each do |night|
@@ -17,8 +16,8 @@ class Couches::NightsController < ApplicationController
       end
 
       rescue ActiveRecord::RecordInvalid => invalid
-        flash[:alert] = "Dates can't be in the past"
-        redirect_to new_couch_night_path
+        flash[:danger] = invalid.message.split(':')[1].strip
+        redirect_to new_couch_night_path(couch)
     end
   end
 

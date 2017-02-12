@@ -48,7 +48,7 @@ RSpec.feature "Host", type: :feature do
 
 
     expect(current_path).to eq(new_couch_night_path(couch))
-    expect(page).to have_content("Dates can't be in the past")
+    expect(page).to have_content("Date can't be in the past")
     expect(page).to_not have_content(last_format)
   end
 end
