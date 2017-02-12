@@ -1,18 +1,17 @@
-%section.vanilla_form  
+%section.vanilla_form
   %h1 Create your Pad Crash Account
-  %br
   %article
     = form_for @user do |f|
       = f.text_field :first_name, placeholder: "First Name"
-      %br
+
       = f.text_field :last_name, placeholder: "Last Name"
-      %br
+
       = f.text_field :email, placeholder: "Email"
-      %br
+
       = f.telephone_field :phone_number, placeholder: "Phone Number"
-      %br
+
       = f.password_field :password, placeholder: "Password"
-      %br
+
       = f.password_field :password_confirmation, placeholder: "Confirm Password"
-      %br
+
       = f.submit 'Sign Up'
