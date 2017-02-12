@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ModelHelpers
 
 RSpec.describe Couch, type: :model do
   context "validations" do
@@ -39,7 +40,11 @@ RSpec.describe Couch, type: :model do
         couch_3.nights << create(:night, date: Date.current)
         couch_3.nights << create(:night, date: Date.tomorrow)
 
-        params = { "Destination" => "This City", "Check In" => Date.yesterday.to_s, "Check Out" => Date.tomorrow.tomorrow.to_s }
+        params = { 
+          "Destination" => "This City",
+          "Check In" => Date.yesterday.to_date_picker_format,
+          "Check Out" => Date.tomorrow.tomorrow.to_date_picker_format
+        }
         result = Couch.search(params)
 
         expect(result.count).to eq 1

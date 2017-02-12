@@ -1,4 +1,5 @@
 require "rails_helper"
+include ModelHelpers
 
 RSpec.describe NightFinder do
   before do
@@ -6,7 +7,11 @@ RSpec.describe NightFinder do
     couch.nights << create(:night, date: Date.current)
     couch.nights << create(:night, date: Date.tomorrow)
     couch.nights << create(:night, date: Date.tomorrow.tomorrow)
-    @nights_params = { "check_in" => Date.current.to_s, "check_out" => Date.tomorrow.tomorrow.to_s, "couch_id" => couch.id }
+    @nights_params = { 
+      "check_in" => Date.current.to_date_picker_format,
+      "check_out" => Date.tomorrow.tomorrow.to_date_picker_format,
+      "couch_id" => couch.id
+    }
   end
 
   describe ".find" do
