@@ -5,10 +5,6 @@
   %section.nav_right
     %ul
       - if current_user
-        %li
-          = link_to("Sign Out", "/logout" )
+        = render(:partial => "layouts/user_nav")
       - else
-        %li
-          = link_to("Create Account", new_user_path)
-        %li
-          = link_to("Log In", new_session_path)
+        = render(:partial => "layouts/guest_nav")

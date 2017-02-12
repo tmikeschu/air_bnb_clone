@@ -3,28 +3,17 @@
   %br
   %article
     = form_for [@user, @couch] do |f|
-      = f.label :name
-      %br
-      = f.text_field :name
-      %br
-      = f.label :description
-      %br
-      = f.text_field :description
-      %br
-      = f.label :street_address
-      %br
-      = f.text_field :street_address
-      %br
-      = f.label :city
-      %br
-      = f.text_field :city
-      %br
-      = f.label :state
-      %br
-      = f.text_field :state
-      %br
-      = f.label :zipcode
-      %br
-      = f.text_field :zipcode
-      %br
+
+      = f.text_field :name, placeholder: "Name"
+
+      = f.text_field :description, placeholder: "Description"
+
+      = f.text_field :street_address, placeholder: "Street Address"
+
+      = f.text_field :city, placeholder: "City"
+
+      = f.text_field :state, placeholder: "State"
+
+      = f.text_field :zipcode, placeholder: "Zipcode"
+
       = f.submit "Add Couch"
