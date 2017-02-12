@@ -1,9 +1,6 @@
 class Search::AvailableCouchesController < ApplicationController
   def index
-    @couches = Couch.search(search_params)
-    @city    = params["Destination"]
-    @check_in    = params["Check In"]
-    @check_out    = params["Check Out"]
+    @query = QueryPresenter.present(search_params)
   end
 
   private
