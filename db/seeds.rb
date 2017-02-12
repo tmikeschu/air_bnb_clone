@@ -8,6 +8,7 @@ class Seed
     seed.create_users
     seed.create_couches
     seed.create_nights
+    seed.create_reservations
     seed.display_developer_info
   end
 
@@ -58,6 +59,7 @@ class Seed
 
       couch_bar.increment
     end
+    sample_user.couches << [FactoryGirl.create(:couch)]
     couch_bar.finish
     puts "#{Couch.count} couches imported"
   end
@@ -67,9 +69,9 @@ class Seed
     puts "Creating available nights for couches"
 
     couches = Couch.all
-    night_bar = ProgressBar.create(title: "Nights", total: 800)
+    night_bar = ProgressBar.create(title: "Nights", total: 950)
     couches.each do |couch|
-      number_of_contiguous_nights = (1..5).to_a
+      number_of_contiguous_nights = (2..5).to_a
 
       number_of_contiguous_nights.sample.times do |i|
         starting_two_weeks_ago = 2.weeks.ago + i.days
@@ -107,7 +109,27 @@ class Seed
     night_bar.finish
 
     nights = Night.count
-    puts "#{nights} total nights created"
+    puts "#{nights} nights created"
+  end
+
+  def create_reservations
+    reservation_bar = ProgressBar.create(title: "Reservations", total: 200)
+    two_thirds_of_all_users = User.take(User.count * 2/3)
+    two_thirds_of_all_users << sample_user
+
+    two_thirds_of_all_users.each do |user|
+      number_of_reservations = (2..5).to_a
+
+      number_of_reservations.sample.times do
+        reservation = user.reservations.create(nights: [Night.unreserved.sample])
+        reservation.confirmed!
+        reservation_bar.increment
+      end
+    end
+    reservation_bar.finish
+
+    reservations = Reservation.count
+    puts "#{reservations} reservations created"
   end
 
   def display_developer_info
