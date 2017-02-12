@@ -52,31 +52,5 @@ RSpec.feature "Nights", type: :feature do
       expect(page).to have_content("Date can't be in the past")
       expect(page).to_not have_content(last_format)
     end
-
-    scenario "end date before start date" do
-      host = couch.host
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(host)
-
-      visit user_couch_path(host, couch)
-
-      click_on "Add Availability"
-
-      tomorrow = Date.tomorrow.strftime('%m/%d/%Y')
-      next_month = Date.current.next_month.strftime('%m/%d/%Y')
-
-      fill_in "First Night", with: next_month
-      fill_in "Last Night", with: tomorrow
-      click_on "Make Available"
-
-      last = next_month.split("/")
-      last_format = "#{last[2]}-#{last[0]}-#{last[1]}"
-
-
-      expect(current_path).to eq(new_couch_night_path(couch))
-      expect(page).to have_content("First night must be after last night")
-      expect(page).to_not have_content(last_format)
-    end
-
-
   end
 end
