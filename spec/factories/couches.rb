@@ -1,13 +1,16 @@
 FactoryGirl.define do
   factory :couch do
     cities = [{
+                street_address: "233 S Wacker Dr",
                 city: "Chicago",
                 state: "IL",
-                zipcode: "12345"},
-              { city: "New Orleans",
+                zipcode: "60606"},
+              { street_address: "800 Decatur St",
+                city: "New Orleans",
                 state: "LA",
-                zipcode: "70112"},
-              { city: "Denver",
+                zipcode: "70116"},
+              { street_address: "1311 17th St",
+                city: "Denver",
                 state: "CO",
                 zipcode: "80123"}
               ]
@@ -16,7 +19,7 @@ FactoryGirl.define do
 
     name           { Faker::GameOfThrones.character }
     description    { Faker::Hipster.sentence }
-    street_address { Faker::Address.street_address }
+    street_address this_city[:street_address]
     city           this_city[:city]
     state          this_city[:state]
     zipcode        this_city[:zipcode]
