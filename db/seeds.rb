@@ -75,13 +75,17 @@ class Seed
 
       number_of_contiguous_nights.sample.times do |i|
         starting_two_weeks_ago = 2.weeks.ago + i.days
-        couch.nights << Night.create(date: starting_two_weeks_ago)
+        two_weeks_old_night = Night.new(date: starting_two_weeks_ago)
+        two_weeks_old_night.save(validate: false)
+        couch.nights << two_weeks_old_night
         night_bar.increment
       end
 
       number_of_contiguous_nights.sample.times do |i|
         starting_one_week_ago = 1.weeks.ago + i.days
-        couch.nights << Night.create(date: starting_one_week_ago)
+        one_week_old_night = Night.new(date: starting_one_week_ago)
+        one_week_old_night.save(validate: false)
+        couch.nights << one_week_old_night
         night_bar.increment
       end
 
@@ -122,7 +126,7 @@ class Seed
 
       number_of_reservations.sample.times do
         reservation = user.reservations.create(nights: [Night.unreserved.sample])
-        reservation.confirmed!
+        reservation.update_attribute(:status, "confirmed")
         reservation_bar.increment
       end
     end
