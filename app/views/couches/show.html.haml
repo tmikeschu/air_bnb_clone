@@ -2,9 +2,11 @@
 %br/
 = @couch.description
 %br/
-host name
+= @couch.host.first_name
+= @couch.host.last_name
 %br/
-couch picture(s)
+- @couch.photos.each do |photo|
+  = image_tag(photo.image)
 %br/
 = @couch.street_address
 %br/
@@ -26,8 +28,3 @@ couch picture(s)
       = submit_tag "Create Reservation"
     -else
       %h1 Please login to place a reservation.
-
-%br
-%h1 Available Nights
-- @couch.nights.each do |night|
-  = night.date
