@@ -20,6 +20,6 @@
       %h3 What would you like to do?
       %ul
         %li
-          = link_to('Add a Couch', new_user_couch_path(@user, @couch) )
+          = link_to('Add a Couch', new_user_couch_path(current_user, @couch) )
         %li
           = link_to('Plan a Trip', root_path )
