@@ -5,7 +5,7 @@ class Couches::NightsController < ApplicationController
   end
 
   def create
-    couch = Couch.find(params[:couch_id])
+    couch = current_user.couches.find(params[:couch_id])
     begin
       Night.transaction do
         night_params.each do |night|
@@ -15,15 +15,14 @@ class Couches::NightsController < ApplicationController
         redirect_to user_couch_path(current_user, couch)
       end
 
-      rescue ActiveRecord::RecordInvalid => invalid
-        flash[:danger] = invalid.message.split(':')[1].strip
-        redirect_to new_couch_night_path(couch)
+    rescue ActiveRecord::RecordInvalid => invalid
+      flash[:danger] = invalid.message.split(':')[1].strip
+      redirect_to new_couch_night_path(couch)
     end
   end
 
   private
     def night_params
-      params.permit("First Night", "Last Night")
       x = params["First Night"].split("/").join(" ")
       y = params["Last Night"].split("/").join(" ")
       first_date = Date.strptime(x, '%m %d %Y')
