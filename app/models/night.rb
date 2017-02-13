@@ -8,4 +8,10 @@ class Night < ApplicationRecord
     where(date: (Date.parse(check_in.to_s))..(Date.parse(check_out.to_s) - 1.day))
   }
   scope :unreserved, -> { where(reservation: nil) }
+
+  def night_cannot_be_in_the_past
+    if date.present? && date < Date.today
+      errors.add(:date, "can't be in the past")
+    end
+  end
 end

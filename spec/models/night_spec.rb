@@ -55,4 +55,17 @@ describe Night do
       expect(Night.unreserved.first).to be_a Night
     end
   end
+
+  describe ".unreserved" do
+    let(:reservation)  { create(:reservation) }
+    before do
+      4.times { create(:night, reservation: nil) }
+      create_list(:night, 3, reservation: reservation)
+    end
+
+    it "returns all the nights which do not have a reservation" do
+      expect(Night.unreserved.count).to eq 4
+      expect(Night.unreserved.first).to be_a Night
+    end
+  end
 end
