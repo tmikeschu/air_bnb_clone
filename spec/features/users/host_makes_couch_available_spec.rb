@@ -37,10 +37,10 @@ RSpec.feature "Nights", type: :feature do
 
       click_on "Add Availability"
 
-      yesterday = Date.yesterday.strftime('%m/%d/%Y')
+      last_week = (1.week.ago).strftime('%m/%d/%Y')
       next_month = Date.current.next_month.strftime('%m/%d/%Y')
 
-      fill_in "First Night", with: yesterday
+      fill_in "First Night", with: last_week
       fill_in "Last Night", with: next_month
       click_on "Make Available"
 
