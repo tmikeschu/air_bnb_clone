@@ -1,4 +1,5 @@
-class Users::CouchesController < ApplicationController
+class Users::CouchesController < UsersController
+  before_action :verify_user, only: [:new, :create]
 
   def new
     @user = User.find(params[:user_id])
@@ -29,5 +30,9 @@ class Users::CouchesController < ApplicationController
                                     :state,
                                     :zipcode,
                                     :host)
+    end
+
+    def verify_user
+      render file: "public/404", status: 404 unless current_user && current_user.id == params["user_id"].to_i
     end
 end

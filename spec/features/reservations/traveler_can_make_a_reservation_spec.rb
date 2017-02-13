@@ -1,14 +1,3 @@
-=begin
-As a traveler
-when I visit the homepage
-and I enter a location and dates for a trip
-and I click 'Find a Couch'
-and I click 'Reserve' on the first couch
-then I see a confirmation message (flash)
-then I am taken to a list of my travel reservations
-and I see a link to that reservation couch listing
-=end
-
 require "rails_helper"
 
 describe "Traveler" do
@@ -22,11 +11,10 @@ describe "Traveler" do
       visit root_path
       couch_1.nights << create(:night, date: today)
       couch_1.nights << create(:night, date: tomorrow)
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(traveler)
+      stub_login(traveler)
     end
 
     scenario "I can view available couches for a city and date range" do
-
       fill_in "Destination", with: couch_1.city
       fill_in "Check In", with: today
       fill_in "Check Out", with: tomorrow

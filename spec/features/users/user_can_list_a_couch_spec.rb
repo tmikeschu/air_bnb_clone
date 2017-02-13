@@ -2,6 +2,11 @@ require 'rails_helper'
 
 describe 'User' do
   let!(:user) {create(:user)}
+
+  before do
+    stub_login(user)
+  end
+
   context 'can host couches from their page' do
     it 'can have choice to add couch' do
       visit user_path(user)
@@ -15,7 +20,6 @@ describe 'User' do
       couch = create(:couch)
       visit user_path(user)
       click_on("Add a Couch")
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       expect(current_path).to eq(new_user_couch_path(user.id))
 
@@ -35,11 +39,11 @@ describe 'User' do
       expect(page).to have_link("Add Availability")
     end
   end
+
   context 'sad path' do
     it 'will re route to new couch path' do
       visit user_path(user)
       click_on "Add a Couch"
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       within("form") do
         fill_in "Name", with: "Bertha XXL"
