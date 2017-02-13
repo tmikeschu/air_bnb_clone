@@ -278,6 +278,7 @@ GEM
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     pg (0.19.0)
+    progressbar (1.8.2)
     public_suffix (2.0.5)
     puma (3.7.0)
     rack (2.0.1)
@@ -407,6 +408,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mini_magick
   pg (~> 0.18)
+  progressbar
   puma (~> 3.0)
   rails (~> 5.0.1)
   rspec-rails (~> 3.5)

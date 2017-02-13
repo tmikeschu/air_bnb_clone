@@ -21,10 +21,14 @@ class NightFinder
     end
 
     def check_in
-      night_params["check_in"]
+      to_date(night_params["check_in"])
     end
 
     def check_out
-      night_params["check_out"]
+      to_date(night_params["check_out"])
+    end
+
+    def to_date(string)
+      Date.strptime(string, "%m/%d/%Y")
     end
 end
