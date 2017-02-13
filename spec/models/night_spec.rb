@@ -68,5 +68,4 @@ describe Night do
       expect(Night.unreserved.first).to be_a Night
     end
   end
-
 end

@@ -45,18 +45,6 @@ RSpec.describe Couch, type: :model do
         couch_3.nights << create(:night, date: Date.tomorrow)
       end
 
-      it "returns couches for a given city and date range" do
-        params = { 
-          "Destination" => "This City",
-          "Check In" => Date.yesterday.to_date_picker_format,
-          "Check Out" => Date.tomorrow.tomorrow.to_date_picker_format
-        }
-        result = Couch.search(params)
-
-        expect(result.count).to eq 1
-        expect(result).to be_a Couch::ActiveRecord_Relation
-      end
-
       it "returns couches for a city and date range case insensitive" do
         params = { 
           "Destination" => "this CITY",
