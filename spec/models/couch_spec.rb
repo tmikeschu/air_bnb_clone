@@ -38,7 +38,9 @@ RSpec.describe Couch, type: :model do
 
         couch_2.nights << create(:night, date: Date.current + 10.days)
 
-        couch_3.nights << create(:night, date: Date.yesterday)
+        last_night = build(:night, date: Date.yesterday)
+        last_night.save(validate: false)
+        couch_3.nights << last_night
         couch_3.nights << create(:night, date: Date.current)
         couch_3.nights << create(:night, date: Date.tomorrow)
       end
