@@ -8,3 +8,6 @@ class Night < ApplicationRecord
     where(date: (Date.parse(check_in))..(Date.parse(check_out) - 1.day))
   }
 end
+
+
+

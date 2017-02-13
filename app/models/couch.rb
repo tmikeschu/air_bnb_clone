@@ -15,4 +15,8 @@ class Couch < ApplicationRecord
       )
       .distinct
   end
+
+  def available_nights
+    self.nights.map { |night| night.date if night.reservation_id.nil? }
+  end
 end

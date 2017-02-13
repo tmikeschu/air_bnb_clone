@@ -17,9 +17,15 @@ couch picture(s)
 = form_tag(reservations_path, method: 'post') do
   
   %section.dates#datepicker 
-    = text_field_tag "Couch_Listing", placeholder="Available Dates"
+    = text_field_tag "Couch_Listing_Check_In", placeholder="Check In"
+    = text_field_tag "Couch_Listing_Check_Out", placeholder="Check Out"
+    = hidden_field_tag "couch_id", @couch.id
 
-  = submit_tag "Create Reservation"
+    -if current_user
+      = hidden_field_tag "user_id", current_user.id
+      = submit_tag "Create Reservation"
+    -else
+      %h1 Please login to place a reservation.
 
 %br
 %h1 Available Nights

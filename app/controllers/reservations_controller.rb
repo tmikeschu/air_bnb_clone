@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  def create
+  def create    
     reservation = ReservationMaker.create_reservation(
        traveler: traveler_params.to_h,
        nights:   nights_params.to_h
@@ -20,6 +20,8 @@ class ReservationsController < ApplicationController
     end
 
     def nights_params
+      params["check_in"] = params["Couch_Listing_Check_In"] if params["Couch_Listing_Check_In"]
+      params["check_out"] = params["Couch_Listing_Check_Out"] if params["Couch_Listing_Check_Out"]
       params.permit("couch_id", "check_in", "check_out")
     end
 end

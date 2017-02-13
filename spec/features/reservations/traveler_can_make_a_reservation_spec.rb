@@ -59,9 +59,10 @@ describe "Traveler" do
       # when I visit the page for a couch listing
       visit couch_path(couch_1)
       # and I select reservation dates
-      click_on today
+      fill_in "Couch_Listing_Check_In", with: today
+      fill_in "Couch_Listing_Check_Out", with: tomorrow
       # and I click 'Reserve'
-      click_on "Reserve"
+      click_on "Create Reservation"
       # then I am taken to my traveler reservations page
       # and I see a link to that listing.
       reservation = traveler.reservations.first
