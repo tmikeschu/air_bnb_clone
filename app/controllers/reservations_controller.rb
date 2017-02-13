@@ -1,5 +1,8 @@
 class ReservationsController < ApplicationController
-  def create    
+
+  before_action :require_login
+
+  def create
     reservation = ReservationMaker.create_reservation(
        traveler: traveler_params.to_h,
        nights:   nights_params.to_h
@@ -16,12 +19,17 @@ class ReservationsController < ApplicationController
   private
 
     def traveler_params
-      params.permit("user_id")
+      { "user_id" => current_user.id }
     end
 
     def nights_params
       params["check_in"] = params["Couch_Listing_Check_In"] if params["Couch_Listing_Check_In"]
       params["check_out"] = params["Couch_Listing_Check_Out"] if params["Couch_Listing_Check_Out"]
       params.permit("couch_id", "check_in", "check_out")
+    end
+
+    def require_login
+      flash[:danger] = "You must be logged in to make a reservation."
+      redirect_to login_path unless current_user
     end
 end

@@ -2,6 +2,11 @@ require 'rails_helper'
 
 describe 'User' do
   let!(:user) {create(:user)}
+
+  before do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  end
+
   context 'can host couches from their page' do
     it 'can have choice to add couch' do
       visit user_path(user)
@@ -15,17 +20,16 @@ describe 'User' do
       couch = create(:couch)
       visit user_path(user)
       click_on("Add a Couch")
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       expect(current_path).to eq(new_user_couch_path(user.id))
 
       within("form") do
-        fill_in "Name", with: "#{couch.name} XXL"
-        fill_in "Description", with: "#{couch.description}HUGE"
-        fill_in "Street address", with: couch.street_address
-        fill_in "City", with: couch.city
-        fill_in "State", with: couch.state
-        fill_in "Zipcode", with: couch.zipcode
+        fill_in "couch_name", with: "#{couch.name} XXL"
+        fill_in "couch_description", with: "#{couch.description}HUGE"
+        fill_in "couch_street_address", with: couch.street_address
+        fill_in "couch_city", with: couch.city
+        fill_in "couch_state", with: couch.state
+        fill_in "couch_zipcode", with: couch.zipcode
         click_on "Add Couch"
       end
 
@@ -39,15 +43,14 @@ describe 'User' do
     it 'will re route to new couch path' do
       visit user_path(user)
       click_on "Add a Couch"
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       within("form") do
-        fill_in "Name", with: "Bertha XXL"
+        fill_in "couch_name", with: "Bertha XXL"
 
-        fill_in "Street address", with: "123 IDK"
-        fill_in "City", with: "Some City"
+        fill_in "couch_street_address", with: "123 IDK"
+        fill_in "couch_city", with: "Some City"
 
-        fill_in "Zipcode", with: "11111"
+        fill_in "couch_zipcode", with: "11111"
         click_on "Add Couch"
       end
 
