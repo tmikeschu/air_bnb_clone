@@ -17,6 +17,8 @@
     align-items: center;
     justify-content: space-between;
     .info {
+      padding: 0 10px;
+      border: solid 2px rgba(0, 0, 0, .1);
       display: flex;
       justify-content: space-between;
       width: 40%;
@@ -30,6 +32,8 @@
       }
     }
     .links {
+      padding: 0 10px;
+      border: solid 2px rgba(0, 0, 0, .1);
       display: flex;
       justify-content: space-between;
       align-items: center;
