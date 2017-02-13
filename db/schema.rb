@@ -69,6 +69,5 @@ ActiveRecord::Schema.define(version: 20170210195755) do
   add_foreign_key "couch_photos", "couches"
   add_foreign_key "couches", "users"
   add_foreign_key "nights", "couches"
-  add_foreign_key "nights", "reservations"
   add_foreign_key "reservations", "users"
 end
