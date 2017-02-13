@@ -14,11 +14,13 @@ $(document).on('ready page:load', function() {
   $('#Last_Night').datepicker();
   $('#Couch_Listing_Check_In').datepicker({
     beforeShowDay: enableAllTheseDays,
+    minDate: 0,
     numberOfMonths: 3,
     showButtonPanel: true
   });
   $('#Couch_Listing_Check_Out').datepicker({
     beforeShowDay: enableAllTheseDays,
+    minDate: 0,
     numberOfMonths: 3,
     showButtonPanel: true
   });
