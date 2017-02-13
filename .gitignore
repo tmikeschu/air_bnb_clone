@@ -21,3 +21,6 @@
 
 # Ignore simplecov
 /coverage
+
+# Ignore public Directory
+/public
