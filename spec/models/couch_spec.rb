@@ -32,11 +32,9 @@ RSpec.describe Couch, type: :model do
     describe ".search()" do
       before do
         couch_1, couch_2, couch_3 = Couch.all[0..2]
-        couch_1.nights << create(:night, date: Date.yesterday)
         couch_1.nights << create(:night, date: Date.current)
         couch_1.nights << create(:night, date: Date.tomorrow)
         couch_2.nights << create(:night, date: Date.current + 10.days)
-        couch_3.nights << create(:night, date: Date.yesterday)
         couch_3.nights << create(:night, date: Date.current)
         couch_3.nights << create(:night, date: Date.tomorrow)
       end

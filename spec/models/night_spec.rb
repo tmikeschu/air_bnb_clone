@@ -33,4 +33,5 @@ describe Night do
       expect(Night.between_check_in_check_out(today.to_s, check_out_day.to_s).count).to eq 4
     end
   end
+
 end

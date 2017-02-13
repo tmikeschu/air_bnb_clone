@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :couches, only: [:show] do
     scope module: :couches do
       resources :photos, only: [:new, :create]
+      resources :nights, only: [:new, :create]
     end
   end
 
