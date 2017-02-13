@@ -11,8 +11,14 @@ class Couch < ApplicationRecord
     Couch.joins(:nights)
       .in_city(params["Destination"])
       .merge(
-        Night.between_check_in_check_out(params["Check In"], params["Check Out"])
+        Night.between_check_in_check_out(to_date(params["Check In"]), to_date(params["Check Out"]))
       )
       .distinct
   end
+
+  private
+
+    def self.to_date(string)
+      Date.strptime(string, "%m/%d/%Y")
+    end
 end
