@@ -77,7 +77,7 @@ class Seed
         starting_two_weeks_ago = 2.weeks.ago + i.days
         two_weeks_old_night = Night.new(date: starting_two_weeks_ago)
         two_weeks_old_night.save(validate: false)
-        couch.nights << two_weeks_old_night
+        two_weeks_old_night.update_attribute(:couch, couch)
         night_bar.increment
       end
 
@@ -85,7 +85,7 @@ class Seed
         starting_one_week_ago = 1.weeks.ago + i.days
         one_week_old_night = Night.new(date: starting_one_week_ago)
         one_week_old_night.save(validate: false)
-        couch.nights << one_week_old_night
+        one_week_old_night.update_attribute(:couch, couch)
         night_bar.increment
       end
 
@@ -125,8 +125,9 @@ class Seed
       number_of_reservations = (2..5).to_a
 
       number_of_reservations.sample.times do
-        reservation = user.reservations.create(nights: [Night.unreserved.sample])
-        reservation.update_attribute(:status, "confirmed")
+        reservation = user.reservations.create(status: "confirmed")
+        night = Night.unreserved.sample
+        night.update_attribute(:reservation, reservation)
         reservation_bar.increment
       end
     end
