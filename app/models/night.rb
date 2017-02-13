@@ -1,5 +1,6 @@
 class Night < ApplicationRecord
   validates_presence_of :date
+  validate :night_cannot_be_in_the_past
   belongs_to :couch
   belongs_to :reservation, optional: true
 
