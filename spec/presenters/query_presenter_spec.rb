@@ -1,4 +1,5 @@
 require "rails_helper"
+include ModelHelpers
 
 describe QueryPresenter do
   before do
@@ -6,11 +7,10 @@ describe QueryPresenter do
     couch_2 = create(:couch)
     couch.nights << create(:night, date: Date.current)
     couch.nights << create(:night, date: Date.tomorrow)
-    couch.nights << create(:night, date: Date.yesterday)
     @search_params = {
       "Destination" => couch.city,
-      "Check In"    => Date.yesterday.to_s,
-      "Check Out"   => Date.tomorrow.to_s
+      "Check In"    => Date.yesterday.to_date_picker_format,
+      "Check Out"   => Date.tomorrow.to_date_picker_format
     }
     @presenter = QueryPresenter.new(@search_params)
   end
@@ -41,13 +41,13 @@ describe QueryPresenter do
 
   describe "#check_in" do
     it "returns check in date" do
-      expect(@presenter.check_in).to eq Date.yesterday.to_s
+      expect(@presenter.check_in).to eq Date.yesterday.to_date_picker_format
     end
   end
 
   describe "#check_out" do
     it "returns check out date" do
-      expect(@presenter.check_out).to eq Date.tomorrow.to_s
+      expect(@presenter.check_out).to eq Date.tomorrow.to_date_picker_format
     end
   end
 end

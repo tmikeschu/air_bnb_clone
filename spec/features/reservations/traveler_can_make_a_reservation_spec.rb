@@ -10,6 +10,7 @@ and I see a link to that reservation couch listing
 =end
 
 require "rails_helper"
+include ModelHelpers
 
 describe "Traveler" do
   describe "As a registered user" do
@@ -28,19 +29,22 @@ describe "Traveler" do
     scenario "I can view available couches for a city and date range" do
 
       fill_in "Destination", with: couch_1.city
-      fill_in "Check In", with: today
-      fill_in "Check Out", with: tomorrow
+
+      fill_in "Check In", with: today.to_date_picker_format
+      fill_in "Check Out", with: tomorrow.to_date_picker_format
       click_on "Find Pad"
 
       expect(current_path).to eq(search_path)
-      expect(page).to have_content "1 couch in #{couch_1.city} available starting on #{today}"
+      expect(page).to have_content "1 couch in #{couch_1.city} available starting on #{today.to_date_picker_format}"
       expect(page).to have_content couch_1.name
       expect(page).to have_content couch_1.description
       expect(page).not_to have_content couch_2.name
     end
 
-    scenario "I can reserve an available couch from homepage search" do
-      visit search_path("Destination": couch_1.city, "Check In": today, "Check Out": tomorrow)
+    scenario "I can reserve an available couch" do
+      visit search_path("Destination": couch_1.city,
+                        "Check In": today.to_date_picker_format,
+                        "Check Out": tomorrow.to_date_picker_format)
       click_on "Reserve"
 
       reservation = traveler.reservations.first

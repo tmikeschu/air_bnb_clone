@@ -10,6 +10,8 @@ $(document).on('ready page:load', function() {
   
   $('#Check_In').datepicker();
   $('#Check_Out').datepicker();
+  $('#First_Night').datepicker();
+  $('#Last_Night').datepicker();
   $('#Couch_Listing_Check_In').datepicker({
     beforeShowDay: enableAllTheseDays,
     numberOfMonths: 3,
@@ -21,3 +23,4 @@ $(document).on('ready page:load', function() {
     showButtonPanel: true
   });
 });
+

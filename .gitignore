@@ -12,6 +12,9 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+#
+# Mac Finder files
+.DS_Store
 
 # Ignore Byebug command history file.
 .byebug_history
@@ -21,3 +24,6 @@
 
 # Ignore simplecov
 /coverage
+
+# Ignore public Directory
+/public

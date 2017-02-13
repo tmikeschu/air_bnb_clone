@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ModelHelpers
 
 RSpec.describe Couch, type: :model do
   context "validations" do
@@ -30,17 +31,38 @@ RSpec.describe Couch, type: :model do
     end
 
     describe ".search()" do
-      it "returns couches for a given city and date range" do
+      before do
         couch_1, couch_2, couch_3 = Couch.all[0..2]
-        couch_1.nights << create(:night, date: Date.yesterday)
         couch_1.nights << create(:night, date: Date.current)
         couch_1.nights << create(:night, date: Date.tomorrow)
+
         couch_2.nights << create(:night, date: Date.current + 10.days)
-        couch_3.nights << create(:night, date: Date.yesterday)
+
+        last_night = build(:night, date: Date.yesterday)
+        last_night.save(validate: false)
+        couch_3.nights << last_night
         couch_3.nights << create(:night, date: Date.current)
         couch_3.nights << create(:night, date: Date.tomorrow)
+      end
 
-        params = { "Destination" => "This City", "Check In" => Date.yesterday.to_s, "Check Out" => Date.tomorrow.tomorrow.to_s }
+      it "returns couches for a city and date range case insensitive" do
+        params = { 
+          "Destination" => "this CITY",
+          "Check In" => Date.yesterday.to_date_picker_format,
+          "Check Out" => Date.tomorrow.tomorrow.to_date_picker_format
+        }
+        result = Couch.search(params)
+
+        expect(result.count).to eq 1
+        expect(result).to be_a Couch::ActiveRecord_Relation
+      end
+
+      it "returns couches for a given city and date range" do
+        params = {
+          "Destination" => "this CITY",
+          "Check In" => Date.yesterday.to_date_picker_format,
+          "Check Out" => Date.tomorrow.tomorrow.to_date_picker_format
+        }
         result = Couch.search(params)
 
         expect(result.count).to eq 1
