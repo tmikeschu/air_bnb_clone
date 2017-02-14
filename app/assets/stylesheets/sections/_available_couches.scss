@@ -24,9 +24,21 @@
           justify-content: space-between;
           flex-flow: row wrap;
           input {
+            text-align: center;
+            width: 50%;
             margin: 0 auto;
             &[type="submit"] {
+              background: $purple;
+              border-radius: 5px;
+              border: none;
+              color: $light;
+              padding: 5px 0;
+              font-size: 1.5em;
               width: 150%;
+              margin: 0 auto;
+              &:hover, &:focus {
+                background: $accent;
+              }
             }
           }
         }
