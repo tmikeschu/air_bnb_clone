@@ -4,4 +4,5 @@ class User < ApplicationRecord
   has_secure_password
   has_many :couches
   has_many :reservations
+  has_one  :profile
 end
