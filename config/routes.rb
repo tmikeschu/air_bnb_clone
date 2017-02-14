@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: "home#show"
 
+  resources :sessions,  only: [:new]
   resources :couches,   only: [:show]
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"

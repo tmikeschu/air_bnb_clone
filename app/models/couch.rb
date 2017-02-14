@@ -17,7 +17,7 @@ class Couch < ApplicationRecord
   end
 
   def available_nights
-    self.nights.map { |night| night.date if night.reservation_id.nil? }
+    self.nights.where(reservation_id: nil).pluck(:date)
   end
 
   private
