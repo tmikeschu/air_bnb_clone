@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :verify_user, only: [:show]
+
   def new
     @user = User.new
   end
@@ -15,12 +17,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   private
 
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number)
-  end
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number)
+    end
+
+    def verify_user
+      render file: "public/404", status: 404 unless current_user && current_user.id == params["id"].to_i
+    end
 end

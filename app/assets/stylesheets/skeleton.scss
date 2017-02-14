@@ -21,3 +21,13 @@ p {
 section {
   padding: 30px auto;
 }
+
+a {
+  color: $accent;
+  text-decoration: none;
+  &:hover, &:focus {
+    color: $accent;
+    font-weight: bolder;
+    text-decoration: none;
+  }
+}
