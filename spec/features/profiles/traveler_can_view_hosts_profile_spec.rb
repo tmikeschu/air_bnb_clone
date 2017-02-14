@@ -5,8 +5,8 @@ include ModelHelpers
 RSpec.feature "Profiles" do
   describe "As a Registered Traveler " do
     let!(:traveler) { create(:user) }
-    let!(:host)     { create(:user) }
-    let!(:couch_1)  { create(:couch, city: "Another City") }
+    let!(:profile)  { create(:profile) }
+    let!(:couch_1)  { create(:couch, city: "Another City", user_id: profile.user_id) }
     let!(:couch_2)  { create(:couch, city: "Mike's Hometown", name: "NEVER GONNA REPEAT") }
     let!(:today)    { Date.current }
     let!(:tomorrow) { Date.current + 1.day }
@@ -27,7 +27,7 @@ RSpec.feature "Profiles" do
 
       click_link("Host's Profile")
 
-      expect(current_path).to eq(profile_path(host))
+      expect(current_path).to eq(user_profile_path(profile.host))
     end
   end
 end
