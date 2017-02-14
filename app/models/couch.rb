@@ -23,6 +23,10 @@ class Couch < ApplicationRecord
     "#{self.street_address}, #{self.city}"
   end
 
+  def available_nights
+    self.nights.where(reservation_id: nil).pluck(:date)
+  end
+
   private
 
     def self.to_date(string)
