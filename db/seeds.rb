@@ -46,7 +46,7 @@ class Seed
     profile_bar = ProgressBar.create(title: "Profiles", total: number_of_profiles)
     number_of_profiles.times do |i|
       Profile.create(description: Faker::Hipster.paragraph(2),
-                     image: "www.robohash.org/#{i}",
+                     image: "http://www.robohash.org/#{i}",
                      user_id: i
                      )
       profile_bar.increment
