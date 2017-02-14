@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 describe 'User' do
-  let!(:user) {create(:user)}
+  let!(:profile) { create(:profile)}
+  let!(:user)    { User.find(profile.user_id)}
 
   before do
     stub_login(user)

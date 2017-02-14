@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature "Nights", type: :feature do
-  let!(:couch) {create(:couch)}
+  let!(:profile) { create(:profile) }
+  let!(:couch)   { create(:couch, user_id: profile.user_id) }
 
   scenario "host lists a couch" do
+
     host = couch.host
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(host)
 

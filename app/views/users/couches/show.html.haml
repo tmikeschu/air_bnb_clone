@@ -4,6 +4,6 @@
 %br
 = link_to('Add Availability', new_couch_night_path(@couch))
 %br
-= link_to('Host/'s Profile', user_profile_path(@couch.user_id, @couch.host.profile))
+= link_to('Host Profile', user_profile_path(@couch.user_id, @couch.host.profile))
 - @nights.each do |night|
   = night.date
