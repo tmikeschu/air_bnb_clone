@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show] do
     scope module: :users do
+      resources :profiles, only: [:show]
       resources :reservations, only: [:index]
       resources :couches, only: [:new, :create, :show]
     end

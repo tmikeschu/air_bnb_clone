@@ -8,6 +8,7 @@
         = couch.name
       %p
         = couch.description
+      = link_to( 'Host\'s Profile', user_profile_path(couch.host, couch.host.profile))
       = button_to('Reserve', reservations_path( |
           couch_id: couch.id,                   |
           check_in: @query.check_in,            |
