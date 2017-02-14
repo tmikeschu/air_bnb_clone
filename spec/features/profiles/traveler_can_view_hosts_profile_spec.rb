@@ -27,7 +27,7 @@ RSpec.feature "Profiles" do
 
       click_link("Host's Profile")
 
-      expect(current_path).to eq(user_profile_path(profile.host))
+      expect(current_path).to eq(user_profile_path(couch_1.user_id, profile))
     end
   end
 end

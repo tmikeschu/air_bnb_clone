@@ -4,7 +4,8 @@ include ModelHelpers
 describe "Traveler" do
   describe "As a registered user" do
     let!(:traveler) { create(:user) }
-    let!(:couch_1)  { create(:couch, city: "Another City") }
+    let!(:profile)  { create(:profile) }
+    let!(:couch_1)  { create(:couch, city: "Another City", user_id: profile.user_id) }
     let!(:couch_2)  { create(:couch, city: "Mike's Hometown", name: "NEVER GONNA REPEAT") }
     let!(:today)  { Date.current }
     let!(:tomorrow)  { Date.tomorrow }
