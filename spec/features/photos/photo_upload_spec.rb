@@ -17,7 +17,7 @@ RSpec.feature "Photo uploads" do
       VCR.use_cassette ("photos") do
         couch = create :couch
         host  = couch.host
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(host)
+        stub_login(host)
 
         visit user_couch_path(host, couch)
         click_on "Add Couch Photos"
