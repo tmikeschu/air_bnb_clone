@@ -1,0 +1,43 @@
+.available-couches {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  .results {
+    width: 50%;
+    >p {
+      margin: 20px;
+      font-style: italic;
+    }
+    section {
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 100%;
+      article {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        section {
+          width: 80%;
+          display: flex;
+          justify-content: space-between;
+          flex-flow: row wrap;
+          input {
+            margin: 0 auto;
+            &[type="submit"] {
+              width: 150%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .map {
+    border: 2px solid black;
+    width: 50%;
+    h2 {
+      margin: 10px;
+    }
+  }
+}

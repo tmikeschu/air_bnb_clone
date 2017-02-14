@@ -1,33 +1,52 @@
-body {
-  font-family: $font-sans;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-serif;
-}
-
-h2 {
-  font-size: 2.5em;
-}
-
-h3 {
-  font-size: 2em;
-}
-
-p {
-  font-size: 14px;
-}
-
-section {
-  padding: 30px auto;
-}
-
-a {
-  color: $accent;
-  text-decoration: none;
-  &:hover, &:focus {
-    color: $accent;
-    font-weight: bolder;
-    text-decoration: none;
+  body {
+    font-family: $font-sans;
   }
-}
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $font-serif;
+  }
+  
+  h2 {
+    font-size: 2.5em;
+  }
+  
+  h3 {
+    font-size: 2em;
+  }
+  
+  p {
+    font-size: 14px;
+  }
+  
+  section {
+    padding: 30px auto;
+  }
+  
+  a {
+    color: $accent;
+    text-decoration: none;
+    &:hover, &:focus {
+      color: $accent;
+      font-weight: bolder;
+      text-decoration: none;
+    }
+  }
+  
+  input {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    &[type="submit"] {
+      background: $purple;
+      border-radius: 5px;
+      border: none;
+      color: $light;
+      padding: 5px 0;
+      font-size: 1.5em;
+      width: 35%;
+      margin: 0 auto;
+      &:hover, &:focus {
+        background: $accent;
+      }
+    }
+  }
