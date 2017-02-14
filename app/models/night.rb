@@ -17,3 +17,6 @@ class Night < ApplicationRecord
     end
   end
 end
+
+
+
