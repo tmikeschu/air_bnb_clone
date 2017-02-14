@@ -26,7 +26,9 @@ class ReservationsController < ApplicationController
     end
 
     def require_login
-      flash[:danger] = "You must be logged in to make a reservation."
-      redirect_to login_path unless current_user
+      unless current_user
+        flash[:danger] = "You must be logged in to make a reservation."
+        redirect_to login_path
+      end
     end
 end
