@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def show
-    gon.availableCities = Couch.availableCities
+    gon.available_cities = Couch.available_cities
   end
 end

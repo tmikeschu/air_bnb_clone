@@ -16,7 +16,7 @@ class Couch < ApplicationRecord
       .distinct
   end
 
-  def self.availableCities
+  def self.available_cities
     Couch.all.pluck(:city).uniq
   end
 
