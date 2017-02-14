@@ -16,6 +16,10 @@ class Couch < ApplicationRecord
       .distinct
   end
 
+  def self.availableCities
+    Couch.all.pluck(:city).uniq
+  end
+
   private
 
     def self.to_date(string)
