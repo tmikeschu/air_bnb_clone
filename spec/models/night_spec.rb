@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Night do
   describe "validations" do
     it { is_expected.to validate_presence_of(:date) }
+    it { should validate_uniqueness_of(:date).scoped_to(:couch_id) }
   end
 
   describe "relationships" do
@@ -15,8 +16,13 @@ describe Night do
     let!(:couch_2) { create(:couch, city: "Newport") }
 
     it "returns only the nights for the given couch" do
-      couch_1.nights << create_list(:night, 5, couch: couch_1)
-      couch_2.nights << create_list(:night, 6, couch: couch_2)
+      5.times do |i|
+        couch_1.nights << create(:night, couch: couch_1, date: (Date.current + i.days))
+      end
+
+      6.times do |i|
+        couch_2.nights << create(:night, couch: couch_2, date: (Date.current + i.days))
+      end
 
       expect(Night.all_for_couch(couch_1.id).count).to eq 5
       expect(Night.all_for_couch(couch_1.id)).to match_array couch_1.nights
