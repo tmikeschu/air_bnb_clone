@@ -22,5 +22,7 @@ Rails.application.routes.draw do
 
   get "/search", to: "search/available_couches#index"
 
-  resources :reservations, only: [:create]
+  resources :reservations, only: [:create] do
+    resources :messages, only: [:create]
+  end
 end
