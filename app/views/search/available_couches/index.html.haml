@@ -2,7 +2,7 @@
 
 %article.home_reservation
 
-  = form_tag(update_path, method: 'get', remote: true) do
+  = form_tag(search_path, method: 'get', remote: true) do
     = text_field_tag "Destination", value= @search_params["Destination"], class: "destination", id: "Available_Cities"
 
     %section.dates#datepicker
