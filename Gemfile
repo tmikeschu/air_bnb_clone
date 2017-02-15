@@ -46,7 +46,12 @@ gem 'figaro'
 gem 'factory_girl_rails'
 gem 'faker'
 
+<<<<<<< HEAD
 gem 'geocoder'
+=======
+# To access Ruby variables in JS files
+gem 'gon'
+>>>>>>> 80a09b437163ae0a8d491474155c5bc779e3dd35
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

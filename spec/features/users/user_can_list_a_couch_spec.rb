@@ -4,7 +4,7 @@ describe 'User' do
   let!(:user) {create(:user)}
 
   before do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    stub_login(user)
   end
 
   context 'can host couches from their page' do
@@ -39,6 +39,7 @@ describe 'User' do
       expect(page).to have_link("Add Availability")
     end
   end
+
   context 'sad path' do
     it 'will re route to new couch path' do
       visit user_path(user)
