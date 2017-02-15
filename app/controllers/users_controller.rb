@@ -1,3 +1,4 @@
+require './lib/confirmation_sender'
 class UsersController < ApplicationController
   before_action :verify_user, only: [:show]
 
@@ -9,7 +10,9 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:current_user_id] = user.id
-      redirect_to user_path(user)
+      ConfirmationSender.send_confirmation_to(user)
+      redirect_to new_confirmation_path
+      # redirect_to user_path(user)
     else
       flash[:danger] = user.errors.full_messages.join(", ")
       redirect_to new_user_path
