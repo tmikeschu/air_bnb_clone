@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   get "/search", to: "search/available_couches#index"
+  get "/update", to: "search/available_couches#update" , defaults: {format: 'js' }
 
   resources :reservations, only: [:create]
 end

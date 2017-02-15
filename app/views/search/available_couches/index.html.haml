@@ -2,15 +2,16 @@
 
 %article.home_reservation
 
-
-    = text_field_tag "Destination", value= @search_params["Destination"]
+  = form_tag(update_path, method: 'get', remote: true) do
+    = text_field_tag "Destination", value= @search_params["Destination"], class: "destination"
 
     %section.dates#datepicker
-    = text_field_tag "Check In", value= @search_params["Check In"]
-    = text_field_tag "Check Out", value= @search_params["Check Out"]
+    = text_field_tag "Check In", value= @search_params["Check In"], class: "check_in"
+    = text_field_tag "Check Out", value= @search_params["Check Out"], class: "check_out"
 
-    %button.update_search Update Search
-%br
-%br
+    = submit_tag "Update Search"
+    %br
+    %br
 
-= render partial: 'search/available_couches/search'
+    #search_grid
+    = render partial: 'search/available_couches/search', locals: {query: @query}
