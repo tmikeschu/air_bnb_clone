@@ -423,11 +423,8 @@ DEPENDENCIES
   faker
   figaro
   fog
-<<<<<<< HEAD
   geocoder
-=======
   gon
->>>>>>> 80a09b437163ae0a8d491474155c5bc779e3dd35
   haml-rails (~> 0.9)
   jquery-rails
   jquery-ui-rails
