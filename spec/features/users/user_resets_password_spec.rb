@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Two Factor Authentication" do
   describe "Password reset" do
     let!(:user) { create(:user) }
-    it "requires 2 factor authentication" do
+    xit "requires 2 factor authentication" do
       VCR.use_cassette ("2FA") do
         visit new_user_path
 
