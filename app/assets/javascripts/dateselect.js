@@ -8,17 +8,27 @@ $(document).on('ready page:load', function() {
     return [false];  
   }
   
-  $('#Check_In').datepicker();
-  $('#Check_Out').datepicker();
-  $('#First_Night').datepicker();
-  $('#Last_Night').datepicker();
+  $('#Check_In').datepicker({
+    defaultDate: '2/1/2017'
+  });
+  $('#Check_Out').datepicker({
+    defaultDate: '2/1/2017'
+  });
+  $('#First_Night').datepicker({
+    defaultDate: '2/1/2017'
+  });
+  $('#Last_Night').datepicker({
+    defaultDate: '2/1/2017'
+  });
   $('#Couch_Listing_Check_In').datepicker({
     beforeShowDay: enableAllTheseDays,
+    defaultDate: '2/1/2017',
     numberOfMonths: 3,
     showButtonPanel: true
   });
   $('#Couch_Listing_Check_Out').datepicker({
     beforeShowDay: enableAllTheseDays,
+    defaultDate: '2/1/2017',
     numberOfMonths: 3,
     showButtonPanel: true
   });
