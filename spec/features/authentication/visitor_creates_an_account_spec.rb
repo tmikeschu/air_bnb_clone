@@ -43,5 +43,32 @@ describe User, type: :feature do
       expect(current_path).to eq(new_user_path)
       expect(page).to have_content("Phone number can't be blank")
     end
+
+    it "requires 2 factor authentication to register" do
+      user = build(:user)
+      visit root_path
+
+      click_on "Create Account"
+
+      fill_in "First Name", with: user.first_name
+      fill_in "Last Name", with: user.last_name
+      fill_in "Email", with: user.email
+      fill_in "Phone Number", with: user.phone_number
+      fill_in "Password", with: user.password
+      fill_in "Confirm Password", with: user.password
+
+      click_on "Sign Up"
+
+      expect(current_path).to eq(new_confirmation_path)
+
+      expect(page).to have_content(user.phone_number)
+
+      fill_in "Verification Code", with: user.verification_code
+
+      click_on "Verify"
+
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content("Verified")
+    end
   end
 end
