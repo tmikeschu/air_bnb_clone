@@ -10,10 +10,6 @@ class Search::AvailableCouchesController < ApplicationController
   def update
     @search_params = search_params
     @query = QueryPresenter.present(search_params)
-    # render :partial => 'search/available_couches/search', locals: {query: @query}
-    # respond_to do |format|
-    #   format.js
-    # end
   end
 
   private
