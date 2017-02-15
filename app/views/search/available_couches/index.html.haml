@@ -12,3 +12,7 @@
           couch_id: couch.id,                   |
           check_in: @query.check_in,            |
           check_out: @query.check_out))         |
+
+%iframe{:allowfullscreen => "", :frameborder => "0", :height => "300", :src => "https://www.google.com/maps/embed/v1/place?q=Denver&key=#{ENV['google_maps_api']}", :style => "border:0", :width => "300"}
+
+-
