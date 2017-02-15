@@ -1,5 +1,5 @@
 %p
-  = "#{pluralize(query.couch_count, "couch")} in #{query.city} available starting on #{query.check_in}"
+  = "#{pluralize(query.couch_count, "couch")} in #{query.city} available from #{query.check_in} to #{query.check_out}"
 
 %section.couches
   - query.couches.each do |couch|

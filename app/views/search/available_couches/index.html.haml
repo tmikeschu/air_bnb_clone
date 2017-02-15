@@ -3,7 +3,7 @@
 %article.home_reservation
 
   = form_tag(update_path, method: 'get', remote: true) do
-    = text_field_tag "Destination", value= @search_params["Destination"], class: "destination"
+    = text_field_tag "Destination", value= @search_params["Destination"], class: "destination", id: "Available_Cities"
 
     %section.dates#datepicker
     = text_field_tag "Check In", value= @search_params["Check In"], class: "check_in"

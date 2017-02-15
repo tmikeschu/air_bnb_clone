@@ -5,11 +5,13 @@ class Search::AvailableCouchesController < ApplicationController
   def index
     @search_params = search_params
     @query = QueryPresenter.present(search_params)
+    gon.available_cities = Couch.available_cities
   end
 
   def update
     @search_params = search_params
     @query = QueryPresenter.present(search_params)
+    gon.available_cities = Couch.available_cities
   end
 
   private
