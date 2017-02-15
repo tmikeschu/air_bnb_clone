@@ -1,0 +1,2 @@
+$('#couches').append('#{escape_javascript render(@couches)}');
+$('.pagination').replaceWith('#{escape_javascript will_paginate(@couches)}');
