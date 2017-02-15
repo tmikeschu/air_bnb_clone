@@ -16,8 +16,6 @@ describe "Viewing reservations" do
       stub_login(host)
       visit user_reservations_path(host)
 
-      save_and_open_page
-
       expect(page).to have_content "My Hosting Reservations"
       expect(page).to have_content reservation.couch_name
       expect(page).to have_content reservation.check_in
@@ -38,8 +36,6 @@ describe "Viewing reservations" do
 
     stub_login(host)
     visit user_reservations_path(host)
-
-    save_and_open_page
 
     expect(page).to have_content reservation.couch_name
     expect(page).to have_content reservation.check_in
