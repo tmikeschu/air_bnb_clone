@@ -1,2 +1,1 @@
 $("#search_grid").html(" #{escape_javascript( render partial: 'search/available_couches/search', locals: { query: @query , couches: @couches} )}");
-$('.pagination').replaceWith('#{escape_javascript will_paginate(@couches)}');
