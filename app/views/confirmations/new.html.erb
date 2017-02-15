@@ -5,6 +5,6 @@
 
 <%= form_for @user do |f|%>
   <%= f.label :verification_code %>
-  <%= f.text_field :verification_code %>
-  <%= f.submit %>
+  <%= f.text_field :verification_code, value: "Code", id: "Verification Code" %>
+  <%= f.submit "Verify" %>
 <% end %>

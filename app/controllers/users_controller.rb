@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     if user.save
       session[:current_user_id] = user.id
       ConfirmationSender.send_confirmation_to(user)
+      byebug
       redirect_to new_confirmation_path
       # redirect_to user_path(user)
     else
