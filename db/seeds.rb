@@ -56,6 +56,7 @@ class Seed
       }
 
       Couch.create!(couch_attributes)
+      Couch.last.photos.create!(title: "default", image: Rails.root.join("spec/fixtures/test_couch.png").open)
 
       couch_bar.increment
     end

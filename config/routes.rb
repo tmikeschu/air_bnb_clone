@@ -24,4 +24,10 @@ Rails.application.routes.draw do
   get "/search", to: "search/available_couches#index"
 
   resources :reservations, only: [:create]
+
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:show]
+    end
+  end
 end
