@@ -19,9 +19,13 @@ class Couch < ApplicationRecord
   def self.available_cities
     Couch.all.pluck(:city).uniq
   end
-  
+
   def available_nights
     self.nights.where(reservation_id: nil).pluck(:date)
+  end
+
+  def default_thumb
+    photos.first.image.thumb if photos.first
   end
 
   private
