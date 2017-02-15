@@ -9,17 +9,19 @@ RSpec.feature "Two Factor Authentication" do
 
         click_on "Forgot Password"
 
+        expect(current_path).to eq(new_password_reset_path)
+
         fill_in "Email", with: user.email
+        click_on "Find Account"
 
         expect(current_path).to eq(new_confirmation_path)
 
-        expect(page).to have_content(user.phone_number)
-
         fill_in "Verification Code", with: user.verification_code
+        fill_in "Email", with: user.email
 
         click_on "Verify"
-
-        expect(current_path).to eq(password_resets_path)
+save_and_open_page
+        expect(current_path).to eq(edit_password_reset_path(user))
         expect(page).to have_content("Welcome #{user.first_name}. The Adventure Begins!")
       end
     end

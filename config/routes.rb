@@ -13,8 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :confirmations, only: [:new]
-  patch "/users/:id", to: "confirmations#create"
+  resources :confirmations, only: [:new, :create]
 
   resources :couches, only: [:show] do
     scope module: :couches do
@@ -26,4 +25,6 @@ Rails.application.routes.draw do
   get "/search", to: "search/available_couches#index"
 
   resources :reservations, only: [:create]
+
+  resources :password_resets, only: [:new, :create, :edit, :update]
 end
