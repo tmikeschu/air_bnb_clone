@@ -18,8 +18,7 @@ This is the highest form of programmable flattery. A cloning exercise that doesn
 
 ### Getting Setup with our Oauth
 
-
-### Things we're proud of 
+### Features we're proud of 
   * Used Travis CI for continuous integration
   * 2-factor authentication via Twilio
   * Geocoder used to integrate couch location with Google Maps
