@@ -1,7 +1,8 @@
 .couch-listing
   %section.info
     %article.main
-      = image_tag(@couch.default_thumb)
+      - if @couch_default_thumb
+        = image_tag(@couch.default_thumb)
       %h2
         = @couch.name
       %p

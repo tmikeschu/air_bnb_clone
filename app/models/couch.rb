@@ -25,7 +25,7 @@ class Couch < ApplicationRecord
   end
 
   def default_thumb
-    photos.first.image.thumb
+    photos.first.image.thumb if photos.first
   end
 
   private
