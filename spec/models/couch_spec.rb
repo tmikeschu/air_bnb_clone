@@ -20,7 +20,7 @@ RSpec.describe Couch, type: :model do
   context "methods" do
     before do
       create_list(:couch, 2, street_address: "1311 17th St", city: "Denver", state: "CO", zipcode: "80123")
-      create(:couch, city: "Hammond", state: "LA", zipcode: "46320")
+      create(:couch, street_address: "105 NW Railroad Ave", city: "Hammond", state: "LA", zipcode: "46320")
     end
 
     describe ".in_city()" do
