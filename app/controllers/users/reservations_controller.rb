@@ -8,6 +8,7 @@ class Users::ReservationsController < UsersController
 
   def show
     @reservation = Reservation.find(params[:id])
+    @messages = @reservation.messages.by_created_at
     @message = Message.new
   end
 
