@@ -72,3 +72,36 @@ describe Reservation do
     end
   end
 end
+
+  context "host methods" do
+    let!(:host) { create(:user, first_name: "Holly Host") }
+    let!(:couch) { create(:couch, name: "Sassy Sofa") }
+    let!(:night) { create(:night) }
+    let!(:reservation) { create(:reservation, status: "confirmed") }
+    before do
+      host.couches << couch
+      couch.nights << night
+      reservation.nights << night
+    end
+
+    describe "#host" do
+      it "returns the host for the reservation" do
+        expect(reservation.host.first_name).to eq "Holly Host"
+      end
+    end
+
+    describe "#host_first_name" do
+      it "returns the host's first name for the reservation" do
+        expect(reservation.host_first_name).to eq "Holly Host"
+      end
+    end
+  end
+
+  describe "#traveler_first_name" do
+    let!(:traveler) { create(:user, first_name: "Timmy Traveler") }
+    let!(:reservation) { create(:reservation, traveler: traveler, status: "confirmed") }
+
+    it "returns the traveler's first name for the reservation" do
+      expect(reservation.traveler_first_name).to eq "Timmy Traveler"
+    end
+  end
