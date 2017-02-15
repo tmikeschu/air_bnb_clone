@@ -1,10 +1,10 @@
+%p
+  = "#{pluralize(@query.couch_count, "couch")} in #{@query.city} available starting on #{@query.check_in}"
 .available-couches
   %article.results
-    %p
-      = "#{pluralize(@query.couch_count, "couch")} in #{@query.city} available starting on #{@query.check_in}"
 
     %section
-      .couches
+      #couches
         = render @couches
     = will_paginate @couches
 
