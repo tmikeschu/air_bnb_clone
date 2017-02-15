@@ -1,0 +1,10 @@
+<h1><%= @user.phone_number %></h1>
+<h3>We have sent a confirmation code through SMS to the number above!</h3>
+
+<h3>To complete your phone number verification, please enter the 6-digit activation code.</h3>
+
+<%= form_for @user do |f|%>
+  <%= f.label :verification_code %>
+  <%= f.text_field :verification_code %>
+  <%= f.submit %>
+<% end %>

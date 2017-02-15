@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :confirmations, only: [:new]
+  patch "/users/:id", to: "confirmations#create"
+
   resources :couches, only: [:show] do
     scope module: :couches do
       resources :photos, only: [:new, :create]
