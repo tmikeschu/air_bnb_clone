@@ -1,5 +1,4 @@
 class Search::AvailableCouchesController < ApplicationController
-  protect_from_forgery except: :update
   respond_to :html, :js
 
   def index
