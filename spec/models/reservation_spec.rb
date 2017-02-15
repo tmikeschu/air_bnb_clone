@@ -9,6 +9,7 @@ describe Reservation do
     it { is_expected.to belong_to(:traveler).class_name("User") }
     it { is_expected.to have_many(:nights) }
     it { is_expected.to have_many(:couches).through(:nights) }
+    it { is_expected.to have_many(:messages) }
   end
 
   describe "#status" do
@@ -71,7 +72,6 @@ describe Reservation do
       expect(reservation.check_out).to eq check_out_night
     end
   end
-end
 
   context "host methods" do
     let!(:host) { create(:user, first_name: "Holly Host") }
@@ -105,3 +105,4 @@ end
       expect(reservation.traveler_first_name).to eq "Timmy Traveler"
     end
   end
+end
