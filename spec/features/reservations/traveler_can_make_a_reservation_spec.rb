@@ -15,18 +15,16 @@ include ModelHelpers
 describe "Traveler" do
   describe "As a registered user" do
     let!(:traveler) { create(:user) }
-    let!(:couch_1)  { create(:couch, city: "Denver") }
+    let!(:couch_1)  { create(:couch, street_address: "1311 17th St", city: "Denver", state: "CO", zipcode: "80123") }
     let!(:couch_2)  { create(:couch, city: "Mike's Hometown", name: "NEVER GONNA REPEAT") }
     let!(:today)  { Date.current }
     let!(:tomorrow)  { Date.tomorrow }
-    before do
+
+    scenario "I can view available couches for a city and date range" do
       visit root_path
       couch_1.nights << create(:night, date: today)
       couch_1.nights << create(:night, date: tomorrow)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(traveler)
-    end
-
-    scenario "I can view available couches for a city and date range" do
 
       fill_in "Destination", with: couch_1.city
 
@@ -42,6 +40,11 @@ describe "Traveler" do
     end
 
     scenario "I can reserve an available couch" do
+      visit root_path
+      couch_1.nights << create(:night, date: today)
+      couch_1.nights << create(:night, date: tomorrow)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(traveler)
+
       visit search_path("Destination": couch_1.city,
                         "Check In": today.to_date_picker_format,
                         "Check Out": tomorrow.to_date_picker_format)
