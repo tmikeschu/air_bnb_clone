@@ -1,0 +1,85 @@
+.couch-listing {
+  margin: 20px;
+  .info {
+    display: flex;
+    flex-direction: column;
+    .main {
+      display: inline-flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-around;
+      h2 {
+        text-align: center;
+      }
+      img {
+        border-radius: 50%;
+      }
+    }
+    .body {
+      margin-top: 10px;
+      padding: 20px 0;
+      background: $accent;
+      border-radius: 5px;
+      display: flex;
+      flex-flow: row wrap;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      .couch_info {
+        background: lightgrey;
+        margin-left: 5%;
+        padding: 10px;
+        border-radius: 5px;
+        width: 32%;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        .city, .name {
+          margin: 10px 0;
+          display: inline-flex;
+          align-items: baseline;
+          justify-content: flex-end;
+          width: 100%;
+        }
+      }
+      .dates {
+        background: lightgray;
+        border-radius: 5px;
+        padding: 10px;
+        margin-right: 5%;
+        form {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          height: 10em;
+          input {
+            &[type='submit'] {
+              background: $purple;
+              border-radius: 5px;
+              text-align: center;
+              border: none;
+              color: $light;
+              padding: 5px;
+              height: 2em;
+              font-size: 1.5em;
+              width: 100%;
+              margin: 0 auto;
+              &:hover, &:focus {
+                background: $dark;
+              }
+            }
+          }
+        }
+      }
+    }
+    .map {
+      margin: 20px 0;
+      border: 2px dashed $purple;
+      height: 600px;
+      h2 {
+        margin: 20px;
+      }
+    }
+  }
+}

@@ -1,6 +1,9 @@
 .reservations {
   width: 90%;
   margin: 0 auto;
+  h2 {
+    margin: 20px 0;
+  }
   .head {
     display: flex;
     width: 96%;
@@ -26,12 +29,15 @@
       }
     }
     article {
-      width: 18%;
+      width: 19%;
       color: $light;
       margin: 10px 0;
       text-align: center;
       padding: 5px;
-      font-size: 14px;
+      font-size: 20px;
+      a {
+        color: $light;
+      }
     }
   }
 }
