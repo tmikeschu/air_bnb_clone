@@ -8,3 +8,10 @@ We believe in starting off on the right [♫](https://gist.github.com/tmikeschu/
 
 [![Code Climate](https://codeclimate.com/github/tmikeschu/air_bnb_clone/badges/gpa.svg)](https://codeclimate.com/github/tmikeschu/air_bnb_clone)
 [![Test Coverage](https://codeclimate.com/github/tmikeschu/air_bnb_clone/badges/coverage.svg)](https://codeclimate.com/github/tmikeschu/air_bnb_clone/coverage)
+
+
+- how to clone our project
+- getting setup with our oauth
+- cool features
+  - pic of database
+  - Couch availability extends between February - March 2017.
