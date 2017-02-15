@@ -10,7 +10,7 @@ This is the highest form of programmable flattery. A cloning exercise that doesn
   * Endorse a host/traveler based on your PadCrash experience
 
 # Check It Out 
-  [live version](https://padcrash.herokuapp.com)
+##  [Live Version](https://padcrash.herokuapp.com)
 
 ### Pad availability extends between February - March 2017.
 ### To check out these features for yourself login with:
