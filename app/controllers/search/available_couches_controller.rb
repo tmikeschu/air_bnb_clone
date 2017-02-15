@@ -1,5 +1,6 @@
 class Search::AvailableCouchesController < ApplicationController
   def index
+    @search_params = search_params
     @query = QueryPresenter.present(search_params)
   end
 

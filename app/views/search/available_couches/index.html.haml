@@ -1,14 +1,16 @@
-%p
-  = "#{pluralize(@query.couch_count, "couch")} in #{@query.city} available starting on #{@query.check_in}"
+%h1 Pad Search
 
-%section.couches
-  - @query.couches.each do |couch|
-    %article
-      %h2
-        = couch.name
-      %p
-        = couch.description
-      = button_to('Reserve', reservations_path( |
-          couch_id: couch.id,                   |
-          check_in: @query.check_in,            |
-          check_out: @query.check_out))         |
+%article.home_reservation
+
+
+    = text_field_tag "Destination", value= @search_params["Destination"]
+
+    %section.dates#datepicker
+    = text_field_tag "Check In", value= @search_params["Check In"]
+    = text_field_tag "Check Out", value= @search_params["Check Out"]
+
+    %button.update_search Update Search
+%br
+%br
+
+= render partial: 'search/available_couches/search'
