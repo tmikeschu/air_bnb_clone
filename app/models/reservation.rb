@@ -19,4 +19,8 @@ class Reservation < ApplicationRecord
   def check_out
     nights.maximum(:date)
   end
+
+  def location
+    couch.city
+  end
 end
