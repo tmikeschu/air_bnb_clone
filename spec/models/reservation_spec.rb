@@ -12,6 +12,26 @@ describe Reservation do
     it { is_expected.to have_many(:messages) }
   end
 
+  describe ".host_reservations" do
+    let!(:host) { create(:user) }
+    let!(:traveler) { create(:user) }
+    let!(:couch) { create(:couch, host: host) }
+    let!(:reservation_1) { create(:reservation, traveler: traveler) }
+    let!(:reservation_2) { create(:reservation, traveler: traveler) }
+    let!(:night_1) { create(:night,
+                            reservation: reservation_2,
+                            couch: couch,
+                            date: (Date.current)) }
+    let!(:night_2) { create(:night,
+                            reservation: reservation_1,
+                            couch: couch,
+                            date: (Date.current + 1.day)) }
+
+    it "returns the *host* reservations for the given user" do
+      expect(Reservation.host_reservations(host)).to match_array [reservation_1, reservation_2]
+    end
+  end
+
   describe "#status" do
     let!(:reservation) { create(:reservation) }
 

@@ -9,6 +9,9 @@ class Reservation < ApplicationRecord
 
   delegate :name, to: :couch, prefix: true
 
+  scope :host_reservations, -> (host) { joins(:couches)
+                                        .where(couches: {user_id: host.id}) }
+
   def couch
     couches.first
   end
