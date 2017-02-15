@@ -8,10 +8,10 @@ class ConfirmationsController < ApplicationController
       @user.save!
       session[:authenticated] = true
 
-      flash[:notice] = "Welcome #{@user.first_name}. The Adventure Begins!"
+      flash[:success] = "Verification success!"
       redirect_to edit_password_reset_path(@user)
     else
-      flash.now[:alert] = "Verification code is incorrect."
+      flash.now[:danger] = "Verification code is incorrect."
       render :new
     end
   end

@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :confirmations, only: [:new, :create]
 
   resources :couches, only: [:show] do
     scope module: :couches do
@@ -27,4 +26,5 @@ Rails.application.routes.draw do
   resources :reservations, only: [:create]
 
   resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :confirmations, only: [:new, :create]
 end
