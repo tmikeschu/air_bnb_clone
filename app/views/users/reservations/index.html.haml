@@ -4,7 +4,7 @@
   %section.head
     %article Reference Number
     %article Couch
-    %article Status
+    %article Location
     %article From
     %article To
 
@@ -13,9 +13,9 @@
       %article
         = reservation.id
       %article
-        = reservation.couch_name[0..25] + "..."
+        = link_to("#{reservation.couch_name[0..15]}...", couch_path(reservation.couch))
       %article
-        = reservation.status.capitalize
+        = reservation.location
       %article
         = reservation.check_in
       %article
