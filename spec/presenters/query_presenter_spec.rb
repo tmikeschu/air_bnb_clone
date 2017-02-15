@@ -2,9 +2,9 @@ require "rails_helper"
 include ModelHelpers
 
 describe QueryPresenter do
+  let!(:couch) {create(:couch)}
+  let!(:couch_2) {create(:couch)}
   before do
-    couch = create(:couch)
-    couch_2 = create(:couch)
     couch.nights << create(:night, date: Date.current)
     couch.nights << create(:night, date: Date.tomorrow)
     @search_params = {

@@ -19,16 +19,17 @@ RSpec.describe Couch, type: :model do
 
   context "methods" do
     before do
-      create_list(:couch, 2, city: "This City")
-      create(:couch, city: "That City")
+      create_list(:couch, 2, city: "Denver")
+      create(:couch, city: "Hammond")
     end
 
     describe ".in_city()" do
       it "returns couches for a given city" do
-        result = Couch.in_city("This City")
-        expect(result.count).to eq 2
+        result = Couch.in_city("Denver")
+        expect(result.length).to eq 2
       end
     end
+
 
     describe ".search()" do
       before do
@@ -47,25 +48,25 @@ RSpec.describe Couch, type: :model do
 
       it "returns couches for a city and date range case insensitive" do
         params = { 
-          "Destination" => "this CITY",
+          "Destination" => "DENVer",
           "Check In" => Date.yesterday.to_date_picker_format,
           "Check Out" => Date.tomorrow.tomorrow.to_date_picker_format
         }
         result = Couch.search(params)
 
-        expect(result.count).to eq 1
+        expect(result.length).to eq 1
         expect(result).to be_a Couch::ActiveRecord_Relation
       end
 
       it "returns couches for a given city and date range" do
         params = {
-          "Destination" => "this CITY",
+          "Destination" => "Denver",
           "Check In" => Date.yesterday.to_date_picker_format,
           "Check Out" => Date.tomorrow.tomorrow.to_date_picker_format
         }
         result = Couch.search(params)
-
-        expect(result.count).to eq 1
+        
+        expect(result.length).to eq 1
         expect(result).to be_a Couch::ActiveRecord_Relation
       end
     end
