@@ -9,14 +9,12 @@ describe "Traveler" do
     let!(:today)  { Date.current }
     let!(:tomorrow)  { Date.tomorrow }
 
+
     scenario "I can view available couches for a city and date range" do
       visit root_path
       couch_1.nights << create(:night, date: today)
       couch_1.nights << create(:night, date: tomorrow)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(traveler)
-    end
-
-    scenario "I can view available couches for a city and date range" do
       fill_in "Destination", with: couch_1.city
 
       fill_in "Check In", with: today.to_date_picker_format
