@@ -20,3 +20,15 @@ class Reservation < ApplicationRecord
     nights.maximum(:date)
   end
 end
+
+  def host
+    couch.host
+  end
+
+  def host_first_name
+    host.first_name
+  end
+
+  def traveler_first_name
+    traveler.first_name
+  end
