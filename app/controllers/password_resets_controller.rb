@@ -1,3 +1,5 @@
+require './lib/confirmation_sender'
+
 class PasswordResetsController < ApplicationController
 
   def new

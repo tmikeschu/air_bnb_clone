@@ -9,4 +9,5 @@ class User < ApplicationRecord
   def author_name
     "#{first_name.capitalize} #{last_name.capitalize.first}."
   end
+
 end
