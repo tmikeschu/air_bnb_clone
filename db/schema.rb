@@ -86,6 +86,15 @@ ActiveRecord::Schema.define(version: 20170215190021) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "description"
+    t.string   "image"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "status",     default: 0
@@ -112,5 +121,6 @@ ActiveRecord::Schema.define(version: 20170215190021) do
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
+  add_foreign_key "profiles", "users"
   add_foreign_key "reservations", "users"
 end

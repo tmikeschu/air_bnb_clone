@@ -15,7 +15,8 @@ RSpec.feature "Photo uploads" do
 
     scenario "uploads a photo for a couch" do
       VCR.use_cassette ("photos") do
-        couch = create :couch
+        profile = create :profile
+        couch = create :couch, user_id: profile.user_id
         host  = couch.host
         stub_login(host)
 
