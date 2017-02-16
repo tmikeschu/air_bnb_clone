@@ -36,13 +36,16 @@
           }
         }
         input {
+          text-align: left;
           &#Destination {
             height: 2em;
             font-size: 1.5em;
+            width: 100%;
           }
           &[type='submit'] {
             background: $purple;
             border-radius: 5px;
+            text-align: center;
             border: none;
             color: $light;
             padding: 5px 0;

@@ -1,0 +1,49 @@
+p {
+  margin: 20px;
+  font-style: italic;
+}
+
+.available-couches {
+  margin-top: 40px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  .results {
+    width: 40%;
+    overflow-y: scroll;
+    height: 600px;
+    section {
+      margin: 0 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      article {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-bottom: 13%;
+        p {
+          margin: 10px 0;
+        }
+        a {
+          font-size: 20px;
+          color: $purple;
+        }
+      }
+    }
+    .pagination {
+      text-align: center;
+      width: 100%;
+      display: none;
+    }
+  }
+  .map {
+    border: 2px solid black;
+    // margin-top: 5%;
+    width: 50%;
+    h2 {
+      margin: 10px;
+    }
+  }
+}
