@@ -1,0 +1,27 @@
+.confirmation {
+  margin: 20px;
+  p {
+    text-align: center;
+  }
+  form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20%;
+    input {
+      margin: 10px 0;
+      &[type="submit"] {
+        background: $accent;
+        border: none;
+        padding: 5px;
+        border-radius: 5px;
+        color: white;
+        &:hover, &:focus {
+          font-weight: bold;
+          background: $purple;
+        }
+      }
+    }
+  }
+}
