@@ -9,6 +9,7 @@ gem "haml-rails", "~> 0.9"
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'twilio-ruby', '~> 4.11.1'
 gem 'will_paginate', '~> 3.0.7'
 
 

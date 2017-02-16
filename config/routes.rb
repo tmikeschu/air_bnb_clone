@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources :couches, only: [:show] do
     scope module: :couches do
       resources :photos, only: [:new, :create]
@@ -24,4 +25,7 @@ Rails.application.routes.draw do
   get "/update", to: "search/available_couches#update"
 
   resources :reservations, only: [:create]
+
+  resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :confirmations, only: [:new, :create]
 end
