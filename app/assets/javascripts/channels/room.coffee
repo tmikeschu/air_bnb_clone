@@ -6,5 +6,16 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $('#messages-table').append data.author_name +
+    $('#messages-table').prepend data.author_name +
       '<p>' + data.content + '</p>'
+
+$(document).ready ->
+  submit_message()
+
+submit_message = () ->
+  $('#message_content').on 'keydown', (event) ->
+    if event.keyCode is 13
+      $('input').click()
+      event.target.value = ""
+      event.preventDefault()
+
