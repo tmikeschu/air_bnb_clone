@@ -1,6 +1,15 @@
+require "application_responder"
+
 class ApplicationController < ActionController::Base
+  self.responder = ApplicationResponder
+  respond_to :html
+
   protect_from_forgery with: :exception
   helper_method :current_user
+
+  def doorkeeper_unauthorized_render_options(error: nil)
+    { json: { error: "Not authorized" } }
+  end
 
   private
     def current_user

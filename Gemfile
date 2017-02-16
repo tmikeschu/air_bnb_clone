@@ -9,6 +9,7 @@ gem "haml-rails", "~> 0.9"
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'twilio-ruby', '~> 4.11.1'
 gem 'will_paginate', '~> 3.0.7'
 
 
@@ -41,12 +42,15 @@ gem 'active_model_serializers', '~> 0.10.0'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'doorkeeper'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'figaro'
 gem 'factory_girl_rails'
 gem 'faker'
+gem 'responders'
 
 # To access Ruby variables in JS files
 gem 'gon'
