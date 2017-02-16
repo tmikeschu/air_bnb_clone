@@ -3,20 +3,17 @@ include ModelHelpers
 
 describe "Traveler" do
   describe "As a registered user" do
-    let!(:traveler) { create(:user) }
-    let!(:couch_1)  { create(:couch, street_address: "1311 17th St", city: "Denver", state: "CO", zipcode: "80123") }
-    let!(:couch_2)  { create(:couch, city: "Mike's Hometown", name: "NEVER GONNA REPEAT") }
     let!(:profile)  { create(:profile) }
+    let!(:traveler) { create(:user) }
+    let!(:couch_1)  { create(:couch, street_address: "1311 17th St", city: "Denver", state: "CO", zipcode: "80123", user_id: profile.user_id) }
+    let!(:couch_2)  { create(:couch, street_address: "230 W 200 S", city: "Salt Lake City", state: "UT", name: "NEVER GONNA REPEAT") }
     let!(:today)  { Date.current }
     let!(:tomorrow)  { Date.tomorrow }
 
-
-    scenario "I can view available couches for a city and date range" do
+    before do
       visit root_path
       couch_1.nights << create(:night, date: today)
       couch_1.nights << create(:night, date: tomorrow)
-
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(traveler)
       couch_2.nights << create(:night, date: today)
       couch_2.nights << create(:night, date: tomorrow)
       stub_login(traveler)
@@ -36,7 +33,7 @@ describe "Traveler" do
       expect(page).not_to have_content couch_2.name
     end
 
-    scenario "I can update my search for a city an date range" do 
+    scenario "I can update my search for a city an date range" do
       fill_in "Destination", with: couch_1.city
 
       fill_in "Check In", with: today.to_date_picker_format
@@ -69,23 +66,21 @@ describe "Traveler" do
       expect(current_path).to eq couch_path(couch_1)
     end
 
-    scenario "I can reserve an available couch from couch listing" do       
+    scenario "I can reserve an available couch from couch listing" do
       visit couch_path(couch_1)
 
       fill_in "Couch_Listing_Check_In", with: today.to_date_picker_format
       fill_in "Couch_Listing_Check_Out", with: tomorrow.to_date_picker_format
       click_on "Create Reservation"
-      
+
       reservation = traveler.reservations.first
       expect(page).to have_content "#{couch_1.name} reserved for #{today}."
       expect(page).to have_content "My Travel Reservations"
-      expect(page).to have_content "Confirmed"
       expect(page).to have_content reservation.id
       expect(page).to have_content reservation.couch_name
-      expect(page).to have_content reservation.status.capitalize
       expect(page).to have_content reservation.check_in
       expect(page).to have_content reservation.check_out
-      expect(page).to have_content 
+      expect(page).to have_content
       expect(page).not_to have_content couch_2.name
     end
 
