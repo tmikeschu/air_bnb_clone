@@ -7,7 +7,6 @@ This is the highest form of programmable flattery. A cloning exercise that doesn
   * Search and reserve available pads
   * Chat with host about each reservation
   * Upload your own pad to rent out for travelers
-  * Endorse a host/traveler based on your PadCrash experience
 
 # [Check It Out](https://padcrash.herokuapp.com)
 
@@ -16,14 +15,13 @@ This is the highest form of programmable flattery. A cloning exercise that doesn
   * email:    user@example.com
   * password: password
 
-### Getting Setup with PadCrash Oauth
-
 ### Features we're proud of 
   * Used Travis CI for continuous integration
   * 2-factor authentication via Twilio
   * Geocoder used to integrate couch locations for display on Google Maps
   * Upload photos of your pad with Carrierwave
   * Use of AJAX to update available pad Search
+  * CSS: flexboxes on flexboxes
 
 We believe in starting off on the right [♫](https://gist.github.com/tmikeschu/4ccb96fbca3734d07a4e4a5e1c5e2ae5).
 
@@ -34,4 +32,6 @@ We believe in starting off on the right [♫](https://gist.github.com/tmikeschu/
   git clone https://github.com/tmikeschu/air_bnb_clone.git
   cd air_bnb_clone
   bundle install
+  rake db:{create,setup}
+  clear & rspec
   rails server
