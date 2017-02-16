@@ -16,12 +16,13 @@ This is the highest form of programmable flattery. A cloning exercise that doesn
   * email:    user@example.com
   * password: password
 
-### Getting Setup with our Oauth
+### Getting Setup with PadCrash Oauth
 
 ### Features we're proud of 
   * Used Travis CI for continuous integration
   * 2-factor authentication via Twilio
-  * Geocoder used to integrate couch location with Google Maps
+  * Geocoder used to integrate couch locations for display on Google Maps
+  * Upload photos of your pad with Carrierwave
   * Use of AJAX to update available pad Search
 
 We believe in starting off on the right [♫](https://gist.github.com/tmikeschu/4ccb96fbca3734d07a4e4a5e1c5e2ae5).
