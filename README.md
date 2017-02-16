@@ -29,9 +29,11 @@ We believe in starting off on the right [♫](https://gist.github.com/tmikeschu/
 [![Test Coverage](https://codeclimate.com/github/tmikeschu/air_bnb_clone/badges/coverage.svg)](https://codeclimate.com/github/tmikeschu/air_bnb_clone/coverage)
 
 ### To clone down our project and run locally
-  git clone https://github.com/tmikeschu/air_bnb_clone.git
-  cd air_bnb_clone
-  bundle install
-  rake db:{create,setup}
-  clear & rspec
-  rails server
+```
+git clone https://github.com/tmikeschu/air_bnb_clone.git
+cd air_bnb_clone
+bundle install
+rake db:{create,setup}
+clear & rspec
+rails server
+```
