@@ -13,5 +13,6 @@ RSpec.describe User, type: :model do
   context "relationships" do
     it { should have_many :couches }
     it { should have_many :reservations }
+    it { should have_one :profile }
   end
 end

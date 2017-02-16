@@ -12,4 +12,4 @@
   %section.links
     = link_to("Add Couch Photos", new_couch_photo_path(@couch))
     = link_to('Add Availability', new_couch_night_path(@couch))
-
+    = link_to('Host\'s Profile', user_profile_path(@couch.user_id, @couch.host.profile))
