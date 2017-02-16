@@ -8,11 +8,10 @@
     %article From
     %article To
 
-- @travel_reservations.each do |reservation|
-  = link_to user_reservation_path(current_user, reservation) do
+  - @travel_reservations.each do |reservation|
     %section.row
       %article
-        = reservation.id
+        = link_to(reservation.id, user_reservation_path(current_user, reservation))
       %article
         = link_to("#{reservation.couch_name[0..15]}...", couch_path(reservation.couch))
       %article
@@ -22,22 +21,21 @@
       %article
         = reservation.check_out
 
-%h2 My Hosting Reservations
+  %h2 My Hosting Reservations
 
-%section.head
-  %article Reference Number
-  %article Couch
-  %article Status
-  %article From
-  %article To
+  %section.head
+    %article Reference Number
+    %article Couch
+    %article Status
+    %article From
+    %article To
 
-- @host_reservations.each do |reservation|
-  = link_to user_reservation_path(current_user, reservation) do
+  - @host_reservations.each do |reservation|
     %section.row
       %article
-        = reservation.id
+        = link_to(reservation.id, user_reservation_path(current_user, reservation))
       %article
-        = link_to("#{reservation.couch_name[0..15]}...", couch_path(reservation.couch))
+        = link_to("#{reservation.couch_name[0..15]}...", user_couch_path(current_user, reservation.couch))
       %article
         = reservation.location
       %article

@@ -1,7 +1,9 @@
-= form_tag(couch_nights_path, method: 'post') do
+.couch-nights
+  %h2 Select dates for couch availability
+  = form_tag(couch_nights_path, method: 'post') do
 
-  %section.dates#datepicker
-    = text_field_tag "First Night", placeholder="First Night"
-    = text_field_tag "Last Night", placeholder="Last Night"
+    %section.dates#datepicker
+      = text_field_tag "First Night", placeholder="First Night"
+      = text_field_tag "Last Night", placeholder="Last Night"
 
-  = submit_tag "Make Available"
+    = submit_tag "Make Available"
