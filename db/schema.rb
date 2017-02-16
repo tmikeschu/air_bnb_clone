@@ -99,9 +99,10 @@ ActiveRecord::Schema.define(version: 20170215190021) do
     t.text     "first_name"
     t.text     "last_name"
     t.text     "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "phone_number"
+    t.text     "verification_code"
   end
 
   add_foreign_key "couch_photos", "couches"
