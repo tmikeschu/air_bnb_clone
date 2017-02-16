@@ -4,7 +4,12 @@ class MessagesController < ApplicationController
   def create
     reservation = Reservation.find(params[:reservation_id])
     @message = reservation.messages.new(content: params[:message][:content], author: current_user)
-    flash[:danger] = "Message content can't be blank" unless @message.save
-    redirect_to user_reservation_path(current_user, reservation)
+    if @message.save
+      ActionCable.server.broadcast('room_channel',
+                                   content: @message.content,
+                                   author_name: current_user.author_name,
+                                   created_at: @message.created_at)
+      head :ok
+    end
   end
 end

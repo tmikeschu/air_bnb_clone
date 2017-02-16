@@ -1,3 +1,3 @@
-= form_for [@reservation, @message] do |f|
-  = f.text_area :content
-  = f.submit "Post message"
+= form_for([@reservation, @message], remote: true) do |f|
+  = f.text_area :content, rows: 15, placeholder: "Type 'Enter' to submit message"
+  = f.submit "Post message", class: "message_submit"

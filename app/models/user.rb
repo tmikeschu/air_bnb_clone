@@ -5,4 +5,8 @@ class User < ApplicationRecord
   has_many :couches
   has_many :reservations
   has_one  :profile, dependent: :destroy
+
+  def author_name
+    "#{first_name.capitalize} #{last_name.capitalize.first}."
+  end
 end

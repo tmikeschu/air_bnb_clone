@@ -51,6 +51,7 @@ class Seed
                      )
       profile_bar.increment
     end
+    profile_bar.finish
     puts "#{number_of_profiles} profiles created"
   end
 

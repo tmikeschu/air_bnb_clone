@@ -83,6 +83,7 @@ group :test do
   gem 'webmock'
   gem "simplecov"
   gem "codeclimate-test-reporter", "~> 1.0.0"
+  gem "selenium-webdriver", '2.53.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

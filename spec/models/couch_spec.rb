@@ -30,7 +30,6 @@ RSpec.describe Couch, type: :model do
       end
     end
 
-
     describe ".search()" do
       before do
         couch_1, couch_2, couch_3 = Couch.all[0..2]
