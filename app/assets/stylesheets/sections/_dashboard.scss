@@ -20,7 +20,7 @@
       padding: 0 10px;
       border: solid 2px rgba(0, 0, 0, .1);
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       width: 40%;
       align-items: center;
       height: 10em;
@@ -35,15 +35,15 @@
       padding: 0 10px;
       border: solid 2px rgba(0, 0, 0, .1);
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
-      width: 40%;
+      width: 50%;
       height: 10em;
       ul {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 3em;
+        height: 5em;
       }
     }
   }

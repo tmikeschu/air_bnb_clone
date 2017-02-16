@@ -20,7 +20,6 @@ describe "Viewing reservations" do
       expect(page).to have_content reservation.couch_name
       expect(page).to have_content reservation.check_in
       expect(page).to have_content reservation.check_out
-      expect(page).to have_content reservation.status.capitalize
     end
   end
 
@@ -40,11 +39,9 @@ describe "Viewing reservations" do
     expect(page).to have_content reservation.couch_name
     expect(page).to have_content reservation.check_in
     expect(page).to have_content reservation.check_out
-    expect(page).to have_content reservation.status.capitalize
 
     expect(page).to have_content host_as_traveler_reservation.couch_name
     expect(page).to have_content host_as_traveler_reservation.check_in
     expect(page).to have_content host_as_traveler_reservation.check_out
-    expect(page).to have_content host_as_traveler_reservation.status.capitalize
   end
 end

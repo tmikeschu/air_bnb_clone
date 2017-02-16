@@ -35,4 +35,8 @@ class Reservation < ApplicationRecord
   def traveler_first_name
     traveler.first_name
   end
+
+  def location
+    couch.city
+  end
 end

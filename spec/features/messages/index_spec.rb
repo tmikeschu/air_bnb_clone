@@ -17,7 +17,7 @@ describe "Listing reservation messages" do
     scenario "an informative sentence is present" do
       stub_login(traveler)
       visit user_reservations_path(traveler)
-      click_on couch.name
+      click_on couch.id
 
       expect(page).to have_current_path(user_reservation_path(traveler, reservation))
       expect(page).to have_content couch.name

@@ -16,7 +16,7 @@ describe "Creating reservation messages" do
   scenario "is unsusseccful with a blank message" do
     stub_login(traveler)
     visit user_reservations_path(traveler)
-    click_on couch.name
+    click_on couch.id
 
     expect(page).to have_selector(:link_or_button, "Post message")
 
@@ -31,7 +31,7 @@ describe "Creating reservation messages" do
     scenario "I can post messages" do
       stub_login(traveler)
       visit user_reservations_path(traveler)
-      click_on couch.name
+      click_on couch.id
 
       expect(page).to have_selector(:link_or_button, "Post message")
 
@@ -48,7 +48,7 @@ describe "Creating reservation messages" do
     scenario "I can post messages" do
       stub_login(host)
       visit user_reservations_path(host)
-      click_on couch.name
+      click_on couch.id
 
       expect(page).to have_selector(:link_or_button, "Post message")
 

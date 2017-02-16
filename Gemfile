@@ -9,6 +9,8 @@ gem "haml-rails", "~> 0.9"
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'will_paginate', '~> 3.0.7'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
@@ -45,6 +47,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'factory_girl_rails'
 gem 'faker'
+gem 'responders'
 
 # To access Ruby variables in JS files
 gem 'gon'

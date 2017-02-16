@@ -125,4 +125,14 @@ describe Reservation do
       expect(reservation.traveler_first_name).to eq "Timmy Traveler"
     end
   end
+
+  describe "#location" do
+    it "returns the city for the reservation" do
+      reservation = create(:reservation_with_couch)
+      reservation.nights << create(:night)
+
+      expected = reservation.couch.city
+      expect(reservation.location).to eq expected
+    end
+  end
 end
