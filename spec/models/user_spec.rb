@@ -15,4 +15,12 @@ RSpec.describe User, type: :model do
     it { should have_many :reservations }
     it { should have_one :profile }
   end
+
+  describe "#author_name" do
+    let!(:user) { create(:user, first_name: "Han", last_name: "Solo") }
+
+    it "returns the first name and last initial for the user" do
+      expect(user.author_name).to eq "Han S."
+    end
+  end
 end
