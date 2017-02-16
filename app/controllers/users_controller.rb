@@ -1,3 +1,4 @@
+require './lib/confirmation_sender'
 class UsersController < ApplicationController
   before_action :verify_user, only: [:show]
 
