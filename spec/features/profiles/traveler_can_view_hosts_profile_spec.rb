@@ -22,12 +22,12 @@ RSpec.feature "Profiles" do
                         "Check Out": tomorrow.to_date_picker_format)
 
       expect(current_path).to eq(search_path)
-      expect(page).to have_content "1 couch in #{couch.city} available"
+      expect(page).to have_content("1 couch in #{couch.city} available")
 
       click_link("View Couch")
 
       click_link("#{profile.user.first_name}")
-      
+
       expect(page).to have_content(profile.description)
     end
   end
