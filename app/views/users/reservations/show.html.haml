@@ -1,0 +1,10 @@
+%p= @reservation.host_first_name
+%p= @reservation.couch_name
+%p= @reservation.traveler_first_name
+%p= @reservation.check_in
+%p= @reservation.check_out
+= render partial: "form"
+- if @reservation.messages.empty?
+  %p There are no messages for this reservation yet.  Feel free to send a message.
+- else
+  = render partial: "messages"

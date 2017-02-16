@@ -9,6 +9,27 @@ describe Reservation do
     it { is_expected.to belong_to(:traveler).class_name("User") }
     it { is_expected.to have_many(:nights) }
     it { is_expected.to have_many(:couches).through(:nights) }
+    it { is_expected.to have_many(:messages) }
+  end
+
+  describe ".host_reservations" do
+    let!(:host) { create(:user) }
+    let!(:traveler) { create(:user) }
+    let!(:couch) { create(:couch, host: host) }
+    let!(:reservation_1) { create(:reservation, traveler: traveler) }
+    let!(:reservation_2) { create(:reservation, traveler: traveler) }
+    let!(:night_1) { create(:night,
+                            reservation: reservation_2,
+                            couch: couch,
+                            date: (Date.current)) }
+    let!(:night_2) { create(:night,
+                            reservation: reservation_1,
+                            couch: couch,
+                            date: (Date.current + 1.day)) }
+
+    it "returns the *host* reservations for the given user" do
+      expect(Reservation.host_reservations(host)).to match_array [reservation_1, reservation_2]
+    end
   end
 
   describe "#status" do
@@ -72,8 +93,41 @@ describe Reservation do
     end
   end
 
-  describe "#check_out" do
-    it "returns the first night of the reservation by date" do
+  context "host methods" do
+    let!(:host) { create(:user, first_name: "Holly Host") }
+    let!(:couch) { create(:couch, name: "Sassy Sofa") }
+    let!(:night) { create(:night) }
+    let!(:reservation) { create(:reservation, status: "confirmed") }
+    before do
+      host.couches << couch
+      couch.nights << night
+      reservation.nights << night
+    end
+
+    describe "#host" do
+      it "returns the host for the reservation" do
+        expect(reservation.host.first_name).to eq "Holly Host"
+      end
+    end
+
+    describe "#host_first_name" do
+      it "returns the host's first name for the reservation" do
+        expect(reservation.host_first_name).to eq "Holly Host"
+      end
+    end
+  end
+
+  describe "#traveler_first_name" do
+    let!(:traveler) { create(:user, first_name: "Timmy Traveler") }
+    let!(:reservation) { create(:reservation, traveler: traveler, status: "confirmed") }
+
+    it "returns the traveler's first name for the reservation" do
+      expect(reservation.traveler_first_name).to eq "Timmy Traveler"
+    end
+  end
+
+  describe "#location" do
+    it "returns the city for the reservation" do
       reservation = create(:reservation_with_couch)
       reservation.nights << create(:night)
 
