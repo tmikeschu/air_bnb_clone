@@ -2,7 +2,7 @@
   %h2 Select dates for couch availability
   = form_tag(couch_nights_path, method: 'post') do
 
-    %section.dates
+    %section.dates#datepicker
       = text_field_tag "First Night", placeholder="First Night"
       = text_field_tag "Last Night", placeholder="Last Night"
 
