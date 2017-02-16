@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   root to: "home#show"
 
   resources :couches,   only: [:show]
@@ -8,10 +9,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show] do
     scope module: :users do
+      resources :profiles, only: [:show]
       resources :reservations, only: [:index]
       resources :couches, only: [:new, :create, :show]
     end
   end
+
 
   resources :couches, only: [:show] do
     scope module: :couches do
@@ -21,6 +24,16 @@ Rails.application.routes.draw do
   end
 
   get "/search", to: "search/available_couches#index"
+  get "/update", to: "search/available_couches#update"
 
   resources :reservations, only: [:create]
+
+  resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :confirmations, only: [:new, :create]
+
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:show]
+    end
+  end
 end

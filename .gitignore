@@ -27,3 +27,6 @@
 
 # Ignore public Directory
 /public
+
+#ignore 2FA test for now
+/spec/features/users/user_resets_password_spec.rb
