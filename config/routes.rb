@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   root to: "home#show"
 
   resources :couches,   only: [:show]
@@ -29,4 +30,10 @@ Rails.application.routes.draw do
 
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :confirmations, only: [:new, :create]
+
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:show]
+    end
+  end
 end
