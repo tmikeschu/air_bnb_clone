@@ -1,33 +1,38 @@
-  body {
-    font-family: $font-sans;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: $font-serif;
-  }
-  
-  h2 {
-    font-size: 2.5em;
-  }
-  
-  h3 {
-    font-size: 2em;
-  }
-  
-  p {
-    font-size: 14px;
-  }
-  
-  section {
-    padding: 30px auto;
-  }
-  
-  a {
+body {
+  font-family: $font-sans;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-serif;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+p {
+  font-size: 14px;
+}
+
+section {
+  padding: 30px auto;
+}
+
+a {
+  color: $accent;
+  text-decoration: none;
+  &:hover, &:focus {
     color: $accent;
+    font-weight: bolder;
     text-decoration: none;
-    &:hover, &:focus {
-      color: $accent;
-      font-weight: bolder;
-      text-decoration: none;
-    }
   }
+}
+
+.container {
+  margin: 20px;
+  text-align: center;
+}

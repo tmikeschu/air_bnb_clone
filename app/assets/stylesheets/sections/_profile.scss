@@ -1,0 +1,50 @@
+.user-profile {
+  margin: 20px;
+  .info {
+    .main {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      align-items: center;
+      img {
+        border-radius: 50%;
+        background: $gray;
+      }
+      section {
+        background: $accent;
+        color: white;
+        padding: 20px;
+        .description {
+          display: flex;
+          flex-flow: row-wrap;
+          align-items: center;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+  .couches {
+    margin-top: 20px;
+    width: 100%;
+    h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    ul {
+      display: flex;
+      flex-flow: row wrap;
+      width: 100%;
+      justify-content: space-around;
+      align-items: center;
+      li {
+        width: 30%;
+        text-align: center;
+        padding: 10px;
+        background: rgba(0, 0, 0, .1);
+        a {
+          color: $purple;
+        }
+      }
+    }
+  }
+}

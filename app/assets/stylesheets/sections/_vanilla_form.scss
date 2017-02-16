@@ -4,7 +4,6 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  height: 400px;
   justify-content: space-around;
   h1 {
     font-size: 36px;
@@ -14,11 +13,10 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      height: 20em;
       input {
         text-align: center;
         width: 50%;
-        margin: 0 auto;
+        margin: 20px auto;
         &[type="submit"] {
           background: $purple;
           border-radius: 5px;
@@ -33,11 +31,13 @@
           }
         }
       }
+      a {
+        margin: 20px 0;
+      }
       .login {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        height: 7em;
       }
     }
   }

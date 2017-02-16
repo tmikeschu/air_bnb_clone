@@ -1,0 +1,85 @@
+.couch-nights, .new-couch-photo {
+  margin: 20px;
+  h2 {
+    margin: 20px 0;
+  }
+  form {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    .dates {
+      margin: 20px auto;
+    }
+    input {
+      text-align: center;
+      width: 50%;
+      margin: 20px auto;
+      &[type="submit"] {
+        background: $purple;
+        border-radius: 5px;
+        border: none;
+        color: $light;
+        padding: 5px 0;
+        font-size: 1.5em;
+        width: 35%;
+        &:hover, &:focus {
+          background: $accent;
+        }
+      }
+    }
+  }
+}
+
+.reservation-show {
+  margin: 20px;
+  .heading {
+    background: $accent;
+    padding: 10px;
+    margin: 20px 0;
+    color: $light;
+    >p {
+      text-align: right;
+      font-size: 16px;
+    }
+  }
+  .messages {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    width: 100%;
+    .log {
+      text-align: right;
+      background: rgba(0, 0, 0, .1);
+      padding: 10px;
+    }
+    form {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      text-align: center;
+      .dates {
+        margin: 20px auto;
+      }
+      input {
+        text-align: center;
+        width: 50%;
+        margin: 20px auto;
+        &[type="submit"] {
+          background: $purple;
+          border-radius: 5px;
+          border: none;
+          color: $light;
+          padding: 5px;
+          font-size: 1.5em;
+          width: 35%;
+          &:hover, &:focus {
+            background: $accent;
+          }
+        }
+      }
+    }
+  }
+}
