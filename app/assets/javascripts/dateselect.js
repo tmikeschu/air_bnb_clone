@@ -8,10 +8,18 @@ $(document).on('ready page:load', function() {
     return [false];  
   }
   
-  $('#Check_In').datepicker();
-  $('#Check_Out').datepicker();
-  $('#First_Night').datepicker();
-  $('#Last_Night').datepicker();
+  $('#Check_In').datepicker({
+    minDate: 0
+  });
+  $('#Check_Out').datepicker({
+    minDate: 0
+  });
+  $('#First_Night').datepicker({
+    minDate: 0
+  });
+  $('#Last_Night').datepicker({
+    minDate: 0
+  });
   $('#Couch_Listing_Check_In').datepicker({
     beforeShowDay: enableAllTheseDays,
     minDate: 0,

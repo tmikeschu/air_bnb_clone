@@ -71,4 +71,14 @@ describe Reservation do
       expect(reservation.check_out).to eq check_out_night
     end
   end
+
+  describe "#check_out" do
+    it "returns the first night of the reservation by date" do
+      reservation = create(:reservation_with_couch)
+      reservation.nights << create(:night)
+
+      expected = reservation.couch.city
+      expect(reservation.location).to eq expected
+    end
+  end
 end

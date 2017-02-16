@@ -6,6 +6,7 @@ class Seed
     seed = Seed.new
     seed.remove_all_existing_data
     seed.create_users
+    seed.create_profiles
     seed.create_couches
     seed.create_nights
     seed.create_reservations
@@ -39,6 +40,20 @@ class Seed
     puts "#{number_of_users} users created"
   end
 
+  def create_profiles
+    number_of_profiles = User.count
+
+    profile_bar = ProgressBar.create(title: "Profiles", total: number_of_profiles)
+    number_of_profiles.times do |i|
+      Profile.create(description: Faker::Hipster.paragraph(2),
+                     image: "http://www.robohash.org/#{i}",
+                     user_id: i
+                     )
+      profile_bar.increment
+    end
+    puts "#{number_of_profiles} profiles created"
+  end
+
   def create_couches
     filename = Rails.root.join("db", "lib", "couch_locations.csv")
     couch_bar = ProgressBar.create(title: "Couches", total: 50)
@@ -56,6 +71,7 @@ class Seed
       }
 
       Couch.create!(couch_attributes)
+      Couch.last.photos.create!(title: "default", image: Rails.root.join("spec/fixtures/test_couch.png").open)
 
       couch_bar.increment
     end

@@ -1,30 +1,35 @@
-= @couch.name
-%br/
-= @couch.description
-%br/
-= @couch.host.first_name
-= @couch.host.last_name
-%br/
-- @couch.photos.each do |photo|
-  = image_tag(photo.image)
-%br/
-= @couch.street_address
-%br/
-= @couch.city
-%br/
-= @couch.state
-%br/
-= @couch.zipcode
-%br/
-= form_tag(reservations_path, method: 'post') do
-  
-  %section.dates#datepicker 
-    = text_field_tag "Couch_Listing_Check_In", placeholder="Check In"
-    = text_field_tag "Couch_Listing_Check_Out", placeholder="Check Out"
-    = hidden_field_tag "couch_id", @couch.id
+.couch-listing
+  %section.info
+    %article.main
+      - if @couch.default_thumb
+        = image_tag(@couch.default_thumb)
+      %h2
+        = @couch.name
+      %p
+        = @couch.description
+    %article.body
+      .couch_info
+        .name
+          host
+          %h3
+            = link_to("#{@couch.host.first_name}", user_profile_path(@couch.host.profile))
+        .city
+          location
+          %h3
+            = "#{@couch.city}, #{@couch.state}"
 
-    -if current_user
-      = hidden_field_tag "user_id", current_user.id
-      = submit_tag "Create Reservation"
-    -else
-      %h1 Please login to place a reservation.
+      .dates#datepicker
+        %h3 Want to book here?
+        = form_tag(reservations_path, method: 'post') do
+          = text_field_tag "Couch_Listing_Check_In", placeholder="Check In"
+          = text_field_tag "Couch_Listing_Check_Out", placeholder="Check Out"
+          = hidden_field_tag "couch_id", @couch.id
+
+          -if current_user
+            = hidden_field_tag "user_id", current_user.id
+            = submit_tag "Create Reservation"
+          -else
+            %h1 Please login to place a reservation.
+
+    %article.map
+      %h2 Map coming soon...
