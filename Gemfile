@@ -47,6 +47,8 @@ gem 'factory_girl_rails'
 gem 'faker'
 
 gem 'geocoder'
+gem 'gmaps4rails'
+
 # To access Ruby variables in JS files
 gem 'gon'
 

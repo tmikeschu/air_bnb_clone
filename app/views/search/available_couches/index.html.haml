@@ -13,6 +13,7 @@
           check_in: @query.check_in,            |
           check_out: @query.check_out))         |
 
-%iframe{:allowfullscreen => "", :frameborder => "0", :height => "300", :src => "https://www.google.com/maps/embed/v1/place?q=Denver&key=#{ENV['google_maps_api']}", :style => "border:0", :width => "300"}
+%div{:style => "width: 800px;"}
+  #map{:style => "width: 800px; height: 400px;"}
 
--
+
