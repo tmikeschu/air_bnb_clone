@@ -6,7 +6,4 @@ class User < ApplicationRecord
   has_many :reservations
   has_one  :profile, dependent: :destroy
 
-  def phone_number_legit
-    
-  end
 end
