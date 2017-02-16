@@ -17,7 +17,7 @@ describe "Viewing reservations" do
       visit user_reservations_path(host)
 
       expect(page).to have_content "My Hosting Reservations"
-      expect(page).to have_content reservation.couch_name
+      expect(page).to have_content reservation.couch_name.split.first
       expect(page).to have_content reservation.check_in
       expect(page).to have_content reservation.check_out
     end
@@ -40,7 +40,7 @@ describe "Viewing reservations" do
     expect(page).to have_content reservation.check_in
     expect(page).to have_content reservation.check_out
 
-    expect(page).to have_content host_as_traveler_reservation.couch_name
+    expect(page).to have_content host_as_traveler_reservation.couch_name.split.first
     expect(page).to have_content host_as_traveler_reservation.check_in
     expect(page).to have_content host_as_traveler_reservation.check_out
   end
