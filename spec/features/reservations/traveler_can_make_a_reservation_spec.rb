@@ -24,6 +24,7 @@ describe "Traveler" do
     end
 
     scenario "I can view available couches for a city and date range" do
+      visit root_path
       fill_in "Destination", with: couch_1.city
 
       fill_in "Check In", with: today.to_date_picker_format
