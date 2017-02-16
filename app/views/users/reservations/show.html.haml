@@ -5,7 +5,4 @@
   .messages
     = render partial: "form"
     .log
-      - if @reservation.messages.empty?
-        %p There are no messages for this reservation yet.  Feel free to send a message.
-      - else
-        = render partial: "messages"
+      = render partial: "messages"

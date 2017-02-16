@@ -7,7 +7,8 @@ class MessagesController < ApplicationController
     if @message.save
       ActionCable.server.broadcast('room_channel',
                                    content: @message.content,
-                                   author_name: current_user.author_name)
+                                   author_name: current_user.author_name,
+                                   created_at: @message.created_at)
       head :ok
     end
   end
