@@ -52,12 +52,17 @@ gem 'factory_girl_rails'
 gem 'faker'
 gem 'responders'
 
+gem 'geocoder'
 # To access Ruby variables in JS files
 gem 'gon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
+  
   gem 'rspec-rails', '~> 3.5'
   gem 'capybara'
   gem 'launchy'

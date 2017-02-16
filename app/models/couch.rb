@@ -5,15 +5,22 @@ class Couch < ApplicationRecord
   has_many :photos, class_name: "CouchPhoto"
   has_many :reservations, through: :nights
 
+  geocoded_by :street_city_address
+  after_validation :geocode
+
   scope :in_city, -> (city) { where("lower(city) = ?", city.downcase) }
 
   def self.search(params)
-    Couch.joins(:nights)
-      .in_city(params["Destination"])
-      .merge(
-        Night.between_check_in_check_out(to_date(params["Check In"]), to_date(params["Check Out"]))
-      )
-      .distinct
+    near(params["Destination"])
+    .joins(:nights)
+    .merge(
+      Night.between_check_in_check_out(to_date(params["Check In"]), to_date(params["Check Out"]))
+    )
+    .distinct
+  end
+
+  def street_city_address
+    "#{self.street_address}, #{self.city}"
   end
 
   def self.available_cities

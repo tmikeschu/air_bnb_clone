@@ -1,8 +1,4 @@
 class QueryPresenter
-  attr_reader :couches,
-              :city,
-              :check_in,
-              :check_out
 
   def initialize(search_params)
     @_search_params = search_params
@@ -17,7 +13,7 @@ class QueryPresenter
   end
 
   def couch_count
-    couches.count
+    couches.length
   end
 
   def city
