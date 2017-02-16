@@ -4,6 +4,10 @@ class Search::AvailableCouchesController < ApplicationController
   def index
     @search_params = search_params
     @query = QueryPresenter.present(search_params)
+    @hash = Gmaps4rails.build_markers(@query.couches) do |couch, marker|
+      marker.lat couch.latitude
+      marker.lng couch.longitude
+    end
     gon.available_cities = Couch.available_cities
   end
 

@@ -1,21 +1,5 @@
 %article.update_search
 
-%section.couches
-  - @query.couches.each do |couch|
-    %article
-      %h2
-        = couch.name
-      %p
-        = couch.description
-      = button_to('Reserve', reservations_path( |
-          couch_id: couch.id,                   |
-          check_in: @query.check_in,            |
-          check_out: @query.check_out))         |
-
-%div{:style => "width: 800px;"}
-  #map{:style => "width: 800px; height: 400px;"}
-
-
   = form_tag(search_path, method: 'get', remote: true) do
     %br
     = text_field_tag "Destination", value= @search_params["Destination"], class: "destination", id: "Available_Cities"

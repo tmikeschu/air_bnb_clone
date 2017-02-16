@@ -8,4 +8,18 @@
         = render @query.couches
 
   %article.map
-    %h2 Map coming soon...
+
+
+- content_for :scripts do
+  :javascript
+    handler = Gmaps.build('Google');
+    handler.buildMap({ 
+      provider: {},
+      internal: {class: 'map'}
+      },
+      function(){
+        markers = handler.addMarkers(#{raw @hash.to_json});
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+
