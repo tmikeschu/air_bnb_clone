@@ -18,7 +18,7 @@ This is the highest form of programmable flattery. A cloning exercise that doesn
 ### Features we're proud of 
   * Used Travis CI for continuous integration
   * 2-factor authentication via Twilio
-  * Geocoder used to integrate couch locations for display on Google Maps
+  * Geocoder used to integrate couch locations for display on Google Maps (COMING SOON!)
   * Upload photos of your pad with Carrierwave
   * Use of AJAX to update available pad Search
   * CSS: flexboxes on flexboxes
