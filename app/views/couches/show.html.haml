@@ -12,7 +12,7 @@
         .name
           host
           %h3
-            = link_to("#{@couch.host.first_name}", user_profile_path(@couch.host.profile))
+            = link_to("#{@couch.host.first_name}", user_profile_path(@couch.host, @couch.host.profile))
         .city
           location
           %h3

@@ -20,8 +20,18 @@
       %h3 What would you like to do?
       %ul
         %li
-          = link_to('Add a Couch', new_user_couch_path(current_user, @couch) )
+          = link_to('Add a Couch', new_user_couch_path(current_user, @couch))
         %li
           = link_to('Plan a Trip', root_path )
         %li
           = link_to('View Reservations', user_reservations_path(current_user) )
+
+  %article.couches
+    %h3 Couches
+    %ul
+      - current_user.couches.each do |couch|
+        %li
+          = link_to(user_couch_path(current_user, couch)) do
+            = couch.name
+            %br
+            = "(#{couch.city})"

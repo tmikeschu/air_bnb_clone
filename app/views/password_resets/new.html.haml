@@ -1,4 +1,6 @@
-= form_for(:password_resets, url: password_resets_path) do |f|
-  = f.label :email
-  = f.email_field :email
-  = f.submit "Find Account"
+.container
+  %p What's the email associated with your account?
+  = form_for(:password_resets, url: password_resets_path) do |f|
+    = f.label :email
+    = f.email_field :email
+    = f.submit "Find Account"

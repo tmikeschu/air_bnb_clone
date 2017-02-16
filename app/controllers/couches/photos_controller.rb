@@ -1,6 +1,7 @@
 class Couches::PhotosController < ApplicationController
   def new
     @photo = CouchPhoto.new
+    @couch = Couch.find(params["couch_id"])
   end
 
   def create
