@@ -5,6 +5,6 @@ FactoryGirl.define do
     last_name    { Faker::Name.last_name }
     email        { Faker::Internet.email }
     password     { "password" }
-    phone_number { Faker::PhoneNumber.unique.phone_number.gsub(/\D/,'')[0..9] }
+    phone_number { Faker::PhoneNumber.unique.phone_number }
   end
 end
