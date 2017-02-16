@@ -2,7 +2,14 @@ class Users::ReservationsController < UsersController
   before_action :verify_user, only: [:index]
 
   def index
-    @reservations = current_user.reservations
+    @travel_reservations = current_user.reservations
+    @host_reservations = Reservation.host_reservations(current_user)
+  end
+
+  def show
+    @reservation = Reservation.find(params[:id])
+    @messages = @reservation.messages.by_created_at
+    @message = Message.new
   end
 
   private

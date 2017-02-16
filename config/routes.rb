@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show] do
     scope module: :users do
+      resources :reservations, only: [:index, :show]
       resources :profiles, only: [:show]
-      resources :reservations, only: [:index]
       resources :couches, only: [:new, :create, :show]
     end
   end
@@ -26,7 +26,9 @@ Rails.application.routes.draw do
   get "/search", to: "search/available_couches#index"
   get "/update", to: "search/available_couches#update"
 
-  resources :reservations, only: [:create]
+  resources :reservations, only: [:create] do
+    resources :messages, only: [:create]
+  end
 
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :confirmations, only: [:new, :create]
