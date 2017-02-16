@@ -13,23 +13,6 @@ describe "Listing reservation messages" do
     reservation.nights << night
   end
 
-  context "given there are no messages" do
-    scenario "an informative sentence is present" do
-      stub_login(traveler)
-      visit user_reservations_path(traveler)
-      click_on reservation.id
-
-      expect(page).to have_current_path(user_reservation_path(traveler, reservation))
-      expect(page).to have_content couch.name
-      expect(page).to have_content traveler.first_name
-      expect(page).to have_content host.first_name
-      expect(page).to have_content reservation.check_in
-      expect(page).to have_content reservation.check_out
-      expect(page).to have_content "There are no messages for this reservation yet.  Feel free to send a message."
-      expect(page).to have_selector(:link_or_button, "Post message")
-    end
-  end
-
   context "given there are messages" do
     let!(:host_message) { create(:message, author: host, reservation: reservation, created_at: Date.current - 1.days) }
     let!(:traveler_message) { create(:message, author: traveler, reservation: reservation, created_at: Date.current) }
