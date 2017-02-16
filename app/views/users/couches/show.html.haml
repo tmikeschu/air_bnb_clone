@@ -1,9 +1,15 @@
-- @couch.photos.each do |photo|
-  = image_tag(photo.image)
-= link_to("Add Couch Photos", new_couch_photo_path(@couch))
-%br
-= link_to('Add Availability', new_couch_night_path(@couch))
-%br
-= link_to('Host\'s Profile', user_profile_path(@couch.user_id, @couch.host.profile))
-- @nights.each do |night|
-  = night.date
+%article.user_couch
+  - @couch.photos.each do |photo|
+    = image_tag(photo.image)
+
+  %section.nights
+    %h3 Available Nights
+    %ul
+      - @nights.each do |night|
+        %li
+          = night.date
+
+  %section.links
+    = link_to("Add Couch Photos", new_couch_photo_path(@couch))
+    = link_to('Add Availability', new_couch_night_path(@couch))
+    = link_to('Host\'s Profile', user_profile_path(@couch.user_id, @couch.host.profile))

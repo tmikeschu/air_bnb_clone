@@ -1,0 +1,11 @@
+%p
+  = "#{pluralize(@query.couch_count, "couch")} in #{@query.city} available from #{@query.check_in} to #{@query.check_out}"
+.available-couches
+  %article.results
+
+    %section
+      #couches
+        = render @query.couches
+
+  %article.map
+    %h2 Map coming soon...
