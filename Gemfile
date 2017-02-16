@@ -53,6 +53,8 @@ gem 'faker'
 gem 'responders'
 
 gem 'geocoder'
+gem 'gmaps4rails'
+
 # To access Ruby variables in JS files
 gem 'gon'
 

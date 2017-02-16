@@ -236,6 +236,7 @@ GEM
     geocoder (1.4.3)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
     gon (6.1.0)
       actionpack (>= 3.0)
       json
@@ -443,6 +444,7 @@ DEPENDENCIES
   figaro
   fog
   geocoder
+  gmaps4rails
   gon
   haml-rails (~> 0.9)
   jquery-rails
