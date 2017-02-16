@@ -1,12 +1,19 @@
-%p
-  = "#{pluralize(@query.couch_count, "couch")} in #{@query.city} available starting on #{@query.check_in}"
-.available-couches
-  %article.results
+%article.update_search
 
-    %section
-      #couches
-        = render @couches
-    = will_paginate @couches
+  = form_tag(search_path, method: 'get', remote: true) do
+    %br
+    = text_field_tag "Destination", value= @search_params["Destination"], class: "destination", id: "Available_Cities"
+    = label_tag "Destination"
+    %br
+    = text_field_tag "Check In", value= @search_params["Check In"], class: "check_in"
+    = label_tag "Check In"
+    %br
+    = text_field_tag "Check Out", value= @search_params["Check Out"], class: "check_out"
+    = label_tag "Check Out"
+    %br
+    = submit_tag "Update Search"
+    %br
 
-  %article.map
-    %h2 Map coming soon...
+    #search_grid
+      = render partial: 'search/available_couches/search', locals: {query: @query}
+

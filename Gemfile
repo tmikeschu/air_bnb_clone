@@ -49,6 +49,7 @@ gem 'doorkeeper'
 gem 'figaro'
 gem 'factory_girl_rails'
 gem 'faker'
+gem 'responders'
 
 # To access Ruby variables in JS files
 gem 'gon'
