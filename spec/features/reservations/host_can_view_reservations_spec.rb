@@ -36,7 +36,7 @@ describe "Viewing reservations" do
     stub_login(host)
     visit user_reservations_path(host)
 
-    expect(page).to have_content reservation.couch_name
+    expect(page).to have_content reservation.couch_name.split.first
     expect(page).to have_content reservation.check_in
     expect(page).to have_content reservation.check_out
 
