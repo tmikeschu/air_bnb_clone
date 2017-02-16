@@ -52,12 +52,19 @@ gem 'factory_girl_rails'
 gem 'faker'
 gem 'responders'
 
+gem 'geocoder'
+gem 'gmaps4rails'
+
 # To access Ruby variables in JS files
 gem 'gon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
+  
   gem 'rspec-rails', '~> 3.5'
   gem 'capybara'
   gem 'launchy'
@@ -76,6 +83,7 @@ group :test do
   gem 'webmock'
   gem "simplecov"
   gem "codeclimate-test-reporter", "~> 1.0.0"
+  gem "selenium-webdriver", '2.53.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

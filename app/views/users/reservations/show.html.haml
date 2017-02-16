@@ -1,0 +1,8 @@
+.reservation-show
+  .heading
+    %h3= "#{@reservation.traveler_first_name} staying on #{@reservation.couch_name} of #{@reservation.host_first_name}"
+    %p= "From #{@reservation.check_in} to #{@reservation.check_out}"
+  .messages
+    = render partial: "form"
+    .log
+      = render partial: "messages"

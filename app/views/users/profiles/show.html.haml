@@ -1,8 +1,21 @@
-= @profile.user.first_name.capitalize
-= @profile.user.last_name.capitalize[0]
-'s Profile:
-%br/
-= image_tag @profile.image
-%br/
-Description:
-%p= @profile.description
+.user-profile
+  %section.info
+    %article.main
+      = image_tag @profile.image
+      %section
+        %h2
+          = @profile.user_name
+        .description
+          %h3 About:
+          %p
+            = @profile.description
+
+  %section.couches
+    %h3 Couches
+    %ul
+      - @profile.user.couches.each do |couch|
+        %li
+          = link_to(couch_path(couch)) do
+            = couch.name
+            %br
+            = "(#{couch.city})"

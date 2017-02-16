@@ -9,26 +9,26 @@ $(document).on('ready page:load', function() {
   }
   
   $('#Check_In').datepicker({
-    minDate: 0
+    defaultDate: '2/1/2017'
   });
   $('#Check_Out').datepicker({
-    minDate: 0
+    defaultDate: '2/1/2017'
   });
   $('#First_Night').datepicker({
-    minDate: 0
+    defaultDate: '2/1/2017'
   });
   $('#Last_Night').datepicker({
-    minDate: 0
+    defaultDate: '2/1/2017'
   });
   $('#Couch_Listing_Check_In').datepicker({
     beforeShowDay: enableAllTheseDays,
-    minDate: 0,
+    defaultDate: '2/1/2017',
     numberOfMonths: 3,
     showButtonPanel: true
   });
   $('#Couch_Listing_Check_Out').datepicker({
     beforeShowDay: enableAllTheseDays,
-    minDate: 0,
+    defaultDate: '2/1/2017',
     numberOfMonths: 3,
     showButtonPanel: true
   });

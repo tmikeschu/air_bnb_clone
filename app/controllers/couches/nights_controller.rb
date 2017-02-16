@@ -2,6 +2,7 @@ class Couches::NightsController < ApplicationController
 
   def new
     @night = Night.new
+    gon.available_cities = Couch.available_cities
   end
 
   def create

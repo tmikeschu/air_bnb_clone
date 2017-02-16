@@ -35,7 +35,19 @@ ActiveRecord::Schema.define(version: 20170215190021) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "user_id"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["user_id"], name: "index_couches_on_user_id", using: :btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "reservation_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["reservation_id"], name: "index_messages_on_reservation_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "nights", force: :cascade do |t|
@@ -116,6 +128,8 @@ ActiveRecord::Schema.define(version: 20170215190021) do
 
   add_foreign_key "couch_photos", "couches"
   add_foreign_key "couches", "users"
+  add_foreign_key "messages", "reservations"
+  add_foreign_key "messages", "users"
   add_foreign_key "nights", "couches"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"

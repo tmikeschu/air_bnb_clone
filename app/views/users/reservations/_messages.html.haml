@@ -1,0 +1,5 @@
+%section#messages-table
+  - @messages.each do |message|
+    = message.author_name
+    = display_time_and_date(message.created_at)
+    %p= message.content
