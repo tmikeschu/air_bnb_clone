@@ -1,5 +1,5 @@
 class Seed
-  require 'csv'
+  require "csv"
   attr_reader :sample_user
 
   def self.start
@@ -29,12 +29,12 @@ class Seed
 
     user_bar = ProgressBar.create(title: "Users", total: number_of_users)
     number_of_users.times do
-      FactoryGirl.create(:user)
+      FactoryBot.create(:user)
       user_bar.increment
     end
 
     # generate user for developer log-in
-    @sample_user = FactoryGirl.create(:user, email: "user@example.com", phone_number: 111_111_1111)
+    @sample_user = FactoryBot.create(:user, email: "user@example.com", phone_number: 111_111_1111)
 
     user_bar.finish
     puts "#{number_of_users} users created"
@@ -47,8 +47,7 @@ class Seed
     number_of_profiles.times do |i|
       Profile.create(description: Faker::Hipster.paragraph(2),
                      image: "http://www.robohash.org/#{i}",
-                     user_id: i
-                     )
+                     user_id: i)
       profile_bar.increment
     end
     profile_bar.finish
@@ -60,15 +59,14 @@ class Seed
     couch_bar = ProgressBar.create(title: "Couches", total: 50)
 
     CSV.foreach(filename, headers: true) do |row|
-
       couch_attributes = {
         name: Faker::Ancient.god + " " + Faker::Superhero.suffix + " of " + Faker::HarryPotter.location,
         description: Faker::StarWars.quote,
-        street_address: row['street_address'],
-        zipcode:  row['zipcode'],
-        city: row['city'],
-        state: row['state'],
-        host: User.all.sample
+        street_address: row["street_address"],
+        zipcode: row["zipcode"],
+        city: row["city"],
+        state: row["state"],
+        host: User.all.sample,
       }
 
       Couch.create!(couch_attributes)
@@ -76,11 +74,10 @@ class Seed
 
       couch_bar.increment
     end
-    sample_user.couches << [FactoryGirl.create(:couch)]
+    sample_user.couches << [FactoryBot.create(:couch)]
     couch_bar.finish
     puts "#{Couch.count} couches imported"
   end
-
 
   def create_nights
     puts "Creating available nights for couches"
@@ -135,7 +132,7 @@ class Seed
 
   def create_reservations
     reservation_bar = ProgressBar.create(title: "Reservations", total: 200)
-    two_thirds_of_all_users = User.take(User.count * 2/3)
+    two_thirds_of_all_users = User.take(User.count * 2 / 3)
     two_thirds_of_all_users << sample_user
 
     two_thirds_of_all_users.each do |user|

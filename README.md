@@ -33,6 +33,7 @@ We believe in starting off on the right [♫](https://gist.github.com/tmikeschu/
 git clone https://github.com/tmikeschu/air_bnb_clone.git
 cd air_bnb_clone
 bundle install
+brew install imagemagick
 rake db:{create,setup}
 clear & rspec
 rails server
