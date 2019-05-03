@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :reservation do
     traveler { create(:user) }
     status { 0 }

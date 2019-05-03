@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :couch do
     cities = [{
                 street_address: "233 S Wacker Dr",

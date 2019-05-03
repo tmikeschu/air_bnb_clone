@@ -48,7 +48,7 @@ gem 'doorkeeper'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'figaro'
-gem 'factory_girl_rails'
+gem 'factory_bot_rails'
 gem 'faker'
 gem 'responders'
 
