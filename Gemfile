@@ -63,6 +63,7 @@ group :development, :test do
 
   gem "pry-rescue"
   gem "pry-stack_explorer"
+  gem "rb-readline"
 
   gem "rspec-rails", "~> 3.5"
   gem "capybara"
