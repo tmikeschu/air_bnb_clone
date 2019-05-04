@@ -1,4 +1,6 @@
-# README
+[![Build Status](https://travis-ci.org/tmikeschu/padcrash.svg?branch=master)](https://travis-ci.org/tmikeschu/padcrash)
+
+# Padcrash
 
 This is the highest form of programmable flattery. A cloning exercise that doesn't involve sheep, but does mimic the functionality of services such as Airbnb.
 
