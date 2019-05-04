@@ -2,11 +2,12 @@ language: ruby
 services:
   - postgresql
 env:
-  - TEST_DIRECTORY=spec/models
-  - TEST_DIRECTORY=spec/features
+  - MODEL_SPECS=spec/models
+  - FEATURE_SPECS=spec/features
 before_script:
   - psql -c 'create database air_bnb_clone_test;' -U postgres
 script:
-  - xvfb-run bundle exec rspec $TEST_DIRECTORY
+  - xvfb-run bundle exec rspec $MODEL_SPECS
+  - xvfb-run bundle exec rspec $FEATURE_SPECS
 cache: bundler
 sudo: false
