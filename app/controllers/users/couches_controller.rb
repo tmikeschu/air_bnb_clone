@@ -10,6 +10,7 @@ class Users::CouchesController < UsersController
     couch = current_user.couches.new(couch_params)
     if couch.save
       flash[:success] = "Couch Created!"
+      couch.geocode
       redirect_to user_couch_path(current_user, couch)
     else
       flash[:danger] = couch.errors.full_messages.join(", ")

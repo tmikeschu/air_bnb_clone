@@ -6,7 +6,6 @@ class Couch < ApplicationRecord
   has_many :reservations, through: :nights
 
   geocoded_by :street_city_address
-  after_validation :geocode
 
   scope :in_city, -> (city) { where("lower(city) = ?", city.downcase) }
 
