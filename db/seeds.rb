@@ -60,8 +60,8 @@ class Seed
 
     CSV.foreach(filename, headers: true) do |row|
       couch_attributes = {
-        name: Faker::Ancient.god + " " + Faker::Superhero.suffix + " of " + Faker::HarryPotter.location,
-        description: Faker::StarWars.quote,
+        name: Faker::Ancient.god + " " + Faker::Superhero.suffix + " of " + Faker::Movies::HarryPotter.location,
+        description: Faker::Movies::StarWars.quote,
         street_address: row["street_address"],
         zipcode: row["zipcode"],
         city: row["city"],
@@ -70,7 +70,7 @@ class Seed
       }
 
       Couch.create!(couch_attributes)
-      Couch.last.photos.create!(title: "default", image: Rails.root.join("spec/fixtures/test_couch.png").open)
+      # Couch.last.photos.create!(title: "default", image: Rails.root.join("spec/fixtures/test_couch.png").open)
 
       couch_bar.increment
     end

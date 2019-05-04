@@ -23,7 +23,7 @@ FactoryBot.define do
 
     this_city = cities.sample
 
-    name           { Faker::GameOfThrones.character }
+    name           { Faker::TvShows::GameOfThrones.character }
     description    { Faker::Hipster.sentence }
     street_address { this_city[:street_address] }
     city           { this_city[:city] }
