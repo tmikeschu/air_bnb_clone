@@ -24,17 +24,18 @@ class Users::CouchesController < UsersController
   end
 
   private
-    def couch_params
-      params.require(:couch).permit(:name,
-                                    :description,
-                                    :street_address,
-                                    :city,
-                                    :state,
-                                    :zipcode,
-                                    :host)
-    end
 
-    def verify_user
-      render file: "public/404", status: 404 unless current_user && current_user.id == params["user_id"].to_i
-    end
+  def couch_params
+    params.require(:couch).permit(:name,
+      :description,
+      :street_address,
+      :city,
+      :state,
+      :zipcode,
+      :host)
+  end
+
+  def verify_user
+    render file: "public/404", status: 404 unless current_user && current_user.id == params["user_id"].to_i
+  end
 end

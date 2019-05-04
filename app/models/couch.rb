@@ -5,21 +5,33 @@ class Couch < ApplicationRecord
   has_many :photos, class_name: "CouchPhoto"
   has_many :reservations, through: :nights
 
-  geocoded_by :street_city_address
+  geocoded_by :address
 
-  scope :in_city, -> (city) { where("lower(city) = ?", city.downcase) }
+  scope :in_city, ->(city) { where("lower(city) = ?", city.downcase) }
 
-  def self.search(params)
-    near(params["Destination"])
-    .joins(:nights)
-    .merge(
-      Night.between_check_in_check_out(to_date(params["Check In"]), to_date(params["Check Out"]))
-    )
-    .distinct
+  class << self
+    def search(params)
+      near(params["Destination"])
+        .joins(:nights)
+        .merge(
+          Night.between_check_in_check_out(to_date(params["Check In"]), to_date(params["Check Out"]))
+        )
+        .distinct
+    end
+
+    def available_cities
+      Couch.all.pluck(:city).uniq
+    end
+
+    private
+
+    def to_date(string)
+      Date.strptime(string, "%m/%d/%Y")
+    end
   end
 
-  def street_city_address
-    "#{self.street_address}, #{self.city}"
+  def address
+    [street_address, city, state, zipcode].join(", ")
   end
 
   def self.available_cities
@@ -27,16 +39,10 @@ class Couch < ApplicationRecord
   end
 
   def available_nights
-    self.nights.where(reservation_id: nil).pluck(:date)
+    nights.where(reservation_id: nil).pluck(:date)
   end
 
   def default_thumb
-    photos.first.image.thumb if photos.first
+    photos.first&.image&.thumb
   end
-
-  private
-
-    def self.to_date(string)
-      Date.strptime(string, "%m/%d/%Y")
-    end
 end

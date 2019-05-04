@@ -1,5 +1,10 @@
-require 'rails_helper'
-include ModelHelpers
+require "rails_helper"
+
+class Date
+  def to_date_picker_format
+    strftime("%m/%d/%Y")
+  end
+end
 
 RSpec.describe Couch, type: :model do
   context "validations" do
@@ -19,8 +24,16 @@ RSpec.describe Couch, type: :model do
 
   context "methods" do
     before do
-      create_list(:couch, 2, street_address: "1311 17th St", city: "Denver", state: "CO", zipcode: "80123")
-      create(:couch, street_address: "105 NW Railroad Ave", city: "Hammond", state: "LA", zipcode: "46320")
+      couches = [
+        *create_list(:couch, 2, street_address: "1311 17th St", city: "Denver", state: "CO", zipcode: "80123"),
+        create(:couch, street_address: "105 NW Railroad Ave", city: "Hammond", state: "LA", zipcode: "46320"),
+      ]
+      couches.each do |couch|
+        VCR.use_cassette("couch_#{couch.street_address}", allow_playback_repeats: true) do
+          couch.geocode
+          couch.save
+        end
+      end
     end
 
     describe ".in_city()" do
@@ -49,24 +62,21 @@ RSpec.describe Couch, type: :model do
         params = {
           "Destination" => "DENVer",
           "Check In" => Date.yesterday.to_date_picker_format,
-          "Check Out" => Date.tomorrow.tomorrow.to_date_picker_format
+          "Check Out" => Date.tomorrow.tomorrow.to_date_picker_format,
         }
-        result = Couch.search(params)
 
-        expect(result.length).to eq 1
-        expect(result).to be_a Couch::ActiveRecord_Relation
-      end
+        VCR.use_cassette("couch_near_1") do
+          result = Couch.search(params)
+          expect(result.length).to eq 1
+          expect(result).to be_a Couch::ActiveRecord_Relation
+        end
 
-      it "returns couches for a given city and date range" do
-        params = {
-          "Destination" => "Denver",
-          "Check In" => Date.yesterday.to_date_picker_format,
-          "Check Out" => Date.tomorrow.tomorrow.to_date_picker_format
-        }
-        result = Couch.search(params)
-
-        expect(result.length).to eq 1
-        expect(result).to be_a Couch::ActiveRecord_Relation
+        VCR.use_cassette("couch_near_2") do
+          params["Destination"] = "Denver"
+          result = Couch.search(params)
+          expect(result.length).to eq 1
+          expect(result).to be_a Couch::ActiveRecord_Relation
+        end
       end
     end
   end
