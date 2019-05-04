@@ -1,7 +1,6 @@
 class QueryPresenter
-
   def initialize(search_params)
-    @_search_params = search_params
+    @search_params = search_params
   end
 
   def self.present(search_params)
@@ -30,7 +29,5 @@ class QueryPresenter
 
   private
 
-    def search_params
-      @_search_params
-    end
+  attr_reader :search_params
 end

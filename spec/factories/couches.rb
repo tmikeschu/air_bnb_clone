@@ -31,4 +31,14 @@ FactoryBot.define do
     zipcode        { this_city[:zipcode] }
     host           { create(:user) }
   end
+
+  trait :phillip do
+    name           { "Phillip" }
+    description    { "A good listener" }
+    street_address { "123 Elm St" }
+    city           { "Denver" }
+    state          { "CO" }
+    zipcode        { 80218 }
+    host           { create(:user) }
+  end
 end

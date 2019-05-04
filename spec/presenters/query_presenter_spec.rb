@@ -1,35 +1,42 @@
 require "rails_helper"
-include ModelHelpers
+class Date
+  def to_date_picker_format
+    strftime("%m/%d/%Y")
+  end
+end
 
 describe QueryPresenter do
-  let!(:couch) {create(:couch)}
+  let!(:couch) {create(:couch, :phillip)}
   let!(:couch_2) {create(:couch)}
+
   before do
     couch.nights << create(:night, date: Date.current)
     couch.nights << create(:night, date: Date.tomorrow)
+    VCR.use_cassette("couch_build_phillip") do
+      couch.geocode
+      couch.save
+    end
     @search_params = {
       "Destination" => couch.city,
-      "Check In"    => Date.yesterday.to_date_picker_format,
-      "Check Out"   => Date.tomorrow.to_date_picker_format
+      "Check In" => Date.yesterday.to_date_picker_format,
+      "Check Out" => Date.tomorrow.to_date_picker_format,
     }
     @presenter = QueryPresenter.new(@search_params)
   end
 
   describe ".present()" do
     it "returns an instance of QueryPresenter" do
-      expect(QueryPresenter.present(@search_params))
-    end
-  end
-
-  describe "#couches" do
-    it "returns couch objects" do
-      expect(@presenter.couches).to be_a Couch::ActiveRecord_Relation
+      VCR.use_cassette("couch_near_phillip") do
+        expect(QueryPresenter.present(@search_params))
+      end
     end
   end
 
   describe "#couch_count" do
     it "returns count of couches" do
-      expect(@presenter.couch_count).to eq 1
+      VCR.use_cassette("couch_near_phillip") do
+        expect(@presenter.couch_count).to eq 1
+      end
     end
   end
 

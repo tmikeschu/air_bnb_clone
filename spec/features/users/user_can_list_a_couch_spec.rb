@@ -18,20 +18,17 @@ describe "User" do
     end
 
     it "can create a new couch" do
-      couch = build(:couch)
-      VCR.use_cassette("couch_build") do
+      VCR.use_cassette("couch_build_phillip") do
         visit user_path(user)
         click_on("Add a Couch")
 
         expect(current_path).to eq(new_user_couch_path(user.id))
 
+        couch_data = build(:couch, :phillip)
         within("form") do
-          fill_in "couch_name", with: "#{couch.name} XXL"
-          fill_in "couch_description", with: "#{couch.description}HUGE"
-          fill_in "couch_street_address", with: couch.street_address
-          fill_in "couch_city", with: couch.city
-          fill_in "couch_state", with: couch.state
-          fill_in "couch_zipcode", with: couch.zipcode
+          %i[name description street_address city state zipcode].each do |attr|
+            fill_in "couch_#{attr}", with: couch_data.send(attr)
+          end
           click_on "Add Couch"
         end
 
