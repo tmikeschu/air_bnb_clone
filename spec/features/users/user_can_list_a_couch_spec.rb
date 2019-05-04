@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-describe 'User' do
+describe "User" do
   let!(:profile) { create(:profile)}
   let!(:user)    { profile.user}
 
@@ -8,8 +8,8 @@ describe 'User' do
     stub_login(user)
   end
 
-  context 'can host couches from their page' do
-    it 'can have choice to add couch' do
+  context "can host couches from their page" do
+    it "can have choice to add couch" do
       visit user_path(user)
 
       expect(page).to have_content(user.first_name)
@@ -17,32 +17,34 @@ describe 'User' do
       expect(page).to have_link("Add a Couch")
     end
 
-    it 'can create a new couch' do
-      couch = create(:couch)
-      visit user_path(user)
-      click_on("Add a Couch")
+    it "can create a new couch" do
+      couch = build(:couch)
+      VCR.use_cassette("couch_build") do
+        visit user_path(user)
+        click_on("Add a Couch")
 
-      expect(current_path).to eq(new_user_couch_path(user.id))
+        expect(current_path).to eq(new_user_couch_path(user.id))
 
-      within("form") do
-        fill_in "couch_name", with: "#{couch.name} XXL"
-        fill_in "couch_description", with: "#{couch.description}HUGE"
-        fill_in "couch_street_address", with: couch.street_address
-        fill_in "couch_city", with: couch.city
-        fill_in "couch_state", with: couch.state
-        fill_in "couch_zipcode", with: couch.zipcode
-        click_on "Add Couch"
+        within("form") do
+          fill_in "couch_name", with: "#{couch.name} XXL"
+          fill_in "couch_description", with: "#{couch.description}HUGE"
+          fill_in "couch_street_address", with: couch.street_address
+          fill_in "couch_city", with: couch.city
+          fill_in "couch_state", with: couch.state
+          fill_in "couch_zipcode", with: couch.zipcode
+          click_on "Add Couch"
+        end
+
+        couch = Couch.last
+
+        expect(current_path).to eq(user_couch_path(user, couch))
+        expect(page).to have_link("Add Availability")
       end
-
-      couch = Couch.last
-
-      expect(current_path).to eq(user_couch_path(user, couch))
-      expect(page).to have_link("Add Availability")
     end
   end
 
-  context 'sad path' do
-    it 'will re route to new couch path' do
+  context "sad path" do
+    it "will re route to new couch path" do
       visit user_path(user)
       click_on "Add a Couch"
 
