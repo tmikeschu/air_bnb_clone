@@ -3,12 +3,12 @@ include ModelHelpers
 
 describe "Traveler" do
   describe "As a registered user" do
-    let!(:profile)  { create(:profile) }
-    let!(:traveler) { create(:user) }
-    let!(:couch_1)  { create(:couch, street_address: "1311 17th St", city: "Denver", state: "CO", zipcode: "80123", user_id: profile.user_id) }
-    let!(:couch_2)  { create(:couch, street_address: "230 W 200 S", city: "Salt Lake City", state: "UT", name: "NEVER GONNA REPEAT") }
-    let!(:today) { Date.current }
-    let!(:tomorrow) { Date.tomorrow }
+    let(:profile) { create(:profile) }
+    let(:traveler) { create(:user) }
+    let(:couch_1)  { create(:couch, :denver, user_id: profile.user_id) }
+    let(:couch_2)  { create(:couch, :slc) }
+    let(:today)    { Date.current }
+    let(:tomorrow) { Date.tomorrow }
 
     before do
       visit root_path

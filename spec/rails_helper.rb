@@ -1,12 +1,12 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path("../../config/environment", __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'spec_helper'
-require 'rspec/rails'
-require 'capybara/rails'
-require 'vcr'
+require "spec_helper"
+require "rspec/rails"
+require "capybara/rails"
+require "vcr"
 require "simplecov"
 SimpleCov.start "rails" do
   add_filter "/app/channels/application_cable" # Ignores any file containing "/vendor/" in its path.
@@ -14,8 +14,7 @@ SimpleCov.start "rails" do
 end
 
 VCR.configure do |config|
-  config.cassette_library_dir = Rails.root.join("spec","fixtures","vcr_cassettes")
-  config.ignore_hosts 'maps.googleapis.com'
+  config.cassette_library_dir = Rails.root.join("spec", "fixtures", "vcr_cassettes")
   config.hook_into :webmock
   config.ignore_localhost = true
   # config.filter_sensitive_data("<SENSITIVE_DATA>") { ENV["SENSITIVE_DATA"] }
@@ -42,7 +41,7 @@ end
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-Dir[Rails.root.join('spec/support/*.rb')].each { |f| require f }
+Dir[Rails.root.join("spec/support/*.rb")].each { |f| require f }
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -87,7 +86,7 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
   end
 
-  config.before(:each, :js => true) do
+  config.before(:each, js: true) do
     DatabaseCleaner.strategy = :truncation
   end
 
@@ -98,5 +97,4 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
 end

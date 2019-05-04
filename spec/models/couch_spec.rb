@@ -20,7 +20,7 @@ RSpec.describe Couch, type: :model do
   context "methods" do
     before do
       couches = [
-        *create_list(:couch, 2, street_address: "1311 17th St", city: "Denver", state: "CO", zipcode: "80123"),
+        *create_list(:couch, 2, :denver),
         create(:couch, street_address: "105 NW Railroad Ave", city: "Hammond", state: "LA", zipcode: "46320"),
       ]
       couches.each do |couch|

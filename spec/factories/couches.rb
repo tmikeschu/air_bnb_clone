@@ -38,7 +38,22 @@ FactoryBot.define do
     street_address { "123 Elm St" }
     city           { "Denver" }
     state          { "CO" }
-    zipcode        { 80218 }
-    host           { create(:user) }
+    zipcode        { "80218" }
+  end
+
+  trait :denver do
+    name           { "Denver Donna" }
+    street_address { "1311 17th St" }
+    city           { "Denver" }
+    state          { "CO" }
+    zipcode        { "80123" }
+  end
+
+  trait :slc do
+    name           { "SLC Punk" }
+    street_address { "230 W 200 S" }
+    city           { "Salt Lake City" }
+    state          { "UT" }
+    zipcode        { "84101" }
   end
 end
