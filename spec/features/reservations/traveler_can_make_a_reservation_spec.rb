@@ -7,11 +7,21 @@ describe "Traveler" do
     let!(:traveler) { create(:user) }
     let!(:couch_1)  { create(:couch, street_address: "1311 17th St", city: "Denver", state: "CO", zipcode: "80123", user_id: profile.user_id) }
     let!(:couch_2)  { create(:couch, street_address: "230 W 200 S", city: "Salt Lake City", state: "UT", name: "NEVER GONNA REPEAT") }
-    let!(:today)  { Date.current }
-    let!(:tomorrow)  { Date.tomorrow }
+    let!(:today) { Date.current }
+    let!(:tomorrow) { Date.tomorrow }
 
     before do
       visit root_path
+      VCR.use_cassette("couch_#{couch_1.street_address}") do
+        couch_1.geocode
+        couch_1.save
+      end
+
+      VCR.use_cassette("couch_#{couch_2.street_address}") do
+        couch_2.geocode
+        couch_2.save
+      end
+
       couch_1.nights << create(:night, date: today)
       couch_1.nights << create(:night, date: tomorrow)
       couch_2.nights << create(:night, date: today)
@@ -20,50 +30,57 @@ describe "Traveler" do
     end
 
     scenario "I can view available couches for a city and date range" do
-      fill_in "Destination", with: couch_1.city
+      VCR.use_cassette("couch_search_denver", allow_playback_repeats: true) do
+        fill_in "Destination", with: couch_1.city
 
-      fill_in "Check In", with: today.to_date_picker_format
-      fill_in "Check Out", with: tomorrow.to_date_picker_format
-      click_on "Find Pad"
+        fill_in "Check In", with: today.to_date_picker_format
+        fill_in "Check Out", with: tomorrow.to_date_picker_format
+        click_on "Find Pad"
 
-      expect(current_path).to eq(search_path)
-      expect(page).to have_content "1 couch in #{couch_1.city} available from #{today.to_date_picker_format} to #{tomorrow.to_date_picker_format}"
-      expect(page).to have_content couch_1.name
-      expect(page).to have_content couch_1.description
-      expect(page).not_to have_content couch_2.name
+        expect(current_path).to eq(search_path)
+        expect(page).to have_content "1 couch in #{couch_1.city} available from #{today.to_date_picker_format} to #{tomorrow.to_date_picker_format}"
+        expect(page).to have_content couch_1.name
+        expect(page).to have_content couch_1.description
+        expect(page).not_to have_content couch_2.name
+      end
     end
 
-    scenario "I can update my search for a city an date range" do 
-      fill_in "Destination", with: couch_1.city
+    scenario "I can update my search for a city an date range" do
+      VCR.use_cassette("couch_search_denver", allow_playback_repeats: true) do
+        fill_in "Destination", with: couch_1.city
 
-      fill_in "Check In", with: today.to_date_picker_format
-      fill_in "Check Out", with: tomorrow.to_date_picker_format
-      click_on "Find Pad"
+        fill_in "Check In", with: today.to_date_picker_format
+        fill_in "Check Out", with: tomorrow.to_date_picker_format
+        click_on "Find Pad"
 
-      expect(current_path).to eq(search_path)
-      expect(page).to have_content "1 couch in #{couch_1.city} available from #{today.to_date_picker_format} to #{tomorrow.to_date_picker_format}"
-      expect(page).to have_content couch_1.name
-      expect(page).to have_content couch_1.description
-      expect(page).not_to have_content couch_2.name
+        expect(current_path).to eq(search_path)
+        expect(page).to have_content "1 couch in #{couch_1.city} available from #{today.to_date_picker_format} to #{tomorrow.to_date_picker_format}"
+        expect(page).to have_content couch_1.name
+        expect(page).to have_content couch_1.description
+        expect(page).not_to have_content couch_2.name
+      end
 
-      fill_in "Destination", with: couch_2.city
-      click_on "Update Search"
+      VCR.use_cassette("couch_search_slc", allow_playback_repeats: true) do
+        fill_in "Destination", with: couch_2.city
+        click_on "Update Search"
 
-      expect(current_path).to eq(search_path)
-      expect(page).to have_content "1 couch in #{couch_2.city} available from #{today.to_date_picker_format} to #{tomorrow.to_date_picker_format}"
-      expect(page).to have_content couch_2.name
-      expect(page).to have_content couch_2.description
-      expect(page).not_to have_content couch_1.name
+        expect(current_path).to eq(search_path)
+        expect(page).to have_content "1 couch in #{couch_2.city} available from #{today.to_date_picker_format} to #{tomorrow.to_date_picker_format}"
+        expect(page).to have_content couch_2.name
+        expect(page).to have_content couch_2.description
+        expect(page).not_to have_content couch_1.name
+      end
     end
-
 
     scenario "I can visit a couch page" do
-      visit search_path("Destination": couch_1.city,
-                        "Check In": today.to_date_picker_format,
-                        "Check Out": tomorrow.to_date_picker_format)
-      first(:link, "View Couch").click
+      VCR.use_cassette("couch_search_denver", allow_playback_repeats: true) do
+        visit search_path("Destination": couch_1.city,
+                          "Check In": today.to_date_picker_format,
+                          "Check Out": tomorrow.to_date_picker_format)
+        first(:link, "View Couch").click
 
-      expect(current_path).to eq couch_path(couch_1)
+        expect(current_path).to eq couch_path(couch_1)
+      end
     end
 
     scenario "I can reserve an available couch from couch listing" do
@@ -81,7 +98,6 @@ describe "Traveler" do
       expect(page).to have_content reservation.couch_name
       expect(page).to have_content reservation.check_in
       expect(page).to have_content reservation.check_out
-      expect(page).to have_content
       expect(page).not_to have_content couch_2.name
     end
   end

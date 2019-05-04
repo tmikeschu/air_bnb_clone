@@ -60,13 +60,13 @@ RSpec.describe Couch, type: :model do
           "Check Out" => Date.tomorrow.tomorrow.to_date_picker_format,
         }
 
-        VCR.use_cassette("couch_near_1") do
+        VCR.use_cassette("couch_search_denver_typo") do
           result = Couch.search(params)
           expect(result.length).to eq 1
           expect(result).to be_a Couch::ActiveRecord_Relation
         end
 
-        VCR.use_cassette("couch_near_2") do
+        VCR.use_cassette("couch_search_denver") do
           params["Destination"] = "Denver"
           result = Couch.search(params)
           expect(result.length).to eq 1
