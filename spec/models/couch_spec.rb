@@ -1,10 +1,5 @@
 require "rails_helper"
-
-class Date
-  def to_date_picker_format
-    strftime("%m/%d/%Y")
-  end
-end
+include ModelHelpers
 
 RSpec.describe Couch, type: :model do
   context "validations" do

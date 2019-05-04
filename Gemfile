@@ -70,6 +70,8 @@ group :development, :test do
   gem "launchy"
   gem "database_cleaner"
   gem "shoulda-matchers", "~> 3.1"
+
+  gem "standard"
 end
 
 group :development do
